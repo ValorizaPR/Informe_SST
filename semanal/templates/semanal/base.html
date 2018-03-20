@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Informe Semanal SST</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+      function showDiv() {
+        var seleccion = document.getElementById('preguntaIncapacidad').value;
+        var oculto = document.getElementsByClassName('oculto');
+        
+        if (seleccion == 1) {
+          oculto[0].style.display = "block";
+          oculto[1].style.display = "block";
+          oculto[2].style.display = "block";
+          oculto[3].style.display = "block";
+        } else if (seleccion == 0 || seleccion == 2) {
+          oculto[0].style.display = "none";
+          oculto[1].style.display = "none";
+          oculto[2].style.display = "none";
+          oculto[3].style.display = "none";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1><a href="/">Informe Semanal SST</a></h1>
+    </div>
+    <div class="content container">
+      <!--<div class="row">
+        <div class="col-md-8">-->
+          {% block content %}
+          {% endblock %}
+        <!--</div>
+      </div>-->
+    </div>
+  </body>
+</html>

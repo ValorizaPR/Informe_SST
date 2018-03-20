@@ -8,14 +8,16 @@ from datetime import date
 
 from multiselectfield import MultiSelectField
 
+# -------- Opciones para los campos dropdown -------- #
+
 OPCIONES_EMPRESA = (
-    ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
-    ('DECOFACHADAS', 'Decofachadas.'),
+    ('DECOFACHADAS', 'Decofachadas'),
+    ('FLOTANTES', 'Flotantes'),
     ('INVERSIONES HD GLOBAL', 'Inversiones HD Global'),
     ('MONTAJES ELECTRICOS', 'Montajes Eléctricos'),
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
+    ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
     ('VELAYA CONSTRUCCIOENS', 'Velaya Construcciones'),
-    ('FLOTANTES', 'Flotantes'),
 )
 
 OPCIONES_ACCIDENTES = (
@@ -73,7 +75,7 @@ OPCIONES_INCAPACIDAD = (
     (2, 'Accidente Laboral'),
     (3, 'Licencia de Paternidad'),
     (4, 'Licencia de Maternidad'),
-    (5, 'Enfermedad Laboral')
+    (5, 'Enfermedad Laboral'),
 )
 
 OPCIONES_CAN_INCAPACIDADES = (
@@ -85,6 +87,58 @@ OPCIONES_CAN_INCAPACIDADES = (
     ('5', '5'),
 )
 
+OPCIONES_ACCION = (
+    ('ACCION PREVENTIVA', 'Acción Preventiva'),
+    ('ACCION CORRECTIVA', 'Acción Correctiva'),
+    ('OPORTUNIDAD DE MEJORA', 'Oportunidad de Mejora'),
+)
+
+OPCIONES_HALLAZGO = (
+    ('AUDITORIA EXTERNA', 'Auditoría Externa'),
+    ('AUDITORIA INTERNA', 'Auditoría Interna'),
+    ('BRIGADA DE EMERGENCIA', 'Brigada de Emergencia'),
+    ('COPASST', 'COPASST'),
+    ('GESTION AMBIENTAL', 'Gestión Ambiental'),
+    ('INFORME SEMANAL', 'Informe Semanal'),
+    ('INSPECCION', 'Inspección'),
+    ('MATRIZ DE PLIEGOS', 'Matriz de Pliegos'),
+    ('OBSERVACIONES', 'Observaciones'),
+    ('OTRAS', 'Otras'),
+    ('PROGRAMAS DE GESTION', 'Programas de Gestión'),
+    ('QUEJAS', 'Quejas'),
+    ('RECLAMACIONES', 'Reclamaciones'),
+    ('REQUISITOS LEGALES', 'Requisitos Legales'),
+    ('REVISION POR LA DIRECCION', 'Revisión por la Gerencia'),
+    ('SIMULACRO DE EMERGENCIAS', 'Simulacro de Emergencias'),
+    ('SUGERENCIAS', 'Sugerencias'),
+)
+
+OPCIONES_CAUSAS = (
+    (1, 'Método'),
+    (2, 'Mano de Obra'),
+    (3, 'Maquinaria'),
+    (4, 'Medio Ambiente'),
+    (5, 'Materiales'),
+    (6, 'Medida'),
+)
+
+OPCIONES_RESPONSABLE = (
+    (1, 'Gerencia'),
+    (2, 'Coordinador'),
+    (3, 'Siso'),
+    (4, 'Representante de la alta dirección'),
+    (5, 'Director de Obra'),
+    (6, 'Contratista'),
+    (7, 'Empleado'),
+    (8, 'Almacenista'),
+)
+
+# ------ Fin Opciones para los campos dropdown ------ #
+
+"""
+Modelo para ingresar datos del usuario, ciclo semanal, novedades del personal,
+inspeccion EPP, e inspeccion de orden y aseo.
+"""
 class Informe(models.Model):
     # Campos del formulario
 
@@ -92,7 +146,7 @@ class Informe(models.Model):
 
     # Clave foranea, vinculo a otro modelo
     usuario           = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    empresa           = models.CharField(max_length=7, choices=OPCIONES_EMPRESA)
+    empresa           = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
     fecha_elaboracion = models.DateField(
         default=date.today,
         verbose_name="Fecha de Elaboración")
@@ -109,26 +163,26 @@ class Informe(models.Model):
     # ------------ Novedades del personal ----------- #
 
     acc_laboral = models.CharField(
-        max_length=6,
+        max_length=30,
         choices=OPCIONES_ACCIDENTES,
         verbose_name="Accidentes Laborales")
 
     inc_laboral = models.CharField(
-        max_length=6,
+        max_length=30,
         choices=OPCIONES_INCIDENTES,
         verbose_name="Incidentes Laborales")
 
-    licencias = models.CharField(max_length=6, choices=OPCIONES_LICENCIAS)
+    licencias = models.CharField(max_length=30, choices=OPCIONES_LICENCIAS)
 
     memorandos = models.CharField(
-        max_length=6,
+        max_length=30,
         choices=OPCIONES_MEMORANDOS,
         verbose_name="Memorandos o Llamados de atención")
 
-    suspenciones = models.CharField(max_length=6, choices=OPCIONES_SUSPENSIONES)
+    suspenciones = models.CharField(max_length=30, choices=OPCIONES_SUSPENSIONES)
 
     pregunta = models.CharField(
-        max_length=2,
+        max_length=30,
         choices=OPCIONES_PREGUNTA,
         verbose_name="¿Hubo incapacidades?")
 
@@ -138,21 +192,131 @@ class Informe(models.Model):
     """
     incapacidad = MultiSelectField(
         choices=OPCIONES_INCAPACIDAD,
+        blank=True,
         verbose_name="Tipo de Incapacidad")
 
     can_incapacidades = models.CharField(
-        max_length=6,
+        max_length=30,
         choices=OPCIONES_CAN_INCAPACIDADES,
-        verbose_name="Cantidad de incapacidades")
+        blank=True,
+        verbose_name="Cantidad de Incapacidades")
 
-    #numero = models.PositiveSmallIntegerField()
+    # esto es para verificar si via web el campo numero solo recibe numeros
+    #################numero = models.PositiveSmallIntegerField()
     
     # ---------- Fin Novedades del personal --------- #
 
-    # ---------- Fin Novedades del personal --------- #
+    # ---------------- Inspeccion EPP --------------- #
 
+    tipo_accion_epp = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        verbose_name="¿Tipo de Acción?")
 
-    # ---------- Fin Novedades del personal --------- #
+    fuente_hallazgo_epp = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        verbose_name="¿Fuente del Hallazgo")
+
+    descripcion_hallazgo_epp = models.TextField(
+        verbose_name="Descripción del Hallazgo")
+
+    tipos_causas_epp = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas (Solo aplica para Acción Correctiva)")
+
+    no_conformidad_epp = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad (Solo \
+        aplica para Acción Correctiva)")
+
+    """
+    Señale para cada causa enunciada anteriormente, el tipo al que...
+    """
+    causa_epp_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_epp_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_epp_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_epp_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_epp_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_epp = models.TextField(
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_epp_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        verbose_name="Acción 1")
+
+    accion_epp_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_epp_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_epp_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_epp_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    fecha_ejecucion_epp_1 = models.DateField(
+        verbose_name="Fecha límite de ejecución para la acción 1")
+
+    fecha_ejecucion_epp_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución para la acción 2")
+
+    fecha_ejecucion_epp_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución para la acción 3")
+
+    fecha_ejecucion_epp_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución para la acción 4")
+
+    fecha_ejecucion_epp_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución para la acción 5")
+
+    evidencia_epp = models.FileField(
+        upload_to='archivos/epp',
+        verbose_name="Evidencia Fotográfica de la Inspección EPP")
+
+    # -------------- Fin Inspeccion EPP ------------- #
 
     """
     Metodo que permite guardar el informe
