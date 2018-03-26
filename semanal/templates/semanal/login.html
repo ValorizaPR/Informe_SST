@@ -1,0 +1,28 @@
+{% extends 'semanal/base.html' %}
+
+{% block content %}
+  <div style="text-align: center">
+    <h1 style="margin-bottom: 25px;">Inicio de Sesión</h1>
+    <form method="POST" class="form-signin">
+      {% csrf_token %}
+      
+      <!-- Este ciclo permite adicionar la clase "sr-only" a los label del formulario -->
+      {% for field in form %}
+        <label class="sr-only" for="{{ field.name }}">{{ field.label }}</label>
+        {{ field }}
+      {% endfor %}
+      
+      <button type="submit" class="btn btn-danger btn-lg btn-block" style="margin: 40px auto;">Entrar</button>
+      
+      <!-- Este ciclo permite mostrar los mensajes de error del formulario -->
+      {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </form>
+  </div>
+{% endblock %}

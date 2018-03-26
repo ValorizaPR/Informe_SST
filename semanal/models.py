@@ -137,7 +137,7 @@ OPCIONES_RESPONSABLE = (
 
 """
 Modelo para ingresar datos del usuario, ciclo semanal, novedades del personal,
-inspeccion EPP, e inspeccion de orden y aseo.
+inspección EPP, e inspección de orden y aseo.
 """
 class Informe(models.Model):
     # Campos del formulario

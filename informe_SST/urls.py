@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """informe_SST URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -20,3 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('semanal.urls')),
 ]
+
+admin.site.site_header = 'Administración Informe SST'
