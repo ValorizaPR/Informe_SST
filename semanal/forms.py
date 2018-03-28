@@ -43,8 +43,9 @@ Formulario para llenar el informe de SST
 class FormInforme(forms.ModelForm):
   class Meta:
     model = Informe
-    #fields = '__all__'
-    fields = [
+    fields = '__all__'
+    exclude = ['usuario']
+    """fields = [
         'empresa',
         'fecha_elaboracion',
         'desde',
@@ -79,9 +80,10 @@ class FormInforme(forms.ModelForm):
         'fecha_ejecucion_epp_4',
         'fecha_ejecucion_epp_5',
         'evidencia_epp'
-    ]
+    ]"""
 
     widgets = {
+        'fecha_elaboracion': DateInput(),
         'desde': DateInput(),
         'hasta': DateInput(),
         'fecha_ejecucion_epp_1': DateInput(),

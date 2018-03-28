@@ -2,18 +2,28 @@
 
 {% block content %}
   <div>
-    <a href="" class="signo-mas" title="Nuevo Informe">
+    <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
       <span class="fas fa-plus"></span>
     </a>
   </div>
 
-  <h1 style="margin-bottom: 40px;">Informes Realizados</h1>
+  <h1 class="informe">Informes Realizados</h1>
 
   {% for informe in informes %}
     <div class="informe">
-      <p>Empresa: {{ informe.empresa }}</p>
-      <p>Fecha de Elaboración: {{ informe.fecha_elaboracion }}</p>
-      <p>Responsable: {{ informe.usuario }}</p>
+      <h1>
+        <a href="{% url 'detalle_informe' pk=informe.pk %}">{{ informe.empresa }}</a>
+      </h1>
+
+      <p>
+        <strong>Responsable:</strong>
+        {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}
+      </p>
+
+      <div class="lineaTexto">
+        <p><strong>Ciclo semanal:</strong> Desde {{ informe.desde }} - hasta {{ informe.hasta }}</p>
+        <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
+      </div>
     </div>
   {% endfor %}
 {% endblock %}

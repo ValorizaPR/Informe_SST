@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils import timezone
 
 from datetime import date
 
@@ -17,7 +16,7 @@ OPCIONES_EMPRESA = (
     ('MONTAJES ELECTRICOS', 'Montajes Eléctricos'),
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
-    ('VELAYA CONSTRUCCIOENS', 'Velaya Construcciones'),
+    ('VELAYA CONSTRUCCIONES', 'Velaya Construcciones'),
 )
 
 OPCIONES_ACCIDENTES = (
@@ -179,7 +178,7 @@ class Informe(models.Model):
         choices=OPCIONES_MEMORANDOS,
         verbose_name="Memorandos o Llamados de atención")
 
-    suspenciones = models.CharField(max_length=30, choices=OPCIONES_SUSPENSIONES)
+    suspensiones = models.CharField(max_length=30, choices=OPCIONES_SUSPENSIONES)
 
     pregunta = models.CharField(
         max_length=30,
@@ -211,12 +210,12 @@ class Informe(models.Model):
     tipo_accion_epp = models.CharField(
         max_length=30,
         choices=OPCIONES_ACCION,
-        verbose_name="¿Tipo de Acción?")
+        verbose_name="Tipo de Acción")
 
     fuente_hallazgo_epp = models.CharField(
         max_length=30,
         choices=OPCIONES_HALLAZGO,
-        verbose_name="¿Fuente del Hallazgo")
+        verbose_name="Fuente del Hallazgo")
 
     descripcion_hallazgo_epp = models.TextField(
         verbose_name="Descripción del Hallazgo")
@@ -289,6 +288,9 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Acción 5")
 
+    """
+    Fechas límites de ejecución
+    """
     fecha_ejecucion_epp_1 = models.DateField(
         verbose_name="Fecha límite de ejecución para la acción 1")
 
@@ -313,19 +315,19 @@ class Informe(models.Model):
         verbose_name="Fecha límite de ejecución para la acción 5")
 
     evidencia_epp = models.FileField(
-        upload_to='archivos/epp',
+        upload_to='semanal/archivos/epp',
         verbose_name="Evidencia Fotográfica de la Inspección EPP")
 
     # -------------- Fin Inspeccion EPP ------------- #
 
     """
-    Metodo que permite guardar el informe
+    Guardar el informe
     """
     def guardar_informe(self):
         self.save()
 
     """
-    Cadena para representar el objeto Informe(clase) en el sitio de Admin, etc.
+    Cadena para representar el objeto Informe(clase) en el admin de django.
     """
     def __str__(self):
         return self.empresa

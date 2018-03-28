@@ -1,7 +1,11 @@
 {% load staticfiles %}
-<html>
+<html lang="es">
   <head>
-    <title>Informe Semanal SST</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio Web para el informe SST Valoriza PR">
+    <meta name="Author" content="Giovanny Escobar Uribe">
+    <title>Informe Semanal SST - Valoriza Propiedad Raíz</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
@@ -11,20 +15,24 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css">
   </head>
   <body>
-    <div class="page-header">
+    <div class="page-header fixed-top">
       {% if request.user.is_authenticated %}
         <p class="top-menu">
           {{ user.first_name }}
           {{ user.last_name }}
           <a href="{% url 'logout' %}">Salir</a>
         </p>
+        <h1><a href="/informes">Informe Semanal SST</a></h1>
+      {% else %}
+        <h1><a href="/">Informe Semanal SST</a></h1>
       {% endif %}
-      <h1><a href="/">Informe Semanal SST</a></h1>
     </div>
+
     <div class="content container">
       {% block content %}
       {% endblock %}
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>

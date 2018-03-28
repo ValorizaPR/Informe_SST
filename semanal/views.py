@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+
 from .models import Informe
 from .forms import LoginForm, FormInforme
 
 from django.contrib import messages
-
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -14,7 +14,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 """
-Función que valida los datos de inicio de sesión
+Valida los datos de inicio de sesión
 """
 def user_login(request):
     if request.method == 'POST':
@@ -38,7 +38,7 @@ def user_login(request):
         return render(request, 'semanal/login.html', {'form': form})
 
 """
-Función que termina la sesión del usuario
+Termina la sesión del usuario
 """
 @login_required
 def user_logout(request):
@@ -46,15 +46,56 @@ def user_logout(request):
     return HttpResponseRedirect('/login')
 
 """
-Función que muestra los formularios elaborados por el usuario
+Muestra los informes elaborados por el usuario
 """
 def lista_informes(request):
     if request.user.is_authenticated:
-        informes = Informe.objects.order_by('fecha_elaboracion')
-        return render(request, 'semanal/informes.html', {'informes': informes})
+        if request.user.is_staff:
+            informes = Informe.objects.order_by('fecha_elaboracion')
+            return render(request, 'semanal/informes.html', {'informes': informes})
+        else:
+            informes = Informe.objects.filter(usuario=request.user).order_by('fecha_elaboracion')
+            return render(request, 'semanal/informes.html', {'informes': informes})
     else:
         return render(request, 'semanal/login_error.html')
 
-"""def ver_formulario(request):
-    form = FormInforme()
-    return render(request, 'semanal/informes.html', {'form': form})"""
+"""
+Muestra la página con el detalle de un informe específico
+"""
+def detalle_informe(request, pk):
+    informe = get_object_or_404(Informe, pk=pk)
+    return render(request, 'semanal/detalle_informe.html', {'informe': informe})
+
+"""
+Permite elaborar un nuevo informe
+"""
+def nuevo_informe(request):
+    if request.method == "POST":
+        form = FormInforme(request.POST, instance=informe)
+
+        if form.is_valid():
+            informe = form.save(commit=False)
+            informe.usuario = request.user
+            informe.save()
+            return redirect('detalle_informe', pk=informe.pk)
+    else:
+        form = FormInforme()
+    return render(request, 'semanal/nuevo_informe.html', {'form': form})
+
+"""
+Permite editar un informe
+"""
+def editar_informe(request, pk):
+    informe = get_object_or_404(Informe, pk=pk)
+    
+    if request.method == "POST":
+        form = FormInforme(request.POST, instance=informe)
+
+        if form.is_valid():
+            informe = form.save(commit=False)
+            informe.usuario = request.user
+            informe.save()
+            return redirect('detalle_informe', pk=informe.pk)
+    else:
+        form = FormInforme(instance=informe)
+    return render(request, 'semanal/nuevo_informe.html', {'form': form})

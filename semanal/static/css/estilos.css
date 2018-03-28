@@ -6,12 +6,12 @@
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
   color: #ffffff;
-  font-size: 36pt;
+  font-size: 25pt;
   text-decoration: none;
 }
 
 .content {
-  margin-top: 70px;
+  margin-top: 150px;
 }
 
 h1, h2, h3, h4 {
@@ -85,7 +85,7 @@ h1, h2, h3, h4 {
   color: #ffffff;
   float: right;
   font-size: 14pt;
-  margin: 15px 20px 0 0;
+  margin: 10px 20px 0 0;
 }
 
 .top-menu a {
@@ -99,23 +99,30 @@ h1, h2, h3, h4 {
   text-decoration: underline;
 }
 
-.signo-mas, .signo-mas:visited {
+.icono, .icono:visited {
   color: #ea1f0b;
   float: right;
   font-size: 35pt;
-  margin: 15px 20px 0 0;
+  margin-right: 20px;
 }
 
-.signo-mas:hover {
+.icono:hover {
   color: #c82333;
 }
 
 .informe {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .informe h1 a, .informe h1 a:visited {
   color: #000000;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.lineaTexto p {
+  margin-top: -15px;
 }
 
 /* hasta aqui las que se utilizan 

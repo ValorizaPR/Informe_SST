@@ -1,0 +1,59 @@
+{% extends 'semanal/base.html' %}
+
+{% block content %}
+  <div>
+    <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
+      <span class="fas fa-plus"></span>
+    </a>
+    <a class="icono" href="{% url 'nuevo_informe' pk=informe.pk %}" title="Editar Informe">
+      <span class="fas fa-edit"></span>
+    </a>
+  </div>
+
+  <div>
+    <h1>Datos de quien realiza el informe</h1>
+    <p><strong>Responsable SST:</strong> {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}</p>
+    <p><strong>Empresa:</strong> {{ informe.empresa }}</p>
+    <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
+    <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} - {{ informe.hasta }}</p>
+    <h1>Novedades del Personal</h1>
+    <p><strong>Accidentes Laborales:</strong> {{ informe.acc_laboral }}</p>
+    <p><strong>Incidentes Laborales:</strong> {{ informe.inc_laboral }}</p>
+    <p><strong>Licencias:</strong> {{ informe.licencias }}</p>
+    <p><strong>Memorandos: </strong> {{ informe.memorandos }}</p>
+    <p><strong>Suspensiones:</strong> {{ informe.suspenciones }}</p>
+    <p><strong>¿Hubo incapacidades?</strong> {{ informe.pregunta }}</p>
+    <p><strong>Tipo de Incapacidad:</strong> {{ informe.incapacidad }}</p>
+    <p><strong>Cantidad de Incapacidades:</strong> {{ informe.can_incapacidades }}</p>
+    <h1>Inspección EPP</h1>
+    <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_epp }}</p>
+    <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_epp }}</p>
+    <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_epp }}</p>
+    <p><strong>Tipo de Causas (Solo aplica para Acción Correctiva):</strong> {{ informe.tipos_causas_epp }}</p>
+    <p><strong>Causas que determinaron la no conformidad (Solo aplica para Acción Correctiva):</strong> {{ informe.no_conformidad_epp }}</p>
+    <p>Tipo al que corresponde cada causa</p>
+    <p><strong>Causa 1:</strong> {{ informe.causa_epp_1 }}</p>
+    <p><strong>Causa 2:</strong> {{ informe.causa_epp_2 }}</p>
+    <p><strong>Causa 3:</strong> {{ informe.causa_epp_3 }}</p>
+    <p><strong>Causa 4:</strong> {{ informe.causa_epp_4 }}</p>
+    <p><strong>Causa 5:</strong> {{ informe.causa_epp_5 }}</p>
+    <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_epp }}</p>
+    <p>Responsable de la Ejecución</p>
+    <p><strong>Acción 1:</strong> {{ informe.accion_epp_1 }}</p>
+    <p><strong>Acción 2:</strong> {{ informe.accion_epp_2 }}</p>
+    <p><strong>Acción 3:</strong> {{ informe.accion_epp_3 }}</p>
+    <p><strong>Acción 4:</strong> {{ informe.accion_epp_4 }}</p>
+    <p><strong>Acción 5:</strong> {{ informe.accion_epp_5 }}</p>
+    <p><strong>Fecha límite de ejecución para la acción 1:</strong> {{ informe.fecha_ejecucion_epp_1 }}</p>
+    <p><strong>Fecha límite de ejecución para la acción 2:</strong> {{ informe.fecha_ejecucion_epp_2 }}</p>
+    <p><strong>Fecha límite de ejecución para la acción 3:</strong> {{ informe.fecha_ejecucion_epp_3 }}</p>
+    <p><strong>Fecha límite de ejecución para la acción 4:</strong> {{ informe.fecha_ejecucion_epp_4 }}</p>
+    <p><strong>Fecha límite de ejecución para la acción 5:</strong> {{ informe.fecha_ejecucion_epp_5 }}</p>
+    <p><strong>Evidencia fotográfica de la inspección EPP:</strong> {{ informe.evidencia_epp }}</p>
+
+    <p>
+      <strong>Evidencia fotográfica de la inspección EPP:</strong>
+      <a href="{{ informe.evidencia_epp.url }}">Evidencia</a>
+    </p>
+  </div>
+{% endblock %}
