@@ -28,10 +28,10 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect('/informes')
             else:
-                messages.error(request,'Tu cuenta esta desactivada')
+                messages.error(request, 'Tu cuenta esta desactivada')
                 return HttpResponseRedirect('/login')
         else:
-            messages.error(request,'Usuario o contraseña incorrecto')
+            messages.error(request, 'Usuario o contraseña incorrecto')
             return HttpResponseRedirect('/login')
     else:
         form = LoginForm()
@@ -71,15 +71,16 @@ Permite elaborar un nuevo informe
 """
 def nuevo_informe(request):
     if request.method == "POST":
-        form = FormInforme(request.POST, instance=informe)
+        form = FormInforme(request.POST, request.FILES)
 
         if form.is_valid():
-            informe = form.save(commit=False)
+            informe         = form.save(commit=False)
             informe.usuario = request.user
             informe.save()
             return redirect('detalle_informe', pk=informe.pk)
     else:
         form = FormInforme()
+        
     return render(request, 'semanal/nuevo_informe.html', {'form': form})
 
 """
@@ -92,10 +93,11 @@ def editar_informe(request, pk):
         form = FormInforme(request.POST, instance=informe)
 
         if form.is_valid():
-            informe = form.save(commit=False)
+            informe         = form.save(commit=False)
             informe.usuario = request.user
             informe.save()
             return redirect('detalle_informe', pk=informe.pk)
     else:
         form = FormInforme(instance=informe)
+
     return render(request, 'semanal/nuevo_informe.html', {'form': form})

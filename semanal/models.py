@@ -143,7 +143,7 @@ class Informe(models.Model):
 
     # ------ Datos de quien realiza el informe ------ #
 
-    # Clave foranea, vinculo a otro modelo
+    # Clave foranea, vínculo a otro modelo
     usuario           = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     empresa           = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
     fecha_elaboracion = models.DateField(
