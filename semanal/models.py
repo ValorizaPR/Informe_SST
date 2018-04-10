@@ -7,6 +7,8 @@ from datetime import date
 
 from multiselectfield import MultiSelectField
 
+from django.core.exceptions import ValidationError
+
 # -------- Opciones para los campos dropdown -------- #
 
 OPCIONES_EMPRESA = (
@@ -17,51 +19,6 @@ OPCIONES_EMPRESA = (
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
     ('VELAYA CONSTRUCCIONES', 'Velaya Construcciones'),
-)
-
-OPCIONES_ACCIDENTES = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-)
-
-OPCIONES_INCIDENTES = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-)
-
-OPCIONES_LICENCIAS = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-)
-
-OPCIONES_MEMORANDOS = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-)
-
-OPCIONES_SUSPENSIONES = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
 )
 
 OPCIONES_PREGUNTA = (
@@ -77,15 +34,6 @@ OPCIONES_INCAPACIDAD = (
     (5, 'Enfermedad Laboral'),
 )
 
-OPCIONES_CAN_INCAPACIDADES = (
-    ('0', '0'),
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-)
-
 OPCIONES_ACCION = (
     ('ACCION PREVENTIVA', 'Acción Preventiva'),
     ('ACCION CORRECTIVA', 'Acción Correctiva'),
@@ -93,23 +41,23 @@ OPCIONES_ACCION = (
 )
 
 OPCIONES_HALLAZGO = (
-    ('AUDITORIA EXTERNA', 'Auditoría Externa'),
-    ('AUDITORIA INTERNA', 'Auditoría Interna'),
-    ('BRIGADA DE EMERGENCIA', 'Brigada de Emergencia'),
+    ('Auditoría Externa', 'Auditoría Externa'),
+    ('Auditoría Interna', 'Auditoría Interna'),
+    ('Brigada de Emergencia', 'Brigada de Emergencia'),
     ('COPASST', 'COPASST'),
-    ('GESTION AMBIENTAL', 'Gestión Ambiental'),
-    ('INFORME SEMANAL', 'Informe Semanal'),
-    ('INSPECCION', 'Inspección'),
-    ('MATRIZ DE PLIEGOS', 'Matriz de Pliegos'),
-    ('OBSERVACIONES', 'Observaciones'),
-    ('OTRAS', 'Otras'),
-    ('PROGRAMAS DE GESTION', 'Programas de Gestión'),
-    ('QUEJAS', 'Quejas'),
-    ('RECLAMACIONES', 'Reclamaciones'),
-    ('REQUISITOS LEGALES', 'Requisitos Legales'),
-    ('REVISION POR LA DIRECCION', 'Revisión por la Gerencia'),
-    ('SIMULACRO DE EMERGENCIAS', 'Simulacro de Emergencias'),
-    ('SUGERENCIAS', 'Sugerencias'),
+    ('Gestión Ambiental', 'Gestión Ambiental'),
+    ('Informe Semanal', 'Informe Semanal'),
+    ('Inspección', 'Inspección'),
+    ('Matriz de Pliegos', 'Matriz de Pliegos'),
+    ('Observaciones', 'Observaciones'),
+    ('Otras', 'Otras'),
+    ('Programas de Gestión', 'Programas de Gestión'),
+    ('Quejas', 'Quejas'),
+    ('Reclamaciones', 'Reclamaciones'),
+    ('Requisitos Legales', 'Requisitos Legales'),
+    ('Revisión por la Gerencia', 'Revisión por la Gerencia'),
+    ('Simulacro de Emergencias', 'Simulacro de Emergencias'),
+    ('Sugerencias', 'Sugerencias'),
 )
 
 OPCIONES_CAUSAS = (
@@ -135,8 +83,24 @@ OPCIONES_RESPONSABLE = (
 # ------ Fin Opciones para los campos dropdown ------ #
 
 """
+Limita el tamaño de los archivos cargados a 2 MB
+"""
+def tam_archivo(valor):
+    limite = 2 * 1024 * 1024
+    
+    if valor.size > limite:
+        raise ValidationError('El tamaño del archivo debe ser menor a 2 MB.')
+
+"""
+Limita el tipo de archivos cargados a solo PDF
+"""
+def ext_archivo(valor):
+    if valor.file.content_type != 'application/pdf':
+        raise ValidationError('Solo se permiten archivos PDF')
+
+"""
 Modelo para ingresar datos del usuario, ciclo semanal, novedades del personal,
-inspección EPP, e inspección de orden y aseo.
+inspección EPP, inspección de orden y aseo y gestión del cambio.
 """
 class Informe(models.Model):
     # Campos del formulario
@@ -144,8 +108,8 @@ class Informe(models.Model):
     # ------ Datos de quien realiza el informe ------ #
 
     # Clave foranea, vínculo a otro modelo
-    usuario           = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    empresa           = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
+    usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    empresa = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
     fecha_elaboracion = models.DateField(
         default=date.today,
         verbose_name="Fecha de Elaboración")
@@ -154,33 +118,30 @@ class Informe(models.Model):
 
     # ---------------- Ciclo semanal ---------------- #
 
-    desde = models.DateField(default=date.today)
-    hasta = models.DateField(default=date.today)
+    desde = models.DateField()
+    hasta = models.DateField()
 
     # -------------- Fin Ciclo semanal -------------- #
 
     # ------------ Novedades del personal ----------- #
 
-    acc_laboral = models.CharField(
-        max_length=30,
-        choices=OPCIONES_ACCIDENTES,
+    acc_laboral = models.PositiveSmallIntegerField(
+        default=0,
         verbose_name="Accidentes Laborales")
 
-    inc_laboral = models.CharField(
-        max_length=30,
-        choices=OPCIONES_INCIDENTES,
+    inc_laboral = models.PositiveSmallIntegerField(
+        default=0,
         verbose_name="Incidentes Laborales")
 
-    licencias = models.CharField(max_length=30, choices=OPCIONES_LICENCIAS)
+    licencias = models.PositiveSmallIntegerField(default=0)
 
-    memorandos = models.CharField(
-        max_length=30,
-        choices=OPCIONES_MEMORANDOS,
+    memorandos = models.PositiveSmallIntegerField(
+        default=0,
         verbose_name="Memorandos o Llamados de atención")
 
-    suspensiones = models.CharField(max_length=30, choices=OPCIONES_SUSPENSIONES)
+    suspensiones = models.PositiveSmallIntegerField(default=0)
 
-    pregunta = models.CharField(
+    pregunta_incapacidad = models.CharField(
         max_length=30,
         choices=OPCIONES_PREGUNTA,
         verbose_name="¿Hubo incapacidades?")
@@ -189,23 +150,19 @@ class Informe(models.Model):
     Se instalo plugin MultiSelectField para tener una lista opciones de checkbox
     Informacion en: https://pypi.python.org/pypi/django-multiselectfield
     """
-    incapacidad = MultiSelectField(
+    tipo_incapacidad = MultiSelectField(
         choices=OPCIONES_INCAPACIDAD,
         blank=True,
         verbose_name="Tipo de Incapacidad")
 
-    can_incapacidades = models.CharField(
-        max_length=30,
-        choices=OPCIONES_CAN_INCAPACIDADES,
+    can_incapacidades = models.PositiveSmallIntegerField(
+        default=0,
         blank=True,
         verbose_name="Cantidad de Incapacidades")
-
-    # esto es para verificar si via web el campo numero solo recibe numeros
-    #################numero = models.PositiveSmallIntegerField()
     
     # ---------- Fin Novedades del personal --------- #
 
-    # ---------------- Inspeccion EPP --------------- #
+    # ---------------- Inspección EPP --------------- #
 
     tipo_accion_epp = models.CharField(
         max_length=30,
@@ -316,14 +273,16 @@ class Informe(models.Model):
 
     evidencia_epp = models.FileField(
         upload_to='semanal/archivos/epp',
+        validators=[tam_archivo, ext_archivo],
         verbose_name="Evidencia Fotográfica de la Inspección EPP")
 
-    # -------------- Fin Inspeccion EPP ------------- #
+    # -------------- Fin Inspección EPP ------------- #
 
     """
     Guardar el informe
     """
     def guardar_informe(self):
+        self.fecha_elaboracion = date.today()
         self.save()
 
     """

@@ -124,6 +124,17 @@ h1, h2, h3, h4 {
 .lineaTexto p {
   margin-top: -15px;
 }
+.control-group {
+  width: 100%;
+  max-width: 330px;
+  text-align: center;
+  padding: 5px;
+}
+
+.control-group ul {
+  list-style: none;
+  text-align: left;
+}
 
 /* hasta aqui las que se utilizan 
 

@@ -41,17 +41,41 @@ class DateInput(forms.DateInput):
 Formulario para llenar el informe de SST
 """
 class FormInforme(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(FormInforme, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            if self.fields[field] != self.fields['tipo_incapacidad'] and \
+            self.fields[field] != self.fields['tipos_causas_epp'] and \
+            self.fields[field] != self.fields['causa_epp_1'] and \
+            self.fields[field] != self.fields['causa_epp_2'] and \
+            self.fields[field] != self.fields['causa_epp_3'] and \
+            self.fields[field] != self.fields['causa_epp_4'] and \
+            self.fields[field] != self.fields['causa_epp_5'] and \
+            self.fields[field] != self.fields['accion_epp_1'] and \
+            self.fields[field] != self.fields['accion_epp_2'] and \
+            self.fields[field] != self.fields['accion_epp_3'] and \
+            self.fields[field] != self.fields['accion_epp_4'] and \
+            self.fields[field] != self.fields['accion_epp_5']:
+                self.fields[field].widget.attrs.update({
+                    'class': 'form-control'})
+
+            if self.fields['evidencia_epp']:
+                self.fields['evidencia_epp'].widget.attrs.update({
+                'class': 'form-control-file'})
+
     class Meta:
         model   = Informe
         fields  = '__all__'
-        exclude = ['usuario']
+        exclude = ['usuario', 'fecha_elaboracion']
         widgets = {
-            'fecha_elaboracion': DateInput(),
             'desde': DateInput(),
             'hasta': DateInput(),
             'fecha_ejecucion_epp_1': DateInput(),
             'fecha_ejecucion_epp_2': DateInput(),
             'fecha_ejecucion_epp_3': DateInput(),
             'fecha_ejecucion_epp_4': DateInput(),
-            'fecha_ejecucion_epp_5': DateInput()
+            'fecha_ejecucion_epp_5': DateInput(),
+            'descripcion_hallazgo_epp': forms.Textarea(attrs={'rows':5}),
+            'no_conformidad_epp': forms.Textarea(attrs={'rows':5}),
+            'acciones_ejecutar_epp': forms.Textarea(attrs={'rows':5}),
         }
