@@ -45,7 +45,7 @@ class FormInforme(forms.ModelForm):
         super(FormInforme, self).__init__(*args, **kwargs)
         for field in self.fields:
             if self.fields[field] != self.fields['tipo_incapacidad'] and \
-            self.fields[field] != self.fields['tipos_causas_epp'] and \
+            self.fields[field] != self.fields['tipo_causas_epp'] and \
             self.fields[field] != self.fields['causa_epp_1'] and \
             self.fields[field] != self.fields['causa_epp_2'] and \
             self.fields[field] != self.fields['causa_epp_3'] and \
@@ -75,7 +75,13 @@ class FormInforme(forms.ModelForm):
             'fecha_ejecucion_epp_3': DateInput(),
             'fecha_ejecucion_epp_4': DateInput(),
             'fecha_ejecucion_epp_5': DateInput(),
-            'descripcion_hallazgo_epp': forms.Textarea(attrs={'rows':5}),
-            'no_conformidad_epp': forms.Textarea(attrs={'rows':5}),
-            'acciones_ejecutar_epp': forms.Textarea(attrs={'rows':5}),
+            'descripcion_hallazgo_epp': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_epp': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_epp': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
         }

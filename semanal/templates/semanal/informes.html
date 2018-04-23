@@ -1,11 +1,14 @@
 {% extends 'semanal/base.html' %}
+{% load semanal_extras %}
 
 {% block content %}
-  <div>
-    <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
-      <span class="fas fa-plus"></span>
-    </a>
-  </div>
+  {% if request.user|has_group:"Sisos" %}
+    <div>
+      <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
+        <span class="fas fa-plus"></span>
+      </a>
+    </div>
+  {% endif %}
 
   <h1 class="informe">Informes Realizados</h1>
 

@@ -1,7 +1,8 @@
 {% extends 'semanal/base.html' %}
 
 {% block content %}
-  <h1>Nuevo Informe</h1>
+  <h1 class="informe">Nuevo Informe</h1>
+  
   <form method="POST" enctype="multipart/form-data" id="formInforme">
     {% csrf_token %}
 

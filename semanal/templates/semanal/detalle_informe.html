@@ -1,21 +1,24 @@
 {% extends 'semanal/base.html' %}
+{% load semanal_extras %}
 
 {% block content %}
-  <div>
-    <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
-      <span class="fas fa-plus"></span>
-    </a>
-    <a class="icono" href="{% url 'nuevo_informe' pk=informe.pk %}" title="Editar Informe">
-      <span class="fas fa-edit"></span>
-    </a>
-  </div>
+  {% if request.user|has_group:"Sisos" %}
+    <div>
+      <a class="icono" href="{% url 'nuevo_informe' %}" title="Nuevo Informe">
+        <span class="fas fa-plus"></span>
+      </a>
+      <a class="icono" href="{% url 'nuevo_informe' pk=informe.pk %}" title="Editar Informe">
+        <span class="fas fa-edit"></span>
+      </a>
+    </div>
+  {% endif %}
 
   <div>
     <h1>Datos de quien realiza el informe</h1>
     <p><strong>Responsable SST:</strong> {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}</p>
     <p><strong>Empresa:</strong> {{ informe.empresa }}</p>
     <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
-    <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} - {{ informe.hasta }}</p>
+    <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} hasta {{ informe.hasta }}</p>
     <h1>Novedades del Personal</h1>
     <p><strong>Accidentes Laborales:</strong> {{ informe.acc_laboral }}</p>
     <p><strong>Incidentes Laborales:</strong> {{ informe.inc_laboral }}</p>
@@ -53,7 +56,7 @@
 
     <p>
       <strong>Evidencia fotográfica de la inspección EPP:</strong>
-      <a href="{{ informe.evidencia_epp.url }}">Evidencia</a>
+      <a href="{{ informe.evidencia_epp }}">Evidencia</a>
     </p>
   </div>
 {% endblock %}

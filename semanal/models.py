@@ -177,7 +177,7 @@ class Informe(models.Model):
     descripcion_hallazgo_epp = models.TextField(
         verbose_name="Descripción del Hallazgo")
 
-    tipos_causas_epp = MultiSelectField(
+    tipo_causas_epp = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
         verbose_name="Tipo de Causas (Solo aplica para Acción Correctiva)")
@@ -272,7 +272,7 @@ class Informe(models.Model):
         verbose_name="Fecha límite de ejecución para la acción 5")
 
     evidencia_epp = models.FileField(
-        upload_to='semanal/archivos/epp',
+        upload_to='archivos/%Y/%m/',
         validators=[tam_archivo, ext_archivo],
         verbose_name="Evidencia Fotográfica de la Inspección EPP")
 

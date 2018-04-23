@@ -3,17 +3,29 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Informe
-from .forms import LoginForm, FormInforme
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.utils.encoding import smart_str
+
+from django.http import HttpResponse, HttpResponseRedirect
+
+from django.conf import settings
+
+from .models import Informe
+from .forms import LoginForm, FormInforme
 
 from datetime import date
+
+from wsgiref.util import FileWrapper
+
+import os
+import mimetypes
+import sys
+
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 """
 Valida los datos de inicio de sesión
@@ -52,13 +64,18 @@ Muestra los informes elaborados por el usuario
 """
 def lista_informes(request):
     if request.user.is_authenticated:
-        if request.user.is_staff:
+        user_group  = request.user.groups.filter(name__in=[
+            'Administrador','Coordinacion']).exists()
+
+        if user_group:
             informes = Informe.objects.order_by('fecha_elaboracion')
+
             return render(
                 request, 'semanal/informes.html', {'informes': informes})
         else:
             informes = Informe.objects.filter(
                 usuario=request.user).order_by('fecha_elaboracion')
+
             return render(
                 request, 'semanal/informes.html', {'informes': informes})
     else:
@@ -70,8 +87,14 @@ Muestra la página con el detalle de un informe específico
 def detalle_informe(request, pk):
     if request.user.is_authenticated:
         informe = get_object_or_404(Informe, pk=pk)
-        return render(
-            request, 'semanal/detalle_informe.html', {'informe': informe})
+        user_group  = request.user.groups.filter(name__in=[
+            'Administrador','Coordinacion']).exists()
+
+        if user_group or request.user.id == informe.usuario_id:
+            return render(
+                request, 'semanal/detalle_informe.html', {'informe': informe})
+        else:
+            return render(request, 'semanal/sin_permiso.html')
     else:
         return render(request, 'semanal/login_error.html')
 
@@ -80,19 +103,25 @@ Permite elaborar un nuevo informe
 """
 def nuevo_informe(request):
     if request.user.is_authenticated:
-        if request.method == "POST":
-            form = FormInforme(request.POST, request.FILES)
+        user_group  = request.user.groups.filter(name='Sisos').exists()
 
-            if form.is_valid():
-                informe         = form.save(commit=False)
-                informe.usuario = request.user
-                informe.fecha_elaboracion = date.today()
-                informe.save()
-                return redirect('detalle_informe', pk=informe.pk)
+        if user_group:
+            if request.method == "POST":
+                form = FormInforme(request.POST, request.FILES)
+
+                if form.is_valid():
+                    informe                   = form.save(commit=False)
+                    informe.usuario           = request.user
+                    informe.fecha_elaboracion = date.today()
+                    informe.save()
+
+                    return redirect('detalle_informe', pk=informe.pk)
+            else:
+                form = FormInforme()
+
+            return render(request, 'semanal/nuevo_informe.html', {'form': form})
         else:
-            form = FormInforme()
-            
-        return render(request, 'semanal/nuevo_informe.html', {'form': form})
+            return render(request, 'semanal/sin_permiso.html')
     else:
         return render(request, 'semanal/login_error.html')
 
@@ -102,18 +131,49 @@ Permite editar un informe
 def editar_informe(request, pk):
     if request.user.is_authenticated:
         informe = get_object_or_404(Informe, pk=pk)
+        user_group  = request.user.groups.filter(name='Sisos').exists()
         
-        if request.method == "POST":
-            form = FormInforme(request.POST, instance=informe)
+        if user_group and request.user.id == informe.usuario_id:
+            if request.method == "POST":
+                form = FormInforme(request.POST, instance=informe)
 
-            if form.is_valid():
-                informe         = form.save(commit=False)
-                informe.usuario = request.user
-                informe.save()
-                return redirect('detalle_informe', pk=informe.pk)
+                if form.is_valid():
+                    informe         = form.save(commit=False)
+                    informe.usuario = request.user
+                    informe.save()
+
+                    return redirect('detalle_informe', pk=informe.pk)
+            else:
+                form = FormInforme(instance=informe)
+
+            return render(request, 'semanal/nuevo_informe.html', {'form': form})
         else:
-            form = FormInforme(instance=informe)
+            return render(request, 'semanal/sin_permiso.html')
+    else:
+        return render(request, 'semanal/login_error.html')
 
-        return render(request, 'semanal/nuevo_informe.html', {'form': form})
+
+def descargar_archivos(request, pk, file_name):
+    """Permite descargar los archivos guardados.
+    Devuelve un archivo."""
+
+    if request.user.is_authenticated:
+        informe = get_object_or_404(Informe, pk=pk)
+        user_group  = request.user.groups.filter(name__in=[
+            'Administrador','Coordinacion']).exists()
+
+        if user_group or request.user.id == informe.usuario_id:
+            file_path = settings.MEDIA_ROOT + '/' + file_name
+            file_wrapper = FileWrapper(file(file_path, 'rb'))
+            file_mimetype = mimetypes.guess_type(file_path)
+            response = HttpResponse(file_wrapper, content_type=file_mimetype )
+            response['X-Sendfile'] = file_path
+            response['Content-Length'] = os.stat(file_path).st_size
+            response['Content-Disposition'] = 'attachment; filename=%s' \
+                % smart_str(file_name)
+
+            return response
+        else:
+            return render(request, 'semanal/sin_permiso.html')
     else:
         return render(request, 'semanal/login_error.html')
