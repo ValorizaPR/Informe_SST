@@ -110,6 +110,16 @@ h1, h2, h3, h4 {
   color: #c82333;
 }
 
+.icono2, .icono2:visited {
+  color: #ea1f0b;
+  font-size: 17pt;
+  margin-right: 5px;
+}
+
+.icono2:hover {
+  color: #c82333;
+}
+
 .informe {
   margin-bottom: 50px;
 }
@@ -124,6 +134,7 @@ h1, h2, h3, h4 {
 .lineaTexto p {
   margin-top: -15px;
 }
+
 .control-group {
   width: 100%;
   max-width: 330px;
@@ -136,16 +147,62 @@ h1, h2, h3, h4 {
   text-align: left;
 }
 
-/* hasta aqui las que se utilizan 
-
-.post-form textarea, .post-form input {
-  width: 100%;
+.subtitulo h3 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
 }
 
-.post {
-  margin-bottom: 70px;
+.subtitulo h4 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
-.post h1 a, .post h1 a:visited {
-  color: #000000;
-}*/
+.subtitulo li {
+  list-style: none;
+}
+
+@media all and (max-width: 338px) {
+  .titulo {
+    margin-top: 200px;
+  }
+}
+
+.ocultoPregunta, .ocultoEPP, .ocultoOyA,
+.ocultoCausasAct1, .ocultoCausasAct2,
+.ocultoCausasAct3, .ocultoCausasAct4,
+.ocultoCausasAct5, #ocultoAccEPP,
+#ocultoAccOyA, #ocultoAccAct1,
+#ocultoAccAct2, #ocultoAccAct3,
+#ocultoAccAct4, #ocultoAccAct5 {
+  display: none;
+}
+
+.hideFileTex {
+  overflow: hidden;
+}
+
+.ocultoAL1, .ocultoAL2, .ocultoAL3,
+.ocultoIL1, .ocultoIL2, .ocultoIL3,
+.ocultoEPP, .ocultoOyA, .ocultoCausasAct1,
+.ocultoCausasAct2, .ocultoCausasAct3,
+.ocultoCausasAct4, .ocultoCausasAct5 {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  margin-bottom: 10px;
+}
+
+.descripcion {
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.inputActividades, .inputCambio {
+  max-width: 400px;
+  margin: 30px 0px;
+}
+
+.detalleInforme {
+  margin-bottom: 30px;
+}

@@ -13,50 +13,843 @@
     </div>
   {% endif %}
 
-  <div>
-    <h1>Datos de quien realiza el informe</h1>
-    <p><strong>Responsable SST:</strong> {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}</p>
-    <p><strong>Empresa:</strong> {{ informe.empresa }}</p>
-    <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
-    <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} hasta {{ informe.hasta }}</p>
-    <h1>Novedades del Personal</h1>
-    <p><strong>Accidentes Laborales:</strong> {{ informe.acc_laboral }}</p>
-    <p><strong>Incidentes Laborales:</strong> {{ informe.inc_laboral }}</p>
-    <p><strong>Licencias:</strong> {{ informe.licencias }}</p>
-    <p><strong>Memorandos: </strong> {{ informe.memorandos }}</p>
-    <p><strong>Suspensiones:</strong> {{ informe.suspenciones }}</p>
-    <p><strong>¿Hubo incapacidades?</strong> {{ informe.pregunta }}</p>
-    <p><strong>Tipo de Incapacidad:</strong> {{ informe.incapacidad }}</p>
-    <p><strong>Cantidad de Incapacidades:</strong> {{ informe.can_incapacidades }}</p>
-    <h1>Inspección EPP</h1>
-    <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_epp }}</p>
-    <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_epp }}</p>
-    <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_epp }}</p>
-    <p><strong>Tipo de Causas (Solo aplica para Acción Correctiva):</strong> {{ informe.tipos_causas_epp }}</p>
-    <p><strong>Causas que determinaron la no conformidad (Solo aplica para Acción Correctiva):</strong> {{ informe.no_conformidad_epp }}</p>
-    <p>Tipo al que corresponde cada causa</p>
-    <p><strong>Causa 1:</strong> {{ informe.causa_epp_1 }}</p>
-    <p><strong>Causa 2:</strong> {{ informe.causa_epp_2 }}</p>
-    <p><strong>Causa 3:</strong> {{ informe.causa_epp_3 }}</p>
-    <p><strong>Causa 4:</strong> {{ informe.causa_epp_4 }}</p>
-    <p><strong>Causa 5:</strong> {{ informe.causa_epp_5 }}</p>
-    <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_epp }}</p>
-    <p>Responsable de la Ejecución</p>
-    <p><strong>Acción 1:</strong> {{ informe.accion_epp_1 }}</p>
-    <p><strong>Acción 2:</strong> {{ informe.accion_epp_2 }}</p>
-    <p><strong>Acción 3:</strong> {{ informe.accion_epp_3 }}</p>
-    <p><strong>Acción 4:</strong> {{ informe.accion_epp_4 }}</p>
-    <p><strong>Acción 5:</strong> {{ informe.accion_epp_5 }}</p>
-    <p><strong>Fecha límite de ejecución para la acción 1:</strong> {{ informe.fecha_ejecucion_epp_1 }}</p>
-    <p><strong>Fecha límite de ejecución para la acción 2:</strong> {{ informe.fecha_ejecucion_epp_2 }}</p>
-    <p><strong>Fecha límite de ejecución para la acción 3:</strong> {{ informe.fecha_ejecucion_epp_3 }}</p>
-    <p><strong>Fecha límite de ejecución para la acción 4:</strong> {{ informe.fecha_ejecucion_epp_4 }}</p>
-    <p><strong>Fecha límite de ejecución para la acción 5:</strong> {{ informe.fecha_ejecucion_epp_5 }}</p>
-    <p><strong>Evidencia fotográfica de la inspección EPP:</strong> {{ informe.evidencia_epp }}</p>
+  <div class="titulo">
+    <div class="detalleInforme">
+      <h1>Datos de quien realiza el informe</h1>
+      <p><strong>Responsable SST:</strong> {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}</p>
+      <p><strong>Empresa:</strong> {{ informe.empresa }}</p>
+      <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
+      <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} hasta {{ informe.hasta }}</p>
+    </div>
 
-    <p>
-      <strong>Evidencia fotográfica de la inspección EPP:</strong>
-      <a href="{{ informe.evidencia_epp }}">Evidencia</a>
-    </p>
+    <!-- Novedades del personal -->
+    <div class="detalleInforme">
+      <h1>Novedades del Personal</h1>
+      <p><strong>Accidentes Laborales:</strong> {{ informe.acc_laboral }}</p>
+
+      <!-- Investigaciones accidentes -->
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 1</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral1 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral1 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral1 }}</li>
+              
+              <li>
+                <strong>Furat:</strong>
+                <a href="{{ informe.furat1 }}">{{ informe.furat1 }}</a>
+              </li>
+              
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_acc1 }}">{{ informe.investigacion_acc1 }}</a>
+              </li>
+
+              <li>
+                <strong>Lección aprendida:</strong>
+                <a href="{{ informe.leccion1 }}">{{ informe.leccion1 }}</a>
+              </li>
+
+              <li>
+                <strong>Versión de testigos:</strong>
+                <a href="{{ informe.testigos1 }}">{{ informe.testigos1 }}</a>
+              </li>
+
+              <li>
+                <strong>Incapacidad:</strong>
+                <a href="{{ informe.incapacidad_acc_laboral1 }}">{{ informe.incapacidad_acc_laboral1 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en EPS:</strong>
+                <a href="{{ informe.carta_eps1 }}">{{ informe.carta_eps1 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en Ministerio:</strong>
+                <a href="{{ informe.carta_ministerio1 }}">{{ informe.carta_ministerio1 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 2</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral2 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral2 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral2 }}</li>
+              
+              <li>
+                <strong>Furat:</strong>
+                <a href="{{ informe.furat2 }}">{{ informe.furat2 }}</a>
+              </li>
+              
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_acc2 }}">{{ informe.investigacion_acc2 }}</a>
+              </li>
+
+              <li>
+                <strong>Lección aprendida:</strong>
+                <a href="{{ informe.leccion2 }}">{{ informe.leccion2 }}</a>
+              </li>
+
+              <li>
+                <strong>Versión de testigos:</strong>
+                <a href="{{ informe.testigos2 }}">{{ informe.testigos2 }}</a>
+              </li>
+
+              <li>
+                <strong>Incapacidad:</strong>
+                <a href="{{ informe.incapacidad_acc_laboral2 }}">{{ informe.incapacidad_acc_laboral2 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en EPS:</strong>
+                <a href="{{ informe.carta_eps2 }}">{{ informe.carta_eps2 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en Ministerio:</strong>
+                <a href="{{ informe.carta_ministerio2 }}">{{ informe.carta_ministerio2 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 3</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral3 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral3 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral3 }}</li>
+              
+              <li>
+                <strong>Furat:</strong>
+                <a href="{{ informe.furat3 }}">{{ informe.furat3 }}</a>
+              </li>
+              
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_acc3 }}">{{ informe.investigacion_acc3 }}</a>
+              </li>
+
+              <li>
+                <strong>Lección aprendida:</strong>
+                <a href="{{ informe.leccion3 }}">{{ informe.leccion3 }}</a>
+              </li>
+
+              <li>
+                <strong>Versión de testigos:</strong>
+                <a href="{{ informe.testigos3 }}">{{ informe.testigos3 }}</a>
+              </li>
+
+              <li>
+                <strong>Incapacidad:</strong>
+                <a href="{{ informe.incapacidad_acc_laboral3 }}">{{ informe.incapacidad_acc_laboral3 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en EPS:</strong>
+                <a href="{{ informe.carta_eps3 }}">{{ informe.carta_eps3 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en Ministerio:</strong>
+                <a href="{{ informe.carta_ministerio3 }}">{{ informe.carta_ministerio3 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 4</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral4 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral4 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral4 }}</li>
+              
+              <li>
+                <strong>Furat:</strong>
+                <a href="{{ informe.furat4 }}">{{ informe.furat4 }}</a>
+              </li>
+              
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_acc4 }}">{{ informe.investigacion_acc4 }}</a>
+              </li>
+
+              <li>
+                <strong>Lección aprendida:</strong>
+                <a href="{{ informe.leccion4 }}">{{ informe.leccion4 }}</a>
+              </li>
+
+              <li>
+                <strong>Versión de testigos:</strong>
+                <a href="{{ informe.testigos4 }}">{{ informe.testigos4 }}</a>
+              </li>
+
+              <li>
+                <strong>Incapacidad:</strong>
+                <a href="{{ informe.incapacidad_acc_laboral4 }}">{{ informe.incapacidad_acc_laboral4 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en EPS:</strong>
+                <a href="{{ informe.carta_eps4 }}">{{ informe.carta_eps4 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en Ministerio:</strong>
+                <a href="{{ informe.carta_ministerio4 }}">{{ informe.carta_ministerio4 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 5</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral5 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral5 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral5 }}</li>
+              
+              <li>
+                <strong>Furat:</strong>
+                <a href="{{ informe.furat5 }}">{{ informe.furat5 }}</a>
+              </li>
+              
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_acc5 }}">{{ informe.investigacion_acc5 }}</a>
+              </li>
+
+              <li>
+                <strong>Lección aprendida:</strong>
+                <a href="{{ informe.leccion5 }}">{{ informe.leccion5 }}</a>
+              </li>
+
+              <li>
+                <strong>Versión de testigos:</strong>
+                <a href="{{ informe.testigos5 }}">{{ informe.testigos5 }}</a>
+              </li>
+
+              <li>
+                <strong>Incapacidad:</strong>
+                <a href="{{ informe.incapacidad_acc_laboral5 }}">{{ informe.incapacidad_acc_laboral5 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en EPS:</strong>
+                <a href="{{ informe.carta_eps5 }}">{{ informe.carta_eps5 }}</a>
+              </li>
+
+              <li>
+                <strong>Carta de radicación en Ministerio:</strong>
+                <a href="{{ informe.carta_ministerio5 }}">{{ informe.carta_ministerio5 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- FIN Investigaciones accidentes -->
+
+      <!-- Investigaciones incidentes -->
+      <p><strong>Incidentes Laborales:</strong> {{ informe.inc_laboral }}</p>
+
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 1</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral1 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral1 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral1 }}</li>
+
+              <li>
+                <strong>Incidente:</strong>
+                <a href="{{ informe.incidente1 }}">{{ informe.incidente1 }}</a>
+              </li>
+
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_inc1 }}">{{ informe.investigacion_inc1 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 2</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral2 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral2 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral2 }}</li>
+              
+              <li>
+                <strong>Incidente:</strong>
+                <a href="{{ informe.incidente2 }}">{{ informe.incidente2 }}</a>
+              </li>
+
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_inc2 }}">{{ informe.investigacion_inc2 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 3</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral3 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral3 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral3 }}</li>
+              
+              <li>
+                <strong>Incidente:</strong>
+                <a href="{{ informe.incidente3 }}">{{ informe.incidente3 }}</a>
+              </li>
+
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_inc3 }}">{{ informe.investigacion_inc3 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 4</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral4 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral4 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral4 }}</li>
+              
+              <li>
+                <strong>Incidente:</strong>
+                <a href="{{ informe.incidente4 }}">{{ informe.incidente4 }}</a>
+              </li>
+
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_inc4 }}">{{ informe.investigacion_inc4 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <ul>
+              <h4>Investigación 5</h4>
+              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral5 }}</li>
+              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral5 }}</li>
+              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral5 }}</li>
+              
+              <li>
+                <strong>Incidente:</strong>
+                <a href="{{ informe.incidente5 }}">{{ informe.incidente5 }}</a>
+              </li>
+
+              <li>
+                <strong>Investigación:</strong>
+                <a href="{{ informe.investigacion_inc5 }}">{{ informe.investigacion_inc5 }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- FIN Investigaciones incidentes -->
+
+      <p><strong>Licencias:</strong> {{ informe.licencias }}</p>
+      <ul class="subtitulo">
+        <li><p><strong>Adjunto licencias:</strong> {{ informe.adj_licencias }}</p></li>
+      </ul>
+
+      <p><strong>Memorandos o llamados de atención:</strong> {{ informe.memorandos }}</p>
+      <ul class="subtitulo">
+        <li><p><strong>Adjunto memorandos o llamados de atención:</strong> {{ informe.adj_memorandos }}</p></li>
+      </ul>
+
+      <p><strong>Suspensiones:</strong> {{ informe.suspensiones }}</p>
+      <ul class="subtitulo">
+        <li><p><strong>Adjunto suspensiones:</strong> {{ informe.adj_suspensiones }}</p></li>
+      </ul>
+
+      <p><strong>¿Hubo incapacidades?</strong> {{ informe.pregunta_incapacidad }}</p>
+      <ul class="subtitulo">
+        <li><p><strong>Tipo de incapacidad:</strong> {{ informe.tipo_incapacidad }}</p></li>
+        <li><p><strong>Cantidad de Incapacidades:</strong> {{ informe.can_incapacidades }}</p></li>
+      </ul>
+    </div>
+    <!-- FIN Novedades del personal -->
+
+    <!-- Inspección EPP -->
+    <div class="detalleInforme">
+      <h1>Inspección EPP</h1>
+      <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_epp }}</p>
+      <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_epp }}</p>
+      <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_epp }}</p>
+      <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_epp }}</p>
+      <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_epp }}</p>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Causa 1:</strong> {{ informe.causa_epp_1 }}</p>
+          <p><strong>Causa 3:</strong> {{ informe.causa_epp_2 }}</p>
+          <p><strong>Causa 5:</strong> {{ informe.causa_epp_5 }}</p>
+        </div>
+
+        <div class="col">
+          <p><strong>Causa 2:</strong> {{ informe.causa_epp_3 }}</p>
+          <p><strong>Causa 4:</strong> {{ informe.causa_epp_4 }}</p>
+        </div>
+      </div>
+
+      <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_epp }}</p>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Acción 1:</strong> {{ informe.accion_epp_1 }}</p>
+          <p><strong>Acción 2:</strong> {{ informe.accion_epp_2 }}</p>
+          <p><strong>Acción 3:</strong> {{ informe.accion_epp_3 }}</p>
+          <p><strong>Acción 4:</strong> {{ informe.accion_epp_4 }}</p>
+          <p><strong>Acción 5:</strong> {{ informe.accion_epp_5 }}</p>
+        </div>
+
+        <div class="col">
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_1 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_2 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_3 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_4 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_5 }}</p>
+          
+        </div>
+      </div>
+
+      <p>
+        <strong>Evidencia fotográfica de la inspección EPP:</strong>
+        <a href="{{ informe.evidencia_epp }}">{{ informe.evidencia_epp }}</a>
+      </p>
+    </div>
+    <!-- FIN Inspección EPP -->
+
+    <!-- Inspección OyA -->
+    <div class="detalleInforme">
+      <h1>Inspección Orden y Aseo</h1>
+      <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_OyA }}</p>
+      <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_OyA }}</p>
+      <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_OyA }}</p>
+      <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_OyA }}</p>
+      <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_OyA }}</p>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Causa 1:</strong> {{ informe.causa_OyA_1 }}</p>
+          <p><strong>Causa 3:</strong> {{ informe.causa_OyA_2 }}</p>
+          <p><strong>Causa 5:</strong> {{ informe.causa_OyA_5 }}</p>
+        </div>
+
+        <div class="col">
+          <p><strong>Causa 2:</strong> {{ informe.causa_OyA_3 }}</p>
+          <p><strong>Causa 4:</strong> {{ informe.causa_OyA_4 }}</p>
+        </div>
+      </div>
+
+      <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_OyA }}</p>
+
+      <div class="row">
+        <div class="col">
+          <p><strong>Acción 1:</strong> {{ informe.accion_OyA_1 }}</p>
+          <p><strong>Acción 2:</strong> {{ informe.accion_OyA_2 }}</p>
+          <p><strong>Acción 3:</strong> {{ informe.accion_OyA_3 }}</p>
+          <p><strong>Acción 4:</strong> {{ informe.accion_OyA_4 }}</p>
+          <p><strong>Acción 5:</strong> {{ informe.accion_OyA_5 }}</p>
+        </div>
+
+        <div class="col">
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_1 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_2 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_3 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_4 }}</p>
+          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_5 }}</p>
+          
+        </div>
+      </div>
+
+      <p>
+        <strong>Evidencia fotográfica de la inspección EPP:</strong>
+        <a href="{{ informe.evidencia_OyA }}">{{ informe.evidencia_OyA }}</a>
+      </p>
+    </div>
+    <!-- FIN Inspección OyA -->
+
+
+
+
+
+    <!-- Actividades -->
+    <div class="detalleInforme">
+      <h1>Actividades</h1>
+
+      <!-- Actividad 1 -->
+      <div class="subtitulo">
+        <h4>Actividad 1</h4>
+        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad1 }}</p>
+        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act1 }}</p>
+        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act1 }}</p>
+        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act1 }}</p>
+        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act1 }}</p>
+        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act1 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Causa 1:</strong> {{ informe.causa_act1_1 }}</p>
+            <p><strong>Causa 3:</strong> {{ informe.causa_act1_2 }}</p>
+            <p><strong>Causa 5:</strong> {{ informe.causa_act1_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Causa 2:</strong> {{ informe.causa_act1_3 }}</p>
+            <p><strong>Causa 4:</strong> {{ informe.causa_act1_4 }}</p>
+          </div>
+        </div>
+
+        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act1 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Acción 1:</strong> {{ informe.accion_act1_1 }}</p>
+            <p><strong>Acción 2:</strong> {{ informe.accion_act1_2 }}</p>
+            <p><strong>Acción 3:</strong> {{ informe.accion_act1_3 }}</p>
+            <p><strong>Acción 4:</strong> {{ informe.accion_act1_4 }}</p>
+            <p><strong>Acción 5:</strong> {{ informe.accion_act1_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_1 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_2 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_3 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_4 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_5 }}</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Evidencia fotográfica de la inspección EPP:</strong>
+          <a href="{{ informe.evidencia_act1 }}">{{ informe.evidencia_act1 }}</a>
+        </p>
+      </div>
+      <!-- FIN Actividad 1 -->
+
+      <!-- Actividad 2 -->
+      <div class="subtitulo">
+        <h4>Actividad 2</h4>
+        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad2 }}</p>
+        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act2 }}</p>
+        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act2 }}</p>
+        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act2 }}</p>
+        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act2 }}</p>
+        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act2 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Causa 1:</strong> {{ informe.causa_act2_1 }}</p>
+            <p><strong>Causa 3:</strong> {{ informe.causa_act2_2 }}</p>
+            <p><strong>Causa 5:</strong> {{ informe.causa_act2_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Causa 2:</strong> {{ informe.causa_act2_3 }}</p>
+            <p><strong>Causa 4:</strong> {{ informe.causa_act2_4 }}</p>
+          </div>
+        </div>
+
+        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act2 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Acción 1:</strong> {{ informe.accion_act2_1 }}</p>
+            <p><strong>Acción 2:</strong> {{ informe.accion_act2_2 }}</p>
+            <p><strong>Acción 3:</strong> {{ informe.accion_act2_3 }}</p>
+            <p><strong>Acción 4:</strong> {{ informe.accion_act2_4 }}</p>
+            <p><strong>Acción 5:</strong> {{ informe.accion_act2_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_1 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_2 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_3 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_4 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_5 }}</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Evidencia fotográfica de la inspección EPP:</strong>
+          <a href="{{ informe.evidencia_act2 }}">{{ informe.evidencia_act2 }}</a>
+        </p>
+      </div>
+      <!-- FIN Actividad 2 -->
+
+      <!-- Actividad 3 -->
+      <div class="subtitulo">
+        <h4>Actividad 3</h4>
+        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad3 }}</p>
+        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act3 }}</p>
+        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act3 }}</p>
+        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act3 }}</p>
+        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act3 }}</p>
+        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act3 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Causa 1:</strong> {{ informe.causa_act3_1 }}</p>
+            <p><strong>Causa 3:</strong> {{ informe.causa_act3_2 }}</p>
+            <p><strong>Causa 5:</strong> {{ informe.causa_act3_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Causa 2:</strong> {{ informe.causa_act3_3 }}</p>
+            <p><strong>Causa 4:</strong> {{ informe.causa_act3_4 }}</p>
+          </div>
+        </div>
+
+        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act3 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Acción 1:</strong> {{ informe.accion_act3_1 }}</p>
+            <p><strong>Acción 2:</strong> {{ informe.accion_act3_2 }}</p>
+            <p><strong>Acción 3:</strong> {{ informe.accion_act3_3 }}</p>
+            <p><strong>Acción 4:</strong> {{ informe.accion_act3_4 }}</p>
+            <p><strong>Acción 5:</strong> {{ informe.accion_act3_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_1 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_2 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_3 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_4 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_5 }}</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Evidencia fotográfica de la inspección EPP:</strong>
+          <a href="{{ informe.evidencia_act3 }}">{{ informe.evidencia_act3 }}</a>
+        </p>
+      </div>
+      <!-- FIN Actividad 3 -->
+
+      <!-- Actividad 4 -->
+      <div class="subtitulo">
+        <h4>Actividad 4</h4>
+        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad4 }}</p>
+        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act4 }}</p>
+        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act4 }}</p>
+        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act4 }}</p>
+        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act4 }}</p>
+        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act4 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Causa 1:</strong> {{ informe.causa_act4_1 }}</p>
+            <p><strong>Causa 3:</strong> {{ informe.causa_act4_2 }}</p>
+            <p><strong>Causa 5:</strong> {{ informe.causa_act4_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Causa 2:</strong> {{ informe.causa_act4_3 }}</p>
+            <p><strong>Causa 4:</strong> {{ informe.causa_act4_4 }}</p>
+          </div>
+        </div>
+
+        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act4 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Acción 1:</strong> {{ informe.accion_act4_1 }}</p>
+            <p><strong>Acción 2:</strong> {{ informe.accion_act4_2 }}</p>
+            <p><strong>Acción 3:</strong> {{ informe.accion_act4_3 }}</p>
+            <p><strong>Acción 4:</strong> {{ informe.accion_act4_4 }}</p>
+            <p><strong>Acción 5:</strong> {{ informe.accion_act4_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_1 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_2 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_3 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_4 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_5 }}</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Evidencia fotográfica de la inspección EPP:</strong>
+          <a href="{{ informe.evidencia_act4 }}">{{ informe.evidencia_act4 }}</a>
+        </p>
+      </div>
+      <!-- FIN Actividad 4 -->
+
+      <!-- Actividad 5 -->
+      <div class="subtitulo">
+        <h4>Actividad 5</h4>
+        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad5 }}</p>
+        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act5 }}</p>
+        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act5 }}</p>
+        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act5 }}</p>
+        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act5 }}</p>
+        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act5 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Causa 1:</strong> {{ informe.causa_act5_1 }}</p>
+            <p><strong>Causa 3:</strong> {{ informe.causa_act5_2 }}</p>
+            <p><strong>Causa 5:</strong> {{ informe.causa_act5_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Causa 2:</strong> {{ informe.causa_act5_3 }}</p>
+            <p><strong>Causa 4:</strong> {{ informe.causa_act5_4 }}</p>
+          </div>
+        </div>
+
+        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act5 }}</p>
+
+        <div class="row">
+          <div class="col">
+            <p><strong>Acción 1:</strong> {{ informe.accion_act5_1 }}</p>
+            <p><strong>Acción 2:</strong> {{ informe.accion_act5_2 }}</p>
+            <p><strong>Acción 3:</strong> {{ informe.accion_act5_3 }}</p>
+            <p><strong>Acción 4:</strong> {{ informe.accion_act5_4 }}</p>
+            <p><strong>Acción 5:</strong> {{ informe.accion_act5_5 }}</p>
+          </div>
+
+          <div class="col">
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_1 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_2 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_3 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_4 }}</p>
+            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_5 }}</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Evidencia fotográfica de la inspección EPP:</strong>
+          <a href="{{ informe.evidencia_act5 }}">{{ informe.evidencia_act5 }}</a>
+        </p>
+      </div>
+      <!-- FIN Actividad 2 -->
+    </div>
+    <!-- FIN Actividades -->
+
+
+
+
+    <!-- Gestión del Cambio -->
+    <div class="detalleInforme">
+      <h1>Gestión del Cambio</h1>
+
+      <div class="row">
+        <!-- Cambio 1 -->
+        <div class="col">
+          <div class="subtitulo">
+            <h4>Cambio 1</h4>
+            <p><strong>Criterio:</strong> {{ informe.criterio1 }}</p>
+            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio1 }}</p>
+            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio1 }}</p>
+
+            <p>
+              <strong>Registro del antes:</strong>
+              <a href="{{ informe.registro_antes1 }}">{{ informe.registro_antes1 }}</a>
+            </p>
+
+            <p>
+              <strong>Registro del después:</strong>
+              <a href="{{ informe.registro_despues1 }}">{{ informe.registro_despues1 }}</a>
+            </p>
+
+            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio1 }}</p>
+          </div>
+        </div>
+        <!-- FIN Cambio 1 -->
+
+        <!-- Cambio 2 -->
+        <div class="col">
+          <div class="subtitulo">
+            <h4>Cambio 2</h4>
+            <p><strong>Criterio:</strong> {{ informe.criterio2 }}</p>
+            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio2 }}</p>
+            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio2 }}</p>
+
+            <p>
+              <strong>Registro del antes:</strong>
+              <a href="{{ informe.registro_antes2 }}">{{ informe.registro_antes2 }}</a>
+            </p>
+
+            <p>
+              <strong>Registro del después:</strong>
+              <a href="{{ informe.registro_despues2 }}">{{ informe.registro_despues2 }}</a>
+            </p>
+
+            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio2 }}</p>
+          </div>
+        </div>
+        <!-- FIN Cambio 2 -->
+      </div>
+
+      <!-- Cambio 3 -->
+      <div class="row">
+        <div class="col">
+          <div class="subtitulo">
+            <h4>Cambio 3</h4>
+            <p><strong>Criterio:</strong> {{ informe.criterio3 }}</p>
+            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio3 }}</p>
+            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio3 }}</p>
+
+            <p>
+              <strong>Registro del antes:</strong>
+              <a href="{{ informe.registro_antes3 }}">{{ informe.registro_antes3 }}</a>
+            </p>
+
+            <p>
+              <strong>Registro del después:</strong>
+              <a href="{{ informe.registro_despues3 }}">{{ informe.registro_despues3 }}</a>
+            </p>
+
+            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio3 }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- FIN Cambio 3 -->
+    </div>
+    <!-- FIN Gestión del Cambio -->
+
+    <!-- Observaciones -->
+    <div class="detalleInforme">
+      <h1>Observaciones</h1>
+      {{ informe.observaciones }}</p>
+    </div>
+    <!-- FIN Observaciones -->
   </div>
 {% endblock %}

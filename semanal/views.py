@@ -64,17 +64,17 @@ Muestra los informes elaborados por el usuario
 """
 def lista_informes(request):
     if request.user.is_authenticated:
-        user_group  = request.user.groups.filter(name__in=[
+        user_group = request.user.groups.filter(name__in=[
             'Administrador','Coordinacion']).exists()
 
         if user_group:
-            informes = Informe.objects.order_by('fecha_elaboracion')
+            informes = Informe.objects.order_by('-fecha_elaboracion')
 
             return render(
                 request, 'semanal/informes.html', {'informes': informes})
         else:
             informes = Informe.objects.filter(
-                usuario=request.user).order_by('fecha_elaboracion')
+                usuario=request.user).order_by('-fecha_elaboracion')
 
             return render(
                 request, 'semanal/informes.html', {'informes': informes})
@@ -86,8 +86,8 @@ Muestra la página con el detalle de un informe específico
 """
 def detalle_informe(request, pk):
     if request.user.is_authenticated:
-        informe = get_object_or_404(Informe, pk=pk)
-        user_group  = request.user.groups.filter(name__in=[
+        informe    = get_object_or_404(Informe, pk=pk)
+        user_group = request.user.groups.filter(name__in=[
             'Administrador','Coordinacion']).exists()
 
         if user_group or request.user.id == informe.usuario_id:
@@ -103,7 +103,7 @@ Permite elaborar un nuevo informe
 """
 def nuevo_informe(request):
     if request.user.is_authenticated:
-        user_group  = request.user.groups.filter(name='Sisos').exists()
+        user_group = request.user.groups.filter(name='Sisos').exists()
 
         if user_group:
             if request.method == "POST":
@@ -130,8 +130,8 @@ Permite editar un informe
 """
 def editar_informe(request, pk):
     if request.user.is_authenticated:
-        informe = get_object_or_404(Informe, pk=pk)
-        user_group  = request.user.groups.filter(name='Sisos').exists()
+        informe    = get_object_or_404(Informe, pk=pk)
+        user_group = request.user.groups.filter(name='Sisos').exists()
         
         if user_group and request.user.id == informe.usuario_id:
             if request.method == "POST":
@@ -158,8 +158,8 @@ def descargar_archivos(request, pk, file_name):
     Devuelve un archivo."""
 
     if request.user.is_authenticated:
-        informe = get_object_or_404(Informe, pk=pk)
-        user_group  = request.user.groups.filter(name__in=[
+        informe    = get_object_or_404(Informe, pk=pk)
+        user_group = request.user.groups.filter(name__in=[
             'Administrador','Coordinacion']).exists()
 
         if user_group or request.user.id == informe.usuario_id:
