@@ -175,7 +175,8 @@ h1, h2, h3, h4 {
 .ocultoCausasAct5, #ocultoAccEPP,
 #ocultoAccOyA, #ocultoAccAct1,
 #ocultoAccAct2, #ocultoAccAct3,
-#ocultoAccAct4, #ocultoAccAct5 {
+#ocultoAccAct4, #ocultoAccAct5,
+#oculto {
   display: none;
 }
 

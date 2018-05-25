@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from datetime import date
+from datetime import datetime
 
 from multiselectfield import MultiSelectField
 
@@ -12,13 +12,17 @@ from django.core.exceptions import ValidationError
 # -------- Opciones para los campos dropdown y checkbox -------- #
 
 OPCIONES_EMPRESA = (
+    ('CASA MODELO', 'Casa Modelo'),
     ('DECOFACHADAS', 'Decofachadas'),
+    ('ENCHAPES GUERRA', 'Enchapes Guerra'),
     ('FLOTANTES', 'Flotantes'),
+    ('IDEA CUBICA', 'Idea Cúbica'),
     ('INVERSIONES HD GLOBAL', 'Inversiones HD Global'),
     ('MONTAJES ELECTRICOS', 'Montajes Eléctricos'),
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
     ('VELAYA CONSTRUCCIONES', 'Velaya Construcciones'),
+    ('VILLA CONSTRUCCIONES', 'Villa Construcciones'),
 )
 
 OPCIONES_PREGUNTA = (
@@ -143,17 +147,17 @@ OPCIONES_RESPONSABLE_CAMBIO = (
 """
 Limita el tamaño de los archivos cargados a 2 MB
 """
-def tam_archivo(valor):
-    limite = 2 * 1024 * 1024
+def tam_archivo(archivo):
+    limite = 5 * 1024 * 1024
     
-    if valor.size > limite:
+    if archivo.size > limite:
         raise ValidationError('El tamaño del archivo debe ser menor a 2 MB.')
 
 """
 Limita el tipo de archivos cargados a solo PDF
 """
-def ext_archivo(valor):
-    if valor.file.content_type != 'application/pdf':
+def ext_archivo(archivo):
+    if archivo.file.content_type != 'application/pdf':
         raise ValidationError('Solo se permiten archivos PDF')
 
 """
@@ -168,8 +172,8 @@ class Informe(models.Model):
     # Clave foranea, vínculo a otro modelo
     usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     empresa = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
-    fecha_elaboracion = models.DateField(
-        default=date.today,
+    fecha_elaboracion = models.DateTimeField(
+        default=datetime.now,
         verbose_name="Fecha de Elaboración")
 
     # ---- Fin Datos de quien realiza el informe ---- #
@@ -190,6 +194,8 @@ class Informe(models.Model):
 
             # ------------ Investigaciones ----------- #
 
+               # ------------ Accidentes ----------- #
+
     nom_acc_laboral1 = models.CharField(
         max_length=50,
         blank=True,
@@ -207,43 +213,43 @@ class Informe(models.Model):
     
     furat1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="FURAT")
 
     investigacion_acc1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
     leccion1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Lección aprendida")
 
     testigos1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Versión de testigos")
 
     incapacidad_acc_laboral1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incapacidad")
 
     carta_eps1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta de radicación en EPS")
 
     carta_ministerio1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta radicación Ministerio")
 
@@ -264,43 +270,43 @@ class Informe(models.Model):
     
     furat2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="FURAT")
 
     investigacion_acc2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
     leccion2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Lección aprendida")
 
     testigos2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Versión de testigos")
 
     incapacidad_acc_laboral2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incapacidad")
 
     carta_eps2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta de radicación en EPS")
 
     carta_ministerio2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta radicación Ministerio")
 
@@ -321,45 +327,47 @@ class Informe(models.Model):
     
     furat3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="FURAT")
 
     investigacion_acc3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
     leccion3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Lección aprendida")
 
     testigos3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Versión de testigos")
 
     incapacidad_acc_laboral3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incapacidad")
 
     carta_eps3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta de radicación en EPS")
 
     carta_ministerio3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Carta radicación Ministerio")
+
+               # ------------ Incidentes ----------- #
 
     inc_laboral = models.PositiveSmallIntegerField(
         default=0,
@@ -383,13 +391,13 @@ class Informe(models.Model):
 
     incidente1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
     
     investigacion_inc1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
@@ -410,13 +418,13 @@ class Informe(models.Model):
 
     incidente2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
     
     investigacion_inc2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
@@ -437,13 +445,13 @@ class Informe(models.Model):
 
     incidente3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
     
     investigacion_inc3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
 
@@ -453,7 +461,7 @@ class Informe(models.Model):
 
     adj_licencias = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Adjunto licencias")
 
@@ -464,7 +472,7 @@ class Informe(models.Model):
 
     adj_memorandos = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Adjunto memorandos")
 
@@ -472,7 +480,7 @@ class Informe(models.Model):
 
     adj_suspensiones = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Adjunto suspensiones")
 
@@ -615,7 +623,7 @@ class Informe(models.Model):
 
     evidencia_epp = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -738,7 +746,7 @@ class Informe(models.Model):
 
     evidencia_OyA = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -867,7 +875,7 @@ class Informe(models.Model):
 
     evidencia_act1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -996,7 +1004,7 @@ class Informe(models.Model):
 
     evidencia_act2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -1125,7 +1133,7 @@ class Informe(models.Model):
 
     evidencia_act3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -1254,7 +1262,7 @@ class Informe(models.Model):
 
     evidencia_act4 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -1383,7 +1391,7 @@ class Informe(models.Model):
 
     evidencia_act5 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
@@ -1409,13 +1417,13 @@ class Informe(models.Model):
 
     registro_antes1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del antes")
 
     registro_despues1 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del después")
 
@@ -1447,13 +1455,13 @@ class Informe(models.Model):
 
     registro_antes2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del antes")
 
     registro_despues2 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del después")
 
@@ -1485,13 +1493,13 @@ class Informe(models.Model):
 
     registro_antes3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del antes")
 
     registro_despues3 = models.FileField(
         upload_to='archivos/%Y/%m/',
-        validators=[tam_archivo, ext_archivo],
+        validators=[tam_archivo],
         blank=True,
         verbose_name="Registro del después")
 
@@ -1511,7 +1519,6 @@ class Informe(models.Model):
     Guardar el informe
     """
     def guardar_informe(self):
-        self.fecha_elaboracion = date.today()
         self.save()
 
     """

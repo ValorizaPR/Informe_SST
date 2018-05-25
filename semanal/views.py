@@ -16,7 +16,7 @@ from django.conf import settings
 from .models import Informe
 from .forms import LoginForm, FormInforme
 
-from datetime import date
+from datetime import datetime
 
 from wsgiref.util import FileWrapper
 
@@ -65,10 +65,19 @@ Muestra los informes elaborados por el usuario
 def lista_informes(request):
     if request.user.is_authenticated:
         user_group = request.user.groups.filter(name__in=[
-            'Administrador','Coordinacion']).exists()
+            'Administrador', 'GH_Valoriza']).exists()
+
+        group_decofachadas = request.user.groups.filter(
+            name='Decofachadas').exists()
 
         if user_group:
             informes = Informe.objects.order_by('-fecha_elaboracion')
+
+            return render(
+                request, 'semanal/informes.html', {'informes': informes})
+        elif group_decofachadas:
+            informes = Informe.objects.filter(
+                empresa__contains='Decofachadas').order_by('-fecha_elaboracion')
 
             return render(
                 request, 'semanal/informes.html', {'informes': informes})
@@ -88,7 +97,7 @@ def detalle_informe(request, pk):
     if request.user.is_authenticated:
         informe    = get_object_or_404(Informe, pk=pk)
         user_group = request.user.groups.filter(name__in=[
-            'Administrador','Coordinacion']).exists()
+            'Administrador', 'GH_Valoriza', 'Decofachadas']).exists()
 
         if user_group or request.user.id == informe.usuario_id:
             return render(
@@ -112,7 +121,7 @@ def nuevo_informe(request):
                 if form.is_valid():
                     informe                   = form.save(commit=False)
                     informe.usuario           = request.user
-                    informe.fecha_elaboracion = date.today()
+                    informe.fecha_elaboracion = datetime.now()
                     informe.save()
 
                     return redirect('detalle_informe', pk=informe.pk)
@@ -135,7 +144,7 @@ def editar_informe(request, pk):
         
         if user_group and request.user.id == informe.usuario_id:
             if request.method == "POST":
-                form = FormInforme(request.POST, instance=informe)
+                form = FormInforme(request.POST, request.FILES, instance=informe)
 
                 if form.is_valid():
                     informe         = form.save(commit=False)
@@ -160,7 +169,7 @@ def descargar_archivos(request, pk, file_name):
     if request.user.is_authenticated:
         informe    = get_object_or_404(Informe, pk=pk)
         user_group = request.user.groups.filter(name__in=[
-            'Administrador','Coordinacion']).exists()
+            'Administrador', 'GH_Valoriza', 'Decofachadas']).exists()
 
         if user_group or request.user.id == informe.usuario_id:
             file_path = settings.MEDIA_ROOT + '/' + file_name

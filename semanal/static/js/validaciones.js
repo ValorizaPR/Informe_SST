@@ -1,24 +1,953 @@
 /*
- *Función que valida el tamaño y tipo del archivo adjunto
+ * Funciones que validan el tamaño y tipo del archivo adjunto
  */
 $("form#formInforme").submit(function() {
   if (window.File && window.FileReader && window.FileList && window.Blob) {
-    var file = $('input[type="file"]')[0].files[0];
-    $('#error').empty();
+    var file = $('#id_furat1')[0].files[0];
+    $('#error1').empty();
+    $('#error1').removeClass();
 
-    if (file && file.size > 2 * 1024 * 1024) {
-      $('#error').addClass('alert alert-danger');
-      $('#error').append("El archivo " + file.name + " es muy pesado");
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error1').addClass('alert alert-danger control-group');
+      $('#error1').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
       return false;
     }
 
     if (file && file.type != 'application/pdf') {
-      $('#error').addClass('alert alert-danger control-group');
-      $('#error').append("Solo se permiten archivos PDF");
+      $('#error1').addClass('alert alert-danger control-group');
+      $('#error1').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
       return false;
     }
   }
 });
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_acc1')[0].files[0];
+    $('#error2').empty();
+    $('#error2').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error2').addClass('alert alert-danger control-group');
+      $('#error2').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error2').addClass('alert alert-danger control-group');
+      $('#error2').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_leccion1')[0].files[0];
+    $('#error3').empty();
+    $('#error3').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error3').addClass('alert alert-danger control-group');
+      $('#error3').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error3').addClass('alert alert-danger control-group');
+      $('#error3').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_testigos1')[0].files[0];
+    $('#error4').empty();
+    $('#error4').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error4').addClass('alert alert-danger control-group');
+      $('#error4').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error4').addClass('alert alert-danger control-group');
+      $('#error4').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incapacidad_acc_laboral1')[0].files[0];
+    $('#error5').empty();
+    $('#error5').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error5').addClass('alert alert-danger control-group');
+      $('#error5').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error5').addClass('alert alert-danger control-group');
+      $('#error5').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_eps1')[0].files[0];
+    $('#error6').empty();
+    $('#error6').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error6').addClass('alert alert-danger control-group');
+      $('#error6').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error6').addClass('alert alert-danger control-group');
+      $('#error6').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_ministerio1')[0].files[0];
+    $('#error7').empty();
+    $('#error7').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error7').addClass('alert alert-danger control-group');
+      $('#error7').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error7').addClass('alert alert-danger control-group');
+      $('#error7').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_furat2')[0].files[0];
+    $('#error8').empty();
+    $('#error8').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error8').addClass('alert alert-danger control-group');
+      $('#error8').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error8').addClass('alert alert-danger control-group');
+      $('#error8').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_acc2')[0].files[0];
+    $('#error9').empty();
+    $('#error9').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error9').addClass('alert alert-danger control-group');
+      $('#error9').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error9').addClass('alert alert-danger control-group');
+      $('#error9').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_leccion2')[0].files[0];
+    $('#error10').empty();
+    $('#error10').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error10').addClass('alert alert-danger control-group');
+      $('#error10').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error10').addClass('alert alert-danger control-group');
+      $('#error10').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_testigos2')[0].files[0];
+    $('#error11').empty();
+    $('#error11').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error11').addClass('alert alert-danger control-group');
+      $('#error11').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error11').addClass('alert alert-danger control-group');
+      $('#error11').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incapacidad_acc_laboral2')[0].files[0];
+    $('#error12').empty();
+    $('#error12').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error12').addClass('alert alert-danger control-group');
+      $('#error12').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error12').addClass('alert alert-danger control-group');
+      $('#error12').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_eps2')[0].files[0];
+    $('#error13').empty();
+    $('#error13').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error13').addClass('alert alert-danger control-group');
+      $('#error13').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error13').addClass('alert alert-danger control-group');
+      $('#error13').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_ministerio2')[0].files[0];
+    $('#error14').empty();
+    $('#error14').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error14').addClass('alert alert-danger control-group');
+      $('#error14').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error14').addClass('alert alert-danger control-group');
+      $('#error14').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_furat3')[0].files[0];
+    $('#error15').empty();
+    $('#error15').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error15').addClass('alert alert-danger control-group');
+      $('#error15').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error15').addClass('alert alert-danger control-group');
+      $('#error15').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_acc3')[0].files[0];
+    $('#error16').empty();
+    $('#error16').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error16').addClass('alert alert-danger control-group');
+      $('#error16').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error16').addClass('alert alert-danger control-group');
+      $('#error16').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_leccion3')[0].files[0];
+    $('#error17').empty();
+    $('#error17').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error17').addClass('alert alert-danger control-group');
+      $('#error17').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error17').addClass('alert alert-danger control-group');
+      $('#error17').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_testigos3')[0].files[0];
+    $('#error18').empty();
+    $('#error18').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error18').addClass('alert alert-danger control-group');
+      $('#error18').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error18').addClass('alert alert-danger control-group');
+      $('#error18').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incapacidad_acc_laboral3')[0].files[0];
+    $('#error19').empty();
+    $('#error19').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error19').addClass('alert alert-danger control-group');
+      $('#error19').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error19').addClass('alert alert-danger control-group');
+      $('#error19').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_eps3')[0].files[0];
+    $('#error20').empty();
+    $('#error20').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error20').addClass('alert alert-danger control-group');
+      $('#error20').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error20').addClass('alert alert-danger control-group');
+      $('#error20').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_carta_ministerio3')[0].files[0];
+    $('#error21').empty();
+    $('#error21').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error21').addClass('alert alert-danger control-group');
+      $('#error21').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error21').addClass('alert alert-danger control-group');
+      $('#error21').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incidente1')[0].files[0];
+    $('#error22').empty();
+    $('#error22').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error22').addClass('alert alert-danger control-group');
+      $('#error22').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error22').addClass('alert alert-danger control-group');
+      $('#error22').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_inc1')[0].files[0];
+    $('#error23').empty();
+    $('#error23').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error23').addClass('alert alert-danger control-group');
+      $('#error23').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error23').addClass('alert alert-danger control-group');
+      $('#error23').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incidente2')[0].files[0];
+    $('#error24').empty();
+    $('#error24').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error24').addClass('alert alert-danger control-group');
+      $('#error24').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error24').addClass('alert alert-danger control-group');
+      $('#error24').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_inc2')[0].files[0];
+    $('#error25').empty();
+    $('#error25').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error25').addClass('alert alert-danger control-group');
+      $('#error25').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error25').addClass('alert alert-danger control-group');
+      $('#error25').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_incidente3')[0].files[0];
+    $('#error26').empty();
+    $('#error26').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error26').addClass('alert alert-danger control-group');
+      $('#error26').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error26').addClass('alert alert-danger control-group');
+      $('#error26').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_investigacion_inc3')[0].files[0];
+    $('#error27').empty();
+    $('#error27').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error27').addClass('alert alert-danger control-group');
+      $('#error27').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error27').addClass('alert alert-danger control-group');
+      $('#error27').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_adj_licencias')[0].files[0];
+    $('#error28').empty();
+    $('#error28').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error28').addClass('alert alert-danger control-group');
+      $('#error28').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error28').addClass('alert alert-danger control-group');
+      $('#error28').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_adj_memorandos')[0].files[0];
+    $('#error29').empty();
+    $('#error29').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error29').addClass('alert alert-danger control-group');
+      $('#error29').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error29').addClass('alert alert-danger control-group');
+      $('#error29').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_adj_suspensiones')[0].files[0];
+    $('#error30').empty();
+    $('#error30').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error30').addClass('alert alert-danger control-group');
+      $('#error30').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error30').addClass('alert alert-danger control-group');
+      $('#error30').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_epp')[0].files[0];
+    $('#error31').empty();
+    $('#error31').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error31').addClass('alert alert-danger control-group');
+      $('#error31').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error31').addClass('alert alert-danger control-group');
+      $('#error31').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_OyA')[0].files[0];
+    $('#error32').empty();
+    $('#error32').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error32').addClass('alert alert-danger control-group');
+      $('#error32').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error32').addClass('alert alert-danger control-group');
+      $('#error32').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_act1')[0].files[0];
+    $('#error33').empty();
+    $('#error33').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error33').addClass('alert alert-danger control-group');
+      $('#error33').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error33').addClass('alert alert-danger control-group');
+      $('#error33').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_act2')[0].files[0];
+    $('#error34').empty();
+    $('#error34').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error34').addClass('alert alert-danger control-group');
+      $('#error34').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error34').addClass('alert alert-danger control-group');
+      $('#error34').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_act3')[0].files[0];
+    $('#error35').empty();
+    $('#error35').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error35').addClass('alert alert-danger control-group');
+      $('#error35').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error35').addClass('alert alert-danger control-group');
+      $('#error35').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_act4')[0].files[0];
+    $('#error36').empty();
+    $('#error36').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error36').addClass('alert alert-danger control-group');
+      $('#error36').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error36').addClass('alert alert-danger control-group');
+      $('#error36').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_evidencia_act5')[0].files[0];
+    $('#error37').empty();
+    $('#error37').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error37').addClass('alert alert-danger control-group');
+      $('#error37').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error37').addClass('alert alert-danger control-group');
+      $('#error37').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_antes1')[0].files[0];
+    $('#error38').empty();
+    $('#error38').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error38').addClass('alert alert-danger control-group');
+      $('#error38').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error38').addClass('alert alert-danger control-group');
+      $('#error38').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_despues1')[0].files[0];
+    $('#error39').empty();
+    $('#error39').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error39').addClass('alert alert-danger control-group');
+      $('#error39').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error39').addClass('alert alert-danger control-group');
+      $('#error39').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_antes2')[0].files[0];
+    $('#error40').empty();
+    $('#error40').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error40').addClass('alert alert-danger control-group');
+      $('#error40').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error40').addClass('alert alert-danger control-group');
+      $('#error40').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_despues2')[0].files[0];
+    $('#error41').empty();
+    $('#error41').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error41').addClass('alert alert-danger control-group');
+      $('#error41').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error41').addClass('alert alert-danger control-group');
+      $('#error41').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_antes3')[0].files[0];
+    $('#error42').empty();
+    $('#error42').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error42').addClass('alert alert-danger control-group');
+      $('#error42').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error42').addClass('alert alert-danger control-group');
+      $('#error42').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+$("form#formInforme").submit(function() {
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var file = $('#id_registro_despues3')[0].files[0];
+    $('#error43').empty();
+    $('#error43').removeClass();
+
+    if (file && file.size > 5 * 1024 * 1024) {
+      $('#error43').addClass('alert alert-danger control-group');
+      $('#error43').append("El archivo " + file.name + " es muy pesado");
+      $('#oculto').show();
+      return false;
+    }
+
+    if (file && file.type != 'application/pdf') {
+      $('#error43').addClass('alert alert-danger control-group');
+      $('#error43').append("Solo se permiten archivos PDF");
+      $('#oculto').show();
+      return false;
+    }
+  }
+});
+
+/* Fin validaciones tamaño y tipo del archivo adjunto */
 
 /*
  * Función para mostrar/ocultar divs de accidentes
