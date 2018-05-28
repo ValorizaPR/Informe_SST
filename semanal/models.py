@@ -13,6 +13,7 @@ from django.core.exceptions import ValidationError
 
 OPCIONES_EMPRESA = (
     ('CASA MODELO', 'Casa Modelo'),
+    ('D y C CONSTRUCTORES', 'D y C Constructores'),
     ('DECOFACHADAS', 'Decofachadas'),
     ('ENCHAPES GUERRA', 'Enchapes Guerra'),
     ('FLOTANTES', 'Flotantes'),
