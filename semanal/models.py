@@ -137,10 +137,10 @@ OPCIONES_CAMBIO = (
 )
 
 OPCIONES_RESPONSABLE_CAMBIO = (
-    (1, 'Coordinador SST'),
-    (2, 'Director de Obra'),
-    (3, 'Maestro'),
-    (4, 'Siso'),
+    ('COORDINADOR SST', 'Coordinador SST'),
+    ('DIRECTOR DE OBRA', 'Director de Obra'),
+    ('MAESTRO', 'Maestro'),
+    ('SISO', 'Siso'),
 )
 
 # ------ Fin Opciones para los campos dropdown ------ #

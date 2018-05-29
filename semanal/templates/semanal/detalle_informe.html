@@ -352,7 +352,9 @@
 
       <p>
         <strong>Evidencia fotográfica de la inspección EPP:</strong>
-        <a href="{{ informe.evidencia_epp }}">{{ informe.evidencia_epp }}</a>
+        {% if informe.evidencia_epp %}
+          <a href="{{ informe.evidencia_epp }}">Archivo - Evidencia EPP</a>
+        {% endif %}
       </p>
     </div>
     <!-- FIN Inspección EPP -->
@@ -401,14 +403,13 @@
       </div>
 
       <p>
-        <strong>Evidencia fotográfica de la inspección EPP:</strong>
-        <a href="{{ informe.evidencia_OyA }}">{{ informe.evidencia_OyA }}</a>
+        <strong>Evidencia fotográfica de la inspección de Orden y Aseo:</strong>
+        {% if informe.evidencia_OyA %}
+          <a href="{{ informe.evidencia_OyA }}">Archivo - Evidencia Orden y Aseo</a>
+        {% endif %}
       </p>
     </div>
     <!-- FIN Inspección OyA -->
-
-
-
 
 
     <!-- Actividades -->
@@ -459,8 +460,10 @@
         </div>
 
         <p>
-          <strong>Evidencia fotográfica de la inspección EPP:</strong>
-          <a href="{{ informe.evidencia_act1 }}">{{ informe.evidencia_act1 }}</a>
+          <strong>Evidencia fotográfica de la Actividad 1:</strong>
+          {% if informe.evidencia_act1 %}
+            <a href="{{ informe.evidencia_act1 }}">Archivo - Evidencia actividad 1</a>
+          {% endif %}
         </p>
       </div>
       <!-- FIN Actividad 1 -->
@@ -509,8 +512,10 @@
         </div>
 
         <p>
-          <strong>Evidencia fotográfica de la inspección EPP:</strong>
-          <a href="{{ informe.evidencia_act2 }}">{{ informe.evidencia_act2 }}</a>
+          <strong>Evidencia fotográfica de la Actividad 2:</strong>
+          {% if informe.evidencia_act2 %}
+            <a href="{{ informe.evidencia_act2 }}">Archivo - Evidencia actividad 2</a>
+          {% endif %}
         </p>
       </div>
       <!-- FIN Actividad 2 -->
@@ -559,8 +564,10 @@
         </div>
 
         <p>
-          <strong>Evidencia fotográfica de la inspección EPP:</strong>
-          <a href="{{ informe.evidencia_act3 }}">{{ informe.evidencia_act3 }}</a>
+          <strong>Evidencia fotográfica de la Actividad 3:</strong>
+          {% if informe.evidencia_act3 %}
+            <a href="{{ informe.evidencia_act3 }}">Archivo - Evidencia actividad 3</a>
+          {% endif %}
         </p>
       </div>
       <!-- FIN Actividad 3 -->
@@ -609,8 +616,10 @@
         </div>
 
         <p>
-          <strong>Evidencia fotográfica de la inspección EPP:</strong>
-          <a href="{{ informe.evidencia_act4 }}">{{ informe.evidencia_act4 }}</a>
+          <strong>Evidencia fotográfica de la Actividad 4:</strong>
+          {% if informe.evidencia_act4 %}
+            <a href="{{ informe.evidencia_act4 }}">Archivo - Evidencia actividad 4</a>
+          {% endif %}
         </p>
       </div>
       <!-- FIN Actividad 4 -->
@@ -659,15 +668,15 @@
         </div>
 
         <p>
-          <strong>Evidencia fotográfica de la inspección EPP:</strong>
-          <a href="{{ informe.evidencia_act5 }}">{{ informe.evidencia_act5 }}</a>
+          <strong>Evidencia fotográfica de la Actividad 5:</strong>
+          {% if informe.evidencia_act5 %}
+            <a href="{{ informe.evidencia_act5 }}">Archivo - Evidencia actividad 5</a>
+          {% endif %}
         </p>
       </div>
       <!-- FIN Actividad 2 -->
     </div>
     <!-- FIN Actividades -->
-
-
 
 
     <!-- Gestión del Cambio -->
@@ -685,12 +694,17 @@
 
             <p>
               <strong>Registro del antes:</strong>
-              <a href="{{ informe.registro_antes1 }}">{{ informe.registro_antes1 }}</a>
+              {% if informe.registro_antes1 %}
+                <a href="{{ informe.registro_antes1 }}">Archivo - Registro del antes</a>
+              {% endif %}
+              </a>
             </p>
 
             <p>
               <strong>Registro del después:</strong>
-              <a href="{{ informe.registro_despues1 }}">{{ informe.registro_despues1 }}</a>
+              {% if informe.registro_despues1 %}
+                <a href="{{ informe.registro_despues1 }}">Archivo - Registro del después</a>
+              {% endif %}
             </p>
 
             <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio1 }}</p>
@@ -708,12 +722,16 @@
 
             <p>
               <strong>Registro del antes:</strong>
-              <a href="{{ informe.registro_antes2 }}">{{ informe.registro_antes2 }}</a>
+              {% if informe.registro_antes2 %}
+                <a href="{{ informe.registro_antes2 }}">Archivo - Registro del antes</a>
+              {% endif %}</a>
             </p>
 
             <p>
               <strong>Registro del después:</strong>
-              <a href="{{ informe.registro_despues2 }}">{{ informe.registro_despues2 }}</a>
+              {% if informe.registro_despues2 %}
+                <a href="{{ informe.registro_despues2 }}">Archivo - Registro del después</a>
+              {% endif %}
             </p>
 
             <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio2 }}</p>
@@ -733,12 +751,16 @@
 
             <p>
               <strong>Registro del antes:</strong>
-              <a href="{{ informe.registro_antes3 }}">{{ informe.registro_antes3 }}</a>
+              {% if informe.registro_antes2 %}
+                <a href="{{ informe.registro_antes2 }}">Archivo - Registro del antes</a>
+              {% endif %}</a>
             </p>
 
             <p>
               <strong>Registro del después:</strong>
-              <a href="{{ informe.registro_despues3 }}">{{ informe.registro_despues3 }}</a>
+              {% if informe.registro_despues3 %}
+                <a href="{{ informe.registro_despues3 }}">Archivo - Registro del después</a>
+              {% endif %}
             </p>
 
             <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio3 }}</p>
