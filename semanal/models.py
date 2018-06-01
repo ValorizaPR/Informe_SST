@@ -19,6 +19,7 @@ OPCIONES_EMPRESA = (
     ('FLOTANTES', 'Flotantes'),
     ('IDEA CUBICA', 'Idea Cúbica'),
     ('INVERSIONES HD GLOBAL', 'Inversiones HD Global'),
+    ('MITSUBISHI', 'Mitsubishi'),
     ('MONTAJES ELECTRICOS', 'Montajes Eléctricos'),
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
@@ -83,10 +84,10 @@ OPCIONES_RESPONSABLE = (
     (6, 'Contratista'),
     (7, 'Empleado'),
     (8, 'Almacenista'),
+    (9, 'Maestro'),
 )
 
 OPCIONES_ACTIVIDAD = (
-    ('Alturas', 'Alturas'),
     ('Armazón', 'Armazón'),
     ('Auditorias', 'Auditorias'),
     ('Brigada de emergencia', 'Brigada de emergencia'),
@@ -94,6 +95,7 @@ OPCIONES_ACTIVIDAD = (
     ('CCL', 'CCL'),
     ('Charlas de seguridad', 'Charlas de seguridad'),
     ('COPASST', 'COPASST'),
+    ('Electricidad', 'Electricidad'),
     ('Estructura', 'Estructura'),
     ('Inducciones – Reinducciones', 'Inducciones – Reinducciones'),
     ('Inspección de botiquines', 'Inspección de botiquines'),
@@ -101,19 +103,21 @@ OPCIONES_ACTIVIDAD = (
     ('Inspección de herramientas', 'Inspección de herramientas'),
     ('Inspección EPCC', 'Inspección EPCC'),
     ('Inspección general', 'Inspección general'),
-    ('Investigación AL', 'Investigación AL'),
-    ('Investigación EL', 'Investigación EL'),
-    ('Investigación IL', 'Investigación IL'),
-    ('Izaje de material', 'Izaje de material'),
+    ('Izaje de cargas', 'Izaje de cargas'),
     ('Mampostería', 'Mampostería'),
     ('Matriz de peligros', 'Matriz de peligros'),
+    ('Obra blanca', 'Obra blanca'),
     ('Otra', 'Otra'),
+    ('Permisos en caliente', 'Permisos en caliente'),
+    ('Plomería', 'Plomería'),
     ('Reporte de riesgos', 'Reporte de riesgos'),
     ('Requisitos legales', 'Requisitos legales'),
     ('Simulacros', 'Simulacros'),
     ('SVE osteomuscualr', 'SVE osteomuscualr'),
     ('SVE psicosocial', 'SVE psicosocial'),
     ('SVE Ruido', 'SVE Ruido'),
+    ('Trabajo en alturas', 'Trabajo en alturas'),
+    ('Urbanismo', 'Urbanismo'),
     ('Vaceo', 'Vaceo'),
     ('Visitas ARL', 'Visitas ARL'),
 )
@@ -254,6 +258,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Carta radicación Ministerio")
 
+    evidencia_accidente1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
     nom_acc_laboral2 = models.CharField(
         max_length=50,
         blank=True,
@@ -310,6 +320,12 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Carta radicación Ministerio")
+
+    evidencia_accidente2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
 
     nom_acc_laboral3 = models.CharField(
         max_length=50,
@@ -368,6 +384,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Carta radicación Ministerio")
 
+    evidencia_accidente3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
                # ------------ Incidentes ----------- #
 
     inc_laboral = models.PositiveSmallIntegerField(
@@ -402,6 +424,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Investigación")
 
+    evidencia_incidente1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
     nom_inc_laboral2 = models.CharField(
         max_length=50,
         blank=True,
@@ -429,6 +457,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Investigación")
 
+    evidencia_incidente2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
     nom_inc_laboral3 = models.CharField(
         max_length=50,
         blank=True,
@@ -455,6 +489,12 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Investigación")
+
+    evidencia_incidente3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
 
             # ---------- Fin Investigaciones --------- #
 
@@ -492,7 +532,7 @@ class Informe(models.Model):
         verbose_name="¿Hubo incapacidades?")
 
     """
-    Se instalo plugin MultiSelectField para tener una lista opciones de checkbox
+    Se instaló plugin MultiSelectField para tener una lista opciones de checkbox
     Informacion en: https://pypi.python.org/pypi/django-multiselectfield
     """
     tipo_incapacidad = MultiSelectField(
@@ -504,6 +544,12 @@ class Informe(models.Model):
         default=0,
         blank=True,
         verbose_name="Cantidad de Incapacidades")
+
+    adj_incapacidades = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Adjunto incapacidades")
     
     # ---------- Fin Novedades del personal --------- #
 
@@ -534,9 +580,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_epp_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -628,6 +671,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    formato_epp = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Formato")
+
     # -------------- Fin Inspección EPP ------------- #
 
     # ---------------- Inspección Orden y Aseo --------------- #
@@ -657,9 +706,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_OyA_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -751,6 +797,12 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    formato_OyA = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Formato")
+
     # -------------- Fin Inspección Orden y Aseo ------------- #
 
     # ---------------- Actividad 1 --------------- #
@@ -786,9 +838,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_act1_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -880,6 +929,24 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    anexo_act1_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act1_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act1_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
     # -------------- Fin Actividad 1 ------------- #
 
     # ---------------- Actividad 2 --------------- #
@@ -915,9 +982,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_act2_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -1009,6 +1073,24 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    anexo_act2_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act2_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act2_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
     # -------------- Fin Actividad 2 ------------- #
 
     # ---------------- Actividad 3 --------------- #
@@ -1044,9 +1126,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_act3_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -1138,6 +1217,24 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    anexo_act3_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act3_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act3_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
     # -------------- Fin Actividad 3 ------------- #
 
     # ---------------- Actividad 4 --------------- #
@@ -1173,9 +1270,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_act4_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -1267,6 +1361,24 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    anexo_act4_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act4_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act4_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
     # -------------- Fin Actividad 4 ------------- #
 
     # ---------------- Actividad 5 --------------- #
@@ -1302,9 +1414,6 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Causas que determinaron la no conformidad")
 
-    """
-    Señale para cada causa enunciada anteriormente, el tipo al que...
-    """
     causa_act5_1 = MultiSelectField(
         choices=OPCIONES_CAUSAS,
         blank=True,
@@ -1396,7 +1505,1033 @@ class Informe(models.Model):
         blank=True,
         verbose_name="Evidencia Fotográfica")
 
+    anexo_act5_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act5_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act5_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
     # -------------- Fin Actividad 5 ------------- #
+
+    # ---------------- Actividad 6 --------------- #
+
+    tipo_actividad6 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act6 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act6 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act6 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act6 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act6 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act6_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act6_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act6_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act6_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act6_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act6 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act6_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act6_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act6_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act6_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act6_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act6_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act6_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act6_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act6_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act6_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act6 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act6_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act6_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act6_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 6 ------------- #
+
+    # ---------------- Actividad 7 --------------- #
+
+    tipo_actividad7 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act7 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act7 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act7 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act7 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act7 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act7_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act7_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act7_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act7_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act7_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act7 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act7_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act7_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act7_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act7_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act7_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act7_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act7_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act7_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act7_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act7_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act7 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act7_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act7_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act7_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 7 ------------- #
+
+    # ---------------- Actividad 8 --------------- #
+
+    tipo_actividad8 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act8 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act8 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act8 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act8 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act8 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act8_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act8_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act8_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act8_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act8_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act8 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act8_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act8_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act8_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act8_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act8_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act8_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act8_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act8_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act8_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act8_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act8 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act8_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act8_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act8_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 8 ------------- #
+
+    # ---------------- Actividad 9 --------------- #
+
+    tipo_actividad9 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act9 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act9 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act9 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act9 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act9 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act9_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act9_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act9_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act9_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act9_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act9 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act9_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act9_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act9_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act9_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act9_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act9_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act9_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act9_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act9_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act9_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act9 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act9_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act9_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act9_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 9 ------------- #
+
+    # ---------------- Actividad 10 --------------- #
+
+    tipo_actividad10 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act10 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act10 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act10 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act10 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act10 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act10_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act10_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act10_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act10_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act10_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act10 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act10_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act10_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act10_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act10_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act10_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act10_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act10_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act10_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act10_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act10_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act10 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act10_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act10_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act10_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 10 ------------- #
+
+    # ---------------- Actividad 11 --------------- #
+
+    tipo_actividad11 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act11 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act11 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act11 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act11 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act11 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act11_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act11_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act11_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act11_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act11_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act11 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act11_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act11_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act11_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act11_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act11_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act11_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act11_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act11_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act11_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act11_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act11 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act11_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act11_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act11_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 11 ------------- #
+
+    # ---------------- Actividad 12 --------------- #
+
+    tipo_actividad12 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACTIVIDAD,
+        blank=True,
+        verbose_name="Tipo de actividad")
+
+    tipo_accion_act12 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_ACCION,
+        blank=True,
+        verbose_name="Tipo de Acción")
+
+    fuente_hallazgo_act12 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_HALLAZGO,
+        blank=True,
+        verbose_name="Fuente del Hallazgo")
+
+    descripcion_hallazgo_act12 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del Hallazgo")
+
+    tipo_causas_act12 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Tipo de Causas")
+
+    no_conformidad_act12 = models.TextField(
+        blank=True,
+        verbose_name="Causas que determinaron la no conformidad")
+
+    causa_act12_1 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 1")
+
+    causa_act12_2 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 2")
+
+    causa_act12_3 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 3")
+
+    causa_act12_4 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 4")
+
+    causa_act12_5 = MultiSelectField(
+        choices=OPCIONES_CAUSAS,
+        blank=True,
+        verbose_name="Causa 5")
+
+    acciones_ejecutar_act12 = models.TextField(
+        blank=True,
+        verbose_name="Acciones a Ejecutar")
+
+    """
+    Responsable de la ejecucion
+    """
+    accion_act12_1 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 1")
+
+    accion_act12_2 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 2")
+
+    accion_act12_3 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 3")
+
+    accion_act12_4 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 4")
+
+    accion_act12_5 = MultiSelectField(
+        choices=OPCIONES_RESPONSABLE,
+        blank=True,
+        verbose_name="Acción 5")
+
+    """
+    Fechas límites de ejecución
+    """
+    fecha_ejecucion_act12_1 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act12_2 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act12_3 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act12_4 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    fecha_ejecucion_act12_5 = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name="Fecha límite de ejecución")
+
+    evidencia_act12 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Evidencia Fotográfica")
+
+    anexo_act12_1 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 1")
+
+    anexo_act12_2 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 2")
+
+    anexo_act12_3 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Anexo 3")
+
+    # -------------- Fin Actividad 12 ------------- #
 
     # --------------- Gestión del cambio 1 -------------- #
 
@@ -1512,18 +2647,94 @@ class Informe(models.Model):
 
     # ------------- Fin Gestión del cambio 3 ------------ #
 
+    # --------------- Gestión del cambio 4 -------------- #
+
+    criterio4 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_CRITERIO,
+        blank=True,
+        verbose_name="Criterio")
+
+    tipo_cambio4 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_CAMBIO,
+        blank=True,
+        verbose_name="Tipo de cambio")
+
+    descripcion_cambio4 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del cambio")
+
+    registro_antes4 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Registro del antes")
+
+    registro_despues4 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Registro del después")
+
+    responsable_cambio4 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_RESPONSABLE_CAMBIO,
+        blank=True,
+        verbose_name="Responsable del cambio")
+
+    # ------------- Fin Gestión del cambio 4 ------------ #
+
+    # --------------- Gestión del cambio 5 -------------- #
+
+    criterio5 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_CRITERIO,
+        blank=True,
+        verbose_name="Criterio")
+
+    tipo_cambio5 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_CAMBIO,
+        blank=True,
+        verbose_name="Tipo de cambio")
+
+    descripcion_cambio5 = models.TextField(
+        blank=True,
+        verbose_name="Descripción del cambio")
+
+    registro_antes5 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Registro del antes")
+
+    registro_despues5 = models.FileField(
+        upload_to='archivos/%Y/%m/',
+        validators=[tam_archivo],
+        blank=True,
+        verbose_name="Registro del después")
+
+    responsable_cambio5 = models.CharField(
+        max_length=30,
+        choices=OPCIONES_RESPONSABLE_CAMBIO,
+        blank=True,
+        verbose_name="Responsable del cambio")
+
+    # ------------- Fin Gestión del cambio 5 ------------ #
+
     observaciones = models.TextField(
         blank=True,
         verbose_name="Observaciones")
 
     """
-    Guardar el informe
+    Guarda el informe
     """
     def guardar_informe(self):
         self.save()
 
     """
-    Cadena para representar el objeto Informe(clase) en el admin de django.
+    Cadena para representar el objeto Informe(clase).
     """
     def __str__(self):
         return self.empresa

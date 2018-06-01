@@ -116,12 +116,12 @@ def nuevo_informe(request):
 
         if user_group:
             if request.method == "POST":
-                form = FormInforme(request.POST, request.FILES)
+                form  = FormInforme(request.POST, request.FILES)
 
                 if form.is_valid():
                     informe                   = form.save(commit=False)
                     informe.usuario           = request.user
-                    informe.fecha_elaboracion = datetime.now()
+                    informe.fecha_elaboracion = datetime.now()                    
                     informe.save()
 
                     return redirect('detalle_informe', pk=informe.pk)

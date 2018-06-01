@@ -15,7 +15,7 @@
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Lobster', cursive;
+  font-family: 'Acme', sans-serif;
 }
 
 .btn-danger {
@@ -84,8 +84,9 @@ h1, h2, h3, h4 {
 .top-menu, .top-menu:visited {
   color: #ffffff;
   float: right;
-  font-size: 14pt;
-  margin: 10px 20px 0 0;
+  font-size: 16pt;
+  margin: 7px 20px 0 0;
+  font-family: 'Acme', sans-serif;
 }
 
 .top-menu a {
@@ -172,10 +173,17 @@ h1, h2, h3, h4 {
 .ocultoPregunta, .ocultoEPP, .ocultoOyA,
 .ocultoCausasAct1, .ocultoCausasAct2,
 .ocultoCausasAct3, .ocultoCausasAct4,
-.ocultoCausasAct5, #ocultoAccEPP,
-#ocultoAccOyA, #ocultoAccAct1,
-#ocultoAccAct2, #ocultoAccAct3,
-#ocultoAccAct4, #ocultoAccAct5,
+.ocultoCausasAct5, .ocultoCausasAct6,
+.ocultoCausasAct7, .ocultoCausasAct8,
+.ocultoCausasAct9, .ocultoCausasAct10,
+.ocultoCausasAct11, .ocultoCausasAct12,
+#ocultoAccEPP, #ocultoAccOyA,
+#ocultoAccAct1, #ocultoAccAct2,
+#ocultoAccAct3, #ocultoAccAct4,
+#ocultoAccAct5, #ocultoAccAct6,
+#ocultoAccAct7, #ocultoAccAct8,
+#ocultoAccAct9, #ocultoAccAct10,
+#ocultoAccAct11, #ocultoAccAct12,
 #oculto {
   display: none;
 }
@@ -188,7 +196,11 @@ h1, h2, h3, h4 {
 .ocultoIL1, .ocultoIL2, .ocultoIL3,
 .ocultoEPP, .ocultoOyA, .ocultoCausasAct1,
 .ocultoCausasAct2, .ocultoCausasAct3,
-.ocultoCausasAct4, .ocultoCausasAct5 {
+.ocultoCausasAct4, .ocultoCausasAct5,
+.ocultoCausasAct6, .ocultoCausasAct7,
+.ocultoCausasAct8, .ocultoCausasAct9,
+.ocultoCausasAct10, .ocultoCausasAct11,
+.ocultoCausasAct12 {
   border: 1px solid #ced4da;
   border-radius: .25rem;
   margin-bottom: 10px;

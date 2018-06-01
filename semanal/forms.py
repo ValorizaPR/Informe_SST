@@ -75,6 +75,13 @@ class FormInforme(forms.ModelForm):
             self.fields[field] == self.fields['tipo_accion_act3'] or \
             self.fields[field] == self.fields['tipo_accion_act4'] or \
             self.fields[field] == self.fields['tipo_accion_act5'] or \
+            self.fields[field] == self.fields['tipo_accion_act6'] or \
+            self.fields[field] == self.fields['tipo_accion_act7'] or \
+            self.fields[field] == self.fields['tipo_accion_act8'] or \
+            self.fields[field] == self.fields['tipo_accion_act9'] or \
+            self.fields[field] == self.fields['tipo_accion_act10'] or \
+            self.fields[field] == self.fields['tipo_accion_act11'] or \
+            self.fields[field] == self.fields['tipo_accion_act12'] or \
             self.fields[field] == self.fields['fuente_hallazgo_epp'] or \
             self.fields[field] == self.fields['fuente_hallazgo_OyA'] or \
             self.fields[field] == self.fields['fuente_hallazgo_act1'] or \
@@ -82,20 +89,40 @@ class FormInforme(forms.ModelForm):
             self.fields[field] == self.fields['fuente_hallazgo_act3'] or \
             self.fields[field] == self.fields['fuente_hallazgo_act4'] or \
             self.fields[field] == self.fields['fuente_hallazgo_act5'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act6'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act7'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act8'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act9'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act10'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act11'] or \
+            self.fields[field] == self.fields['fuente_hallazgo_act12'] or \
             self.fields[field] == self.fields['tipo_actividad1'] or \
             self.fields[field] == self.fields['tipo_actividad2'] or \
             self.fields[field] == self.fields['tipo_actividad3'] or \
             self.fields[field] == self.fields['tipo_actividad4'] or \
             self.fields[field] == self.fields['tipo_actividad5'] or \
+            self.fields[field] == self.fields['tipo_actividad6'] or \
+            self.fields[field] == self.fields['tipo_actividad7'] or \
+            self.fields[field] == self.fields['tipo_actividad8'] or \
+            self.fields[field] == self.fields['tipo_actividad9'] or \
+            self.fields[field] == self.fields['tipo_actividad10'] or \
+            self.fields[field] == self.fields['tipo_actividad11'] or \
+            self.fields[field] == self.fields['tipo_actividad12'] or \
             self.fields[field] == self.fields['criterio1'] or \
             self.fields[field] == self.fields['criterio2'] or \
             self.fields[field] == self.fields['criterio3'] or \
+            self.fields[field] == self.fields['criterio4'] or \
+            self.fields[field] == self.fields['criterio5'] or \
             self.fields[field] == self.fields['tipo_cambio1'] or \
             self.fields[field] == self.fields['tipo_cambio2'] or \
             self.fields[field] == self.fields['tipo_cambio3'] or \
+            self.fields[field] == self.fields['tipo_cambio4'] or \
+            self.fields[field] == self.fields['tipo_cambio5'] or \
             self.fields[field] == self.fields['responsable_cambio1'] or \
             self.fields[field] == self.fields['responsable_cambio2'] or \
-            self.fields[field] == self.fields['responsable_cambio3']:
+            self.fields[field] == self.fields['responsable_cambio3'] or \
+            self.fields[field] == self.fields['responsable_cambio4'] or \
+            self.fields[field] == self.fields['responsable_cambio5']:
                 self.fields[field].widget.attrs.update({
                 'class': 'custom-select'})
             elif self.fields[field] == self.fields['nom_acc_laboral1'] or \
@@ -218,6 +245,69 @@ class FormInforme(forms.ModelForm):
             'acciones_ejecutar_act5': forms.Textarea(attrs={
                 'rows':5,
                 'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act6': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act6': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act6': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act7': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act7': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act7': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act8': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act8': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act8': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act9': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act9': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act9': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act10': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act10': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act10': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act11': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act11': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act11': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
+            'descripcion_hallazgo_act12': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del hallazgo'}),
+            'no_conformidad_act12': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las causas de la no conformidad'}),
+            'acciones_ejecutar_act12': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':'Enumere las acciones a ejecutar'}),
             'descripcion_cambio1': forms.Textarea(attrs={
                 'rows':5,
                 'placeholder':u'Descripción breve del cambio'}),
@@ -225,6 +315,12 @@ class FormInforme(forms.ModelForm):
                 'rows':5,
                 'placeholder':u'Descripción breve del cambio'}),
             'descripcion_cambio3': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del cambio'}),
+            'descripcion_cambio4': forms.Textarea(attrs={
+                'rows':5,
+                'placeholder':u'Descripción breve del cambio'}),
+            'descripcion_cambio5': forms.Textarea(attrs={
                 'rows':5,
                 'placeholder':u'Descripción breve del cambio'}),
             'observaciones': forms.Textarea(attrs={
