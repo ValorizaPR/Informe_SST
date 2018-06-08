@@ -11,23 +11,48 @@
       <div class="row">
         <div class="col subtitulo">
           <h3>Datos de quien realiza el informe</h3>
-          <div class="control-group">
-            <div class="form-group">
-              <strong>{{ form.empresa.label_tag }}</strong>
-              {{ form.empresa }}
-              <p class="help-block text-danger"></p>
+          <div class="row">
+            <div class="col">
+              <div class="control-group">
+                <div class="form-group">
+                  <strong>{{ form.empresa.label_tag }}</strong>
+                  {{ form.empresa }}
+                  <p class="help-block text-danger"></p>
+                </div>
+
+                {% if form.empresa.errors %}
+                  {% for error in form.empresa.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong>{{ form.empresa.errors|escape }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
             </div>
 
-            {% if form.empresa.errors %}
-              {% for error in form.empresa.errors %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <strong>{{ form.empresa.errors|escape }}</strong>
+            <div class="col">
+              <div class="control-group">
+                <div class="form-group">
+                  <strong>{{ form.obra.label_tag }}</strong>
+                  {{ form.obra }}
+                  <p class="help-block text-danger"></p>
                 </div>
-              {% endfor %}
-            {% endif %}
+
+                {% if form.obra.errors %}
+                  {% for error in form.obra.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong>{{ form.obra.errors|escape }}</strong>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
           </div>
         </div>
 

@@ -14,10 +14,11 @@
   {% endif %}
 
   <div class="titulo">
-    <div class="detalleInforme">
+    <div class="detalleInforme bottom">
       <h1>Datos de quien realiza el informe</h1>
       <p><strong>Responsable SST:</strong> {{ informe.usuario.first_name }} {{ informe.usuario.last_name }}</p>
       <p><strong>Empresa:</strong> {{ informe.empresa }}</p>
+      <p><strong>Obra:</strong> {{ informe.obra }}</p>
       <p><strong>Fecha de Elaboración:</strong> {{ informe.fecha_elaboracion }}</p>
       <p><strong>Ciclo Semanal:</strong> De {{ informe.desde }} hasta {{ informe.hasta }}</p>
     </div>
@@ -29,331 +30,444 @@
 
       <!-- Investigaciones accidentes -->
       <div class="row">
-        <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 1</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral1 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral1 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral1 }}</li>
-              
-              <li>
-                <strong>Furat:</strong>
-                {% if informe.furat1 %}
-                  <a href="{{ informe.furat1 }}">Archivo - Furat</a>
-                {% endif %}
-              </li>
-              
-              <li>
-                <strong>Investigación:</strong>
-                {% if informe.investigacion_acc1 %}
-                  <a href="{{ informe.investigacion_acc1 }}">Archivo - Investigación</a>
-                {% endif %}
-              </li>
 
-              <li>
-                <strong>Lección aprendida:</strong>
-                {% if informe.leccion1 %}
-                  <a href="{{ informe.leccion1 }}">Archivo - Lección aprendida</a>
-                {% endif %}
-              </li>
+        {% if informe.nom_acc_laboral1 %}
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 1</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral1 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral1 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral1 }}</li>
+                
+                <li>
+                  <strong>Furat:</strong>
+                  {% if informe.furat1 %}
+                    <a href="{{ informe.furat1 }}">Archivo - Furat</a>
+                  {% endif %}
+                </li>
+                
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_acc1 %}
+                    <a href="{{ informe.investigacion_acc1 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Versión de testigos:</strong>
-                {% if informe.testigos1 %}
-                  <a href="{{ informe.testigos1 }}">Archivo - Testigos</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Lección aprendida:</strong>
+                  {% if informe.leccion1 %}
+                    <a href="{{ informe.leccion1 }}">Archivo - Lección aprendida</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Incapacidad:</strong>
-                {% if informe.incapacidad_acc_laboral1 %}
-                  <a href="{{ informe.incapacidad_acc_laboral1 }}">Archivo - Incapacidad</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Versión de testigos:</strong>
+                  {% if informe.testigos1 %}
+                    <a href="{{ informe.testigos1 }}">Archivo - Testigos</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en EPS:</strong>
-                {% if informe.carta_eps1 %}
-                  <a href="{{ informe.carta_eps1 }}">Archivo - Carta EPS</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Incapacidad:</strong>
+                  {% if informe.incapacidad_acc_laboral1 %}
+                    <a href="{{ informe.incapacidad_acc_laboral1 }}">Archivo - Incapacidad</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en Ministerio:</strong>
-                {% if informe.carta_ministerio1 %}
-                  <a href="{{ informe.carta_ministerio1 }}">Archivo - Carta ministerio</a>
-                {% endif %}
-              </li>
-            </ul>
+                <li>
+                  <strong>Carta de radicación en EPS:</strong>
+                  {% if informe.carta_eps1 %}
+                    <a href="{{ informe.carta_eps1 }}">Archivo - Carta EPS</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Carta de radicación en Ministerio:</strong>
+                  {% if informe.carta_ministerio1 %}
+                    <a href="{{ informe.carta_ministerio1 }}">Archivo - Carta ministerio</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_accidente1 %}
+                    <a href="{{ informe.evidencia_accidente1 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        {% endif %}
 
-        <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 2</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral2 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral2 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral2 }}</li>
-              
-              <li>
-                <strong>Furat:</strong>
-                {% if informe.furat2 %}
-                  <a href="{{ informe.furat2 }}">Archivo - Furat</a>
-                {% endif %}
-              </li>
-              
-              <li>
-                <strong>Investigación:</strong>
-                {% if informe.investigacion_acc2 %}
-                  <a href="{{ informe.investigacion_acc2 }}">Archivo - Investigación</a>
-                {% endif %}
-              </li>
+        {% if informe.nom_acc_laboral2 %}
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 2</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral2 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral2 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral2 }}</li>
+                
+                <li>
+                  <strong>Furat:</strong>
+                  {% if informe.furat2 %}
+                    <a href="{{ informe.furat2 }}">Archivo - Furat</a>
+                  {% endif %}
+                </li>
+                
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_acc2 %}
+                    <a href="{{ informe.investigacion_acc2 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Lección aprendida:</strong>
-                {% if informe.leccion2 %}
-                  <a href="{{ informe.leccion2 }}">Archivo - Lección aprendida</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Lección aprendida:</strong>
+                  {% if informe.leccion2 %}
+                    <a href="{{ informe.leccion2 }}">Archivo - Lección aprendida</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Versión de testigos:</strong>
-                {% if informe.testigos2 %}
-                  <a href="{{ informe.testigos2 }}">Archivo - Testigos</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Versión de testigos:</strong>
+                  {% if informe.testigos2 %}
+                    <a href="{{ informe.testigos2 }}">Archivo - Testigos</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Incapacidad:</strong>
-                {% if informe.incapacidad_acc_laboral2 %}
-                  <a href="{{ informe.incapacidad_acc_laboral2 }}">Archivo - Incapacidad</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Incapacidad:</strong>
+                  {% if informe.incapacidad_acc_laboral2 %}
+                    <a href="{{ informe.incapacidad_acc_laboral2 }}">Archivo - Incapacidad</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en EPS:</strong>
-                {% if informe.carta_eps2 %}
-                  <a href="{{ informe.carta_eps2 }}">Archivo - Carta EPS</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Carta de radicación en EPS:</strong>
+                  {% if informe.carta_eps2 %}
+                    <a href="{{ informe.carta_eps2 }}">Archivo - Carta EPS</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en Ministerio:</strong>
-                {% if informe.carta_ministerio2 %}
-                  <a href="{{ informe.carta_ministerio2 }}">Archivo - Carta ministerio</a>
-                {% endif %}
-              </li>
-            </ul>
+                <li>
+                  <strong>Carta de radicación en Ministerio:</strong>
+                  {% if informe.carta_ministerio2 %}
+                    <a href="{{ informe.carta_ministerio2 }}">Archivo - Carta ministerio</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_accidente2 %}
+                    <a href="{{ informe.evidencia_accidente2 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 3</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral3 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral3 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral3 }}</li>
-              
-              <li>
-                <strong>Furat:</strong>
-                {% if informe.furat3 %}
-                  <a href="{{ informe.furat3 }}">Archivo - Furat</a>
-                {% endif %}
-              </li>
-              
-              <li>
-                <strong>Investigación:</strong>
-                {% if informe.investigacion_acc3 %}
-                  <a href="{{ informe.investigacion_acc3 }}">Archivo - Investigación</a>
-                {% endif %}
-              </li>
+      {% if informe.nom_acc_laboral3 %}
+        <div class="row">
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 3</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_acc_laboral3 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_acc_laboral3 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_acc_laboral3 }}</li>
+                
+                <li>
+                  <strong>Furat:</strong>
+                  {% if informe.furat3 %}
+                    <a href="{{ informe.furat3 }}">Archivo - Furat</a>
+                  {% endif %}
+                </li>
+                
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_acc3 %}
+                    <a href="{{ informe.investigacion_acc3 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Lección aprendida:</strong>
-                {% if informe.leccion3 %}
-                  <a href="{{ informe.leccion3 }}">Archivo - Lección aprendida</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Lección aprendida:</strong>
+                  {% if informe.leccion3 %}
+                    <a href="{{ informe.leccion3 }}">Archivo - Lección aprendida</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Versión de testigos:</strong>
-                {% if informe.testigos3 %}
-                  <a href="{{ informe.testigos3 }}">Archivo - Testigos</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Versión de testigos:</strong>
+                  {% if informe.testigos3 %}
+                    <a href="{{ informe.testigos3 }}">Archivo - Testigos</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Incapacidad:</strong>
-                {% if informe.incapacidad_acc_laboral3 %}
-                  <a href="{{ informe.incapacidad_acc_laboral3 }}">Archivo - Incapacidad</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Incapacidad:</strong>
+                  {% if informe.incapacidad_acc_laboral3 %}
+                    <a href="{{ informe.incapacidad_acc_laboral3 }}">Archivo - Incapacidad</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en EPS:</strong>
-                {% if informe.carta_eps3 %}
-                  <a href="{{ informe.carta_eps3 }}">Archivo - Carta EPS</a>
-                {% endif %}
-              </li>
+                <li>
+                  <strong>Carta de radicación en EPS:</strong>
+                  {% if informe.carta_eps3 %}
+                    <a href="{{ informe.carta_eps3 }}">Archivo - Carta EPS</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Carta de radicación en Ministerio:</strong>
-                {% if informe.carta_ministerio3 %}
-                  <a href="{{ informe.carta_ministerio3 }}">Archivo - Carta ministerio</a>
-                {% endif %}
-              </li>
-            </ul>
+                <li>
+                  <strong>Carta de radicación en Ministerio:</strong>
+                  {% if informe.carta_ministerio3 %}
+                    <a href="{{ informe.carta_ministerio3 }}">Archivo - Carta ministerio</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_accidente3 %}
+                    <a href="{{ informe.evidencia_accidente3 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      {% endif %}
       <!-- FIN Investigaciones accidentes -->
 
       <!-- Investigaciones incidentes -->
       <p><strong>Incidentes Laborales:</strong> {{ informe.inc_laboral }}</p>
 
       <div class="row">
-        <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 1</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral1 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral1 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral1 }}</li>
+        {% if informe.nom_inc_laboral1 %}
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 1</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral1 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral1 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral1 }}</li>
 
-              <li>
-                <strong>Incidente:</strong>
-                <a href="{{ informe.incidente1 }}">{{ informe.incidente1 }}</a>
-              </li>
+                <li>
+                  <strong>Incidente:</strong>
+                  {% if informe.incidente1 %}
+                    <a href="{{ informe.incidente1 }}">Archivo - Incidente</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Investigación:</strong>
-                <a href="{{ informe.investigacion_inc1 }}">{{ informe.investigacion_inc1 }}</a>
-              </li>
-            </ul>
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_inc1 %}
+                    <a href="{{ informe.investigacion_inc1 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_incidente1 %}
+                    <a href="{{ informe.evidencia_incidente1 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        {% endif %}
 
-        <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 2</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral2 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral2 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral2 }}</li>
-              
-              <li>
-                <strong>Incidente:</strong>
-                <a href="{{ informe.incidente2 }}">{{ informe.incidente2 }}</a>
-              </li>
+        {% if informe.nom_inc_laboral2 %}
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 2</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral2 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral2 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral2 }}</li>
+                
+                <li>
+                  <strong>Incidente:</strong>
+                  {% if informe.incidente2 %}
+                    <a href="{{ informe.incidente2 }}">Archivo - Incidente</a>
+                  {% endif %}
+                </li>
 
-              <li>
-                <strong>Investigación:</strong>
-                <a href="{{ informe.investigacion_inc2 }}">{{ informe.investigacion_inc2 }}</a>
-              </li>
-            </ul>
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_inc2 %}
+                    <a href="{{ informe.investigacion_inc2 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_incidente2 %}
+                    <a href="{{ informe.evidencia_incidente2 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
+
+      {% if informe.nom_inc_laboral3 %}
+        <div class="row">
+          <div class="col">
+            <div class="subtitulo">
+              <ul>
+                <h4>Investigación 3</h4>
+                <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral3 }}</li>
+                <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral3 }}</li>
+                <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral3 }}</li>
+                
+                <li>
+                  <strong>Incidente:</strong>
+                  {% if informe.incidente3 %}
+                    <a href="{{ informe.incidente3 }}">Archivo - Incidente</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Investigación:</strong>
+                  {% if informe.investigacion_inc3 %}
+                    <a href="{{ informe.investigacion_inc3 }}">Archivo - Investigación</a>
+                  {% endif %}
+                </li>
+
+                <li>
+                  <strong>Evidencia fotográfica:</strong>
+                  {% if informe.evidencia_incidente3 %}
+                    <a href="{{ informe.evidencia_incidente3 }}">Archivo - Evidencia fotográfica</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <!-- FIN Investigaciones incidentes -->
 
       <div class="row">
         <div class="col">
-          <div class="subtitulo">
-            <ul>
-              <h4>Investigación 3</h4>
-              <li><strong>Nombre:</strong> {{ informe.nom_inc_laboral3 }}</li>
-              <li><strong>Cédula:</strong> {{ informe.cedula_inc_laboral3 }}</li>
-              <li><strong>Fecha para entrega de la investigación:</strong> {{ informe.fecha_inc_laboral3 }}</li>
-              
-              <li>
-                <strong>Incidente:</strong>
-                <a href="{{ informe.incidente3 }}">{{ informe.incidente3 }}</a>
-              </li>
+          <strong>Licencias:</strong> {{ informe.licencias }}
+          <ul class="subtitulo">
+            <li>
+              <strong>Adjunto licencias:</strong>
+              {% if informe.adj_licencias %}
+                <a href="{{ informe.adj_licencias }}">Archivo - Adjunto licencias</a>
+              {% endif %}
+            </li>
+          </ul>
+
+          <strong>Memorandos o llamados de atención:</strong> {{ informe.memorandos }}
+          <ul class="subtitulo">
+            <li>
+              <strong>Adjunto memorandos o llamados de atención:</strong>
+              {% if informe.adj_memorandos %}
+                <a href="{{ informe.adj_memorandos }}">Archivo - Adjunto memorandos</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <strong>Suspensiones:</strong> {{ informe.suspensiones }}
+          <ul class="subtitulo">
+            <li>
+              <strong>Adjunto suspensiones:</strong>
+              {% if informe.adj_suspensiones %}
+                <a href="{{ informe.adj_suspensiones }}">Archivo - Adjunto suspensiones</a>
+              {% endif %}
+            </li>
+          </ul>
+
+          <strong>¿Hubo incapacidades?</strong> {{ informe.pregunta_incapacidad }}
+          {% if informe.pregunta_incapacidad %}
+            <ul class="subtitulo">
+              <li><strong>Tipo de incapacidad:</strong> {{ informe.tipo_incapacidad }}</li>
+              <li><strong>Cantidad de Incapacidades:</strong> {{ informe.can_incapacidades }}</li>
 
               <li>
-                <strong>Investigación:</strong>
-                <a href="{{ informe.investigacion_inc3 }}">{{ informe.investigacion_inc3 }}</a>
+                <strong>Adjunto incapacidades:</strong>
+                {% if informe.adj_incapacidades %}
+                  <a href="{{ informe.adj_incapacidades }}">Archivo - Adjunto incapacidades</a>
+                {% endif %}
               </li>
             </ul>
-          </div>
+          {% endif %}
         </div>
       </div>
-      <!-- FIN Investigaciones incidentes -->
-
-      <p><strong>Licencias:</strong> {{ informe.licencias }}</p>
-      <ul class="subtitulo">
-        <li><p><strong>Adjunto licencias:</strong> {{ informe.adj_licencias }}</p></li>
-      </ul>
-
-      <p><strong>Memorandos o llamados de atención:</strong> {{ informe.memorandos }}</p>
-      <ul class="subtitulo">
-        <li><p><strong>Adjunto memorandos o llamados de atención:</strong> {{ informe.adj_memorandos }}</p></li>
-      </ul>
-
-      <p><strong>Suspensiones:</strong> {{ informe.suspensiones }}</p>
-      <ul class="subtitulo">
-        <li><p><strong>Adjunto suspensiones:</strong> {{ informe.adj_suspensiones }}</p></li>
-      </ul>
-
-      <p><strong>¿Hubo incapacidades?</strong> {{ informe.pregunta_incapacidad }}</p>
-      <ul class="subtitulo">
-        <li><p><strong>Tipo de incapacidad:</strong> {{ informe.tipo_incapacidad }}</p></li>
-        <li><p><strong>Cantidad de Incapacidades:</strong> {{ informe.can_incapacidades }}</p></li>
-      </ul>
     </div>
     <!-- FIN Novedades del personal -->
 
     <!-- Inspección EPP -->
     <div class="detalleInforme">
       <h1>Inspección EPP</h1>
-      <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_epp }}</p>
-      <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_epp }}</p>
-      <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_epp }}</p>
-      <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_epp }}</p>
-      <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_epp }}</p>
+      <strong>Tipo de acción:</strong> {{ informe.tipo_accion_epp }}</br>
+      <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_epp }}</br>
+      <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_epp }}</br>
 
-      <div class="row">
-        <div class="col">
-          <p><strong>Causa 1:</strong> {{ informe.causa_epp_1 }}</p>
-          <p><strong>Causa 3:</strong> {{ informe.causa_epp_2 }}</p>
-          <p><strong>Causa 5:</strong> {{ informe.causa_epp_5 }}</p>
+      {% if informe.tipo_causas_epp %}
+        <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_epp }}
+
+        <p style="margin-top: 10px;">
+          <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_epp }}
+        </p>
+
+        <p>
+          <div class="row">
+            <div class="col">
+              <strong>Causa 1:</strong> {{ informe.causa_epp_1 }}</br>
+              <strong>Causa 2:</strong> {{ informe.causa_epp_2 }}</br>
+              <strong>Causa 3:</strong> {{ informe.causa_epp_3 }}</br>
+            </div>
+
+            <div class="col">
+              <strong>Causa 4:</strong> {{ informe.causa_epp_4 }}</br>
+              <strong>Causa 5:</strong> {{ informe.causa_epp_5 }}</br>
+            </div>
+          </div>
+        </p>
+      {% endif %}
+
+      <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_epp }}
+
+      <p>
+        <div class="row">
+          <div class="col">
+            <strong>Acción 1:</strong> {{ informe.accion_epp_1 }}</br>
+            <strong>Acción 2:</strong> {{ informe.accion_epp_2 }}</br>
+            <strong>Acción 3:</strong> {{ informe.accion_epp_3 }}</br>
+            <strong>Acción 4:</strong> {{ informe.accion_epp_4 }}</br>
+            <strong>Acción 5:</strong> {{ informe.accion_epp_5 }}</br>
+          </div>
+
+          <div class="col">
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_1 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_2 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_3 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_4 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_5 }}</br>
+          </div>
         </div>
-
-        <div class="col">
-          <p><strong>Causa 2:</strong> {{ informe.causa_epp_3 }}</p>
-          <p><strong>Causa 4:</strong> {{ informe.causa_epp_4 }}</p>
-        </div>
-      </div>
-
-      <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_epp }}</p>
-
-      <div class="row">
-        <div class="col">
-          <p><strong>Acción 1:</strong> {{ informe.accion_epp_1 }}</p>
-          <p><strong>Acción 2:</strong> {{ informe.accion_epp_2 }}</p>
-          <p><strong>Acción 3:</strong> {{ informe.accion_epp_3 }}</p>
-          <p><strong>Acción 4:</strong> {{ informe.accion_epp_4 }}</p>
-          <p><strong>Acción 5:</strong> {{ informe.accion_epp_5 }}</p>
-        </div>
-
-        <div class="col">
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_1 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_2 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_3 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_4 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_epp_5 }}</p>
-          
-        </div>
-      </div>
+      </p>
 
       <p>
         <strong>Evidencia fotográfica de la inspección EPP:</strong>
         {% if informe.evidencia_epp %}
           <a href="{{ informe.evidencia_epp }}">Archivo - Evidencia EPP</a>
+        {% endif %}
+      </p>
+
+      <p>
+        <strong>Formato EPP:</strong>
+        {% if informe.formato_epp %}
+          <a href="{{ informe.formato_epp }}">Archivo - Formato EPP</a>
         {% endif %}
       </p>
     </div>
@@ -362,45 +476,54 @@
     <!-- Inspección OyA -->
     <div class="detalleInforme">
       <h1>Inspección Orden y Aseo</h1>
-      <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_OyA }}</p>
-      <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_OyA }}</p>
-      <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_OyA }}</p>
-      <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_OyA }}</p>
-      <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_OyA }}</p>
+      <strong>Tipo de acción:</strong> {{ informe.tipo_accion_OyA }}</br>
+      <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_OyA }}</br>
+      <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_OyA }}</br>
 
-      <div class="row">
-        <div class="col">
-          <p><strong>Causa 1:</strong> {{ informe.causa_OyA_1 }}</p>
-          <p><strong>Causa 3:</strong> {{ informe.causa_OyA_2 }}</p>
-          <p><strong>Causa 5:</strong> {{ informe.causa_OyA_5 }}</p>
+      {% if informe.tipo_causas_OyA %}
+        <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_OyA }}</br>
+
+        <p style="margin-top: 10px;">
+          <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_OyA }}</br>
+        </p>
+
+        <p>
+          <div class="row">
+            <div class="col">
+              <strong>Causa 1:</strong> {{ informe.causa_OyA_1 }}</br>
+              <strong>Causa 2:</strong> {{ informe.causa_OyA_2 }}</br>
+              <strong>Causa 3:</strong> {{ informe.causa_OyA_3 }}</br>
+            </div>
+
+            <div class="col">
+              <strong>Causa 4:</strong> {{ informe.causa_OyA_4 }}</br>
+              <strong>Causa 5:</strong> {{ informe.causa_OyA_5 }}</br>
+            </div>
+          </div>
+        </p>
+      {% endif %}
+
+      <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_OyA }}
+
+      <p>
+        <div class="row">
+          <div class="col">
+            <strong>Acción 1:</strong> {{ informe.accion_OyA_1 }}</br>
+            <strong>Acción 2:</strong> {{ informe.accion_OyA_2 }}</br>
+            <strong>Acción 3:</strong> {{ informe.accion_OyA_3 }}</br>
+            <strong>Acción 4:</strong> {{ informe.accion_OyA_4 }}</br>
+            <strong>Acción 5:</strong> {{ informe.accion_OyA_5 }}</br>
+          </div>
+
+          <div class="col">
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_1 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_2 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_3 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_4 }}</br>
+            <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_5 }}</br>
+          </div>
         </div>
-
-        <div class="col">
-          <p><strong>Causa 2:</strong> {{ informe.causa_OyA_3 }}</p>
-          <p><strong>Causa 4:</strong> {{ informe.causa_OyA_4 }}</p>
-        </div>
-      </div>
-
-      <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_OyA }}</p>
-
-      <div class="row">
-        <div class="col">
-          <p><strong>Acción 1:</strong> {{ informe.accion_OyA_1 }}</p>
-          <p><strong>Acción 2:</strong> {{ informe.accion_OyA_2 }}</p>
-          <p><strong>Acción 3:</strong> {{ informe.accion_OyA_3 }}</p>
-          <p><strong>Acción 4:</strong> {{ informe.accion_OyA_4 }}</p>
-          <p><strong>Acción 5:</strong> {{ informe.accion_OyA_5 }}</p>
-        </div>
-
-        <div class="col">
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_1 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_2 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_3 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_4 }}</p>
-          <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_OyA_5 }}</p>
-          
-        </div>
-      </div>
+      </p>
 
       <p>
         <strong>Evidencia fotográfica de la inspección de Orden y Aseo:</strong>
@@ -408,276 +531,1017 @@
           <a href="{{ informe.evidencia_OyA }}">Archivo - Evidencia Orden y Aseo</a>
         {% endif %}
       </p>
+
+      <p>
+        <strong>Formato Orden y Aseo:</strong>
+        {% if informe.formato_OyA %}
+          <a href="{{ informe.formato_OyA }}">Archivo - Formato Orden y Aseo</a>
+        {% endif %}
+      </p>
     </div>
     <!-- FIN Inspección OyA -->
-
 
     <!-- Actividades -->
     <div class="detalleInforme">
       <h1>Actividades</h1>
 
       <!-- Actividad 1 -->
-      <div class="subtitulo">
-        <h4>Actividad 1</h4>
-        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad1 }}</p>
-        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act1 }}</p>
-        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act1 }}</p>
-        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act1 }}</p>
-        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act1 }}</p>
-        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act1 }}</p>
+      {% if informe.tipo_actividad1 %}
+        <div class="subtitulo">
+          <h4>Actividad 1</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad1 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act1 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act1 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act1 }}</br>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Causa 1:</strong> {{ informe.causa_act1_1 }}</p>
-            <p><strong>Causa 3:</strong> {{ informe.causa_act1_2 }}</p>
-            <p><strong>Causa 5:</strong> {{ informe.causa_act1_5 }}</p>
-          </div>
+          {% if informe.tipo_causas_act1 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act1 }}</br>
 
-          <div class="col">
-            <p><strong>Causa 2:</strong> {{ informe.causa_act1_3 }}</p>
-            <p><strong>Causa 4:</strong> {{ informe.causa_act1_4 }}</p>
-          </div>
-        </div>
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act1 }}
+            </p>
 
-        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act1 }}</p>
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act1_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act1_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act1_3 }}</br>
+                </div>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Acción 1:</strong> {{ informe.accion_act1_1 }}</p>
-            <p><strong>Acción 2:</strong> {{ informe.accion_act1_2 }}</p>
-            <p><strong>Acción 3:</strong> {{ informe.accion_act1_3 }}</p>
-            <p><strong>Acción 4:</strong> {{ informe.accion_act1_4 }}</p>
-            <p><strong>Acción 5:</strong> {{ informe.accion_act1_5 }}</p>
-          </div>
-
-          <div class="col">
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_1 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_2 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_3 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_4 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_5 }}</p>
-          </div>
-        </div>
-
-        <p>
-          <strong>Evidencia fotográfica de la Actividad 1:</strong>
-          {% if informe.evidencia_act1 %}
-            <a href="{{ informe.evidencia_act1 }}">Archivo - Evidencia actividad 1</a>
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act1_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act1_5 }}</br>
+                </div>
+              </div>
+            </p>
           {% endif %}
-        </p>
-      </div>
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act1 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act1_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act1_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act1_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act1_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act1_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act1_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 1:</strong>
+            {% if informe.evidencia_act1 %}
+              <a href="{{ informe.evidencia_act1 }}">Archivo - Evidencia actividad 1</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act1_1 %}
+              <a href="{{ informe.anexo_act1_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act1_2 %}
+              <a href="{{ informe.anexo_act1_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act1_3 %}
+              <a href="{{ informe.anexo_act1_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
       <!-- FIN Actividad 1 -->
 
       <!-- Actividad 2 -->
-      <div class="subtitulo">
-        <h4>Actividad 2</h4>
-        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad2 }}</p>
-        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act2 }}</p>
-        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act2 }}</p>
-        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act2 }}</p>
-        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act2 }}</p>
-        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act2 }}</p>
+      {% if informe.tipo_actividad2 %}
+        <div class="subtitulo">
+          <h4>Actividad 2</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad2 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act2 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act2 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act2 }}</br>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Causa 1:</strong> {{ informe.causa_act2_1 }}</p>
-            <p><strong>Causa 3:</strong> {{ informe.causa_act2_2 }}</p>
-            <p><strong>Causa 5:</strong> {{ informe.causa_act2_5 }}</p>
-          </div>
+          {% if informe.tipo_causas_act2 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act2 }}</br>
 
-          <div class="col">
-            <p><strong>Causa 2:</strong> {{ informe.causa_act2_3 }}</p>
-            <p><strong>Causa 4:</strong> {{ informe.causa_act2_4 }}</p>
-          </div>
-        </div>
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act2 }}
+            </p>
 
-        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act2 }}</p>
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act2_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act2_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act2_3 }}</br>
+                </div>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Acción 1:</strong> {{ informe.accion_act2_1 }}</p>
-            <p><strong>Acción 2:</strong> {{ informe.accion_act2_2 }}</p>
-            <p><strong>Acción 3:</strong> {{ informe.accion_act2_3 }}</p>
-            <p><strong>Acción 4:</strong> {{ informe.accion_act2_4 }}</p>
-            <p><strong>Acción 5:</strong> {{ informe.accion_act2_5 }}</p>
-          </div>
-
-          <div class="col">
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_1 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_2 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_3 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_4 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_5 }}</p>
-          </div>
-        </div>
-
-        <p>
-          <strong>Evidencia fotográfica de la Actividad 2:</strong>
-          {% if informe.evidencia_act2 %}
-            <a href="{{ informe.evidencia_act2 }}">Archivo - Evidencia actividad 2</a>
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act2_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act2_5 }}</br>
+                </div>
+              </div>
+            </p>
           {% endif %}
-        </p>
-      </div>
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act2 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act2_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act2_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act2_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act2_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act2_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act2_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 2:</strong>
+            {% if informe.evidencia_act2 %}
+              <a href="{{ informe.evidencia_act2 }}">Archivo - Evidencia actividad 2</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act2_1 %}
+              <a href="{{ informe.anexo_act2_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act2_2 %}
+              <a href="{{ informe.anexo_act2_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act2_3 %}
+              <a href="{{ informe.anexo_act2_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
       <!-- FIN Actividad 2 -->
 
       <!-- Actividad 3 -->
-      <div class="subtitulo">
-        <h4>Actividad 3</h4>
-        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad3 }}</p>
-        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act3 }}</p>
-        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act3 }}</p>
-        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act3 }}</p>
-        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act3 }}</p>
-        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act3 }}</p>
+      {% if informe.tipo_actividad3 %}
+        <div class="subtitulo">
+          <h4>Actividad 3</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad3 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act3 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act3 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act3 }}</br>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Causa 1:</strong> {{ informe.causa_act3_1 }}</p>
-            <p><strong>Causa 3:</strong> {{ informe.causa_act3_2 }}</p>
-            <p><strong>Causa 5:</strong> {{ informe.causa_act3_5 }}</p>
-          </div>
+          {% if informe.tipo_causas_act3 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act3 }}</br>
 
-          <div class="col">
-            <p><strong>Causa 2:</strong> {{ informe.causa_act3_3 }}</p>
-            <p><strong>Causa 4:</strong> {{ informe.causa_act3_4 }}</p>
-          </div>
-        </div>
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act3 }}
+            </p>
 
-        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act3 }}</p>
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act3_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act3_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act3_3 }}</br>
+                </div>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Acción 1:</strong> {{ informe.accion_act3_1 }}</p>
-            <p><strong>Acción 2:</strong> {{ informe.accion_act3_2 }}</p>
-            <p><strong>Acción 3:</strong> {{ informe.accion_act3_3 }}</p>
-            <p><strong>Acción 4:</strong> {{ informe.accion_act3_4 }}</p>
-            <p><strong>Acción 5:</strong> {{ informe.accion_act3_5 }}</p>
-          </div>
-
-          <div class="col">
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_1 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_2 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_3 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_4 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_5 }}</p>
-          </div>
-        </div>
-
-        <p>
-          <strong>Evidencia fotográfica de la Actividad 3:</strong>
-          {% if informe.evidencia_act3 %}
-            <a href="{{ informe.evidencia_act3 }}">Archivo - Evidencia actividad 3</a>
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act3_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act3_5 }}</br>
+                </div>
+              </div>
+            </p>
           {% endif %}
-        </p>
-      </div>
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act2 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act3_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act3_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act3_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act3_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act3_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act3_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 3:</strong>
+            {% if informe.evidencia_act3 %}
+              <a href="{{ informe.evidencia_act3 }}">Archivo - Evidencia actividad 3</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act3_2 %}
+              <a href="{{ informe.anexo_act3_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act3_2 %}
+              <a href="{{ informe.anexo_act3_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act3_3 %}
+              <a href="{{ informe.anexo_act3_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
       <!-- FIN Actividad 3 -->
 
       <!-- Actividad 4 -->
-      <div class="subtitulo">
-        <h4>Actividad 4</h4>
-        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad4 }}</p>
-        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act4 }}</p>
-        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act4 }}</p>
-        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act4 }}</p>
-        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act4 }}</p>
-        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act4 }}</p>
+      {% if informe.tipo_actividad4 %}
+        <div class="subtitulo">
+          <h4>Actividad 4</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad4 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act4 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act4 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act4 }}</br>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Causa 1:</strong> {{ informe.causa_act4_1 }}</p>
-            <p><strong>Causa 3:</strong> {{ informe.causa_act4_2 }}</p>
-            <p><strong>Causa 5:</strong> {{ informe.causa_act4_5 }}</p>
-          </div>
+          {% if informe.tipo_causas_act4 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act4 }}</br>
 
-          <div class="col">
-            <p><strong>Causa 2:</strong> {{ informe.causa_act4_3 }}</p>
-            <p><strong>Causa 4:</strong> {{ informe.causa_act4_4 }}</p>
-          </div>
-        </div>
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act4 }}
+            </p>
 
-        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act4 }}</p>
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act4_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act4_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act4_3 }}</br>
+                </div>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Acción 1:</strong> {{ informe.accion_act4_1 }}</p>
-            <p><strong>Acción 2:</strong> {{ informe.accion_act4_2 }}</p>
-            <p><strong>Acción 3:</strong> {{ informe.accion_act4_3 }}</p>
-            <p><strong>Acción 4:</strong> {{ informe.accion_act4_4 }}</p>
-            <p><strong>Acción 5:</strong> {{ informe.accion_act4_5 }}</p>
-          </div>
-
-          <div class="col">
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_1 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_2 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_3 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_4 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_5 }}</p>
-          </div>
-        </div>
-
-        <p>
-          <strong>Evidencia fotográfica de la Actividad 4:</strong>
-          {% if informe.evidencia_act4 %}
-            <a href="{{ informe.evidencia_act4 }}">Archivo - Evidencia actividad 4</a>
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act4_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act4_5 }}</br>
+                </div>
+              </div>
+            </p>
           {% endif %}
-        </p>
-      </div>
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act4 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act4_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act4_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act4_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act4_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act4_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act4_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 4:</strong>
+            {% if informe.evidencia_act4 %}
+              <a href="{{ informe.evidencia_act4 }}">Archivo - Evidencia actividad 4</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act4_1 %}
+              <a href="{{ informe.anexo_act4_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act4_2 %}
+              <a href="{{ informe.anexo_act4_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act4_3 %}
+              <a href="{{ informe.anexo_act4_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
       <!-- FIN Actividad 4 -->
 
       <!-- Actividad 5 -->
-      <div class="subtitulo">
-        <h4>Actividad 5</h4>
-        <p><strong>Tipo de actividad:</strong> {{ informe.tipo_actividad5 }}</p>
-        <p><strong>Tipo de acción:</strong> {{ informe.tipo_accion_act5 }}</p>
-        <p><strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act5 }}</p>
-        <p><strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act5 }}</p>
-        <p><strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act5 }}</p>
-        <p><strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act5 }}</p>
+      {% if informe.tipo_actividad5 %}
+        <div class="subtitulo">
+          <h4>Actividad 5</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad5 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act5 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act5 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act5 }}</br>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Causa 1:</strong> {{ informe.causa_act5_1 }}</p>
-            <p><strong>Causa 3:</strong> {{ informe.causa_act5_2 }}</p>
-            <p><strong>Causa 5:</strong> {{ informe.causa_act5_5 }}</p>
-          </div>
+          {% if informe.tipo_causas_act5 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act5 }}</br>
 
-          <div class="col">
-            <p><strong>Causa 2:</strong> {{ informe.causa_act5_3 }}</p>
-            <p><strong>Causa 4:</strong> {{ informe.causa_act5_4 }}</p>
-          </div>
-        </div>
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act5 }}
+            </p>
 
-        <p><strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act5 }}</p>
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act5_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act5_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act5_3 }}</br>
+                </div>
 
-        <div class="row">
-          <div class="col">
-            <p><strong>Acción 1:</strong> {{ informe.accion_act5_1 }}</p>
-            <p><strong>Acción 2:</strong> {{ informe.accion_act5_2 }}</p>
-            <p><strong>Acción 3:</strong> {{ informe.accion_act5_3 }}</p>
-            <p><strong>Acción 4:</strong> {{ informe.accion_act5_4 }}</p>
-            <p><strong>Acción 5:</strong> {{ informe.accion_act5_5 }}</p>
-          </div>
-
-          <div class="col">
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_1 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_2 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_3 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_4 }}</p>
-            <p><strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_5 }}</p>
-          </div>
-        </div>
-
-        <p>
-          <strong>Evidencia fotográfica de la Actividad 5:</strong>
-          {% if informe.evidencia_act5 %}
-            <a href="{{ informe.evidencia_act5 }}">Archivo - Evidencia actividad 5</a>
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act5_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act5_5 }}</br>
+                </div>
+              </div>
+            </p>
           {% endif %}
-        </p>
-      </div>
-      <!-- FIN Actividad 2 -->
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act5 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act5_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act5_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act5_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act5_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act5_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act5_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 5:</strong>
+            {% if informe.evidencia_act5 %}
+              <a href="{{ informe.evidencia_act5 }}">Archivo - Evidencia actividad 5</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act5_1 %}
+              <a href="{{ informe.anexo_act5_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act5_2 %}
+              <a href="{{ informe.anexo_act5_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act5_3 %}
+              <a href="{{ informe.anexo_act5_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 5 -->
+
+      <!-- Actividad 6 -->
+      {% if informe.tipo_actividad6 %}
+        <div class="subtitulo">
+          <h4>Actividad 6</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad6 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act6 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act6 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act6 }}</br>
+
+          {% if informe.tipo_causas_act6 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act6 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act6 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act6_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act6_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act6_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act6_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act6_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act6 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act6_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act6_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act6_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act6_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act6_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act6_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act6_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act6_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act6_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act6_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 6:</strong>
+            {% if informe.evidencia_act6 %}
+              <a href="{{ informe.evidencia_act6 }}">Archivo - Evidencia actividad 6</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act6_1 %}
+              <a href="{{ informe.anexo_act6_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act6_2 %}
+              <a href="{{ informe.anexo_act6_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act6_3 %}
+              <a href="{{ informe.anexo_act6_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 6 -->
+
+      <!-- Actividad 7 -->
+      {% if informe.tipo_actividad7 %}
+        <div class="subtitulo">
+          <h4>Actividad 7</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad7 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act7 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act7 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act7 }}</br>
+
+          {% if informe.tipo_causas_act7 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act7 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act7 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act7_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act7_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act7_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act7_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act7_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act5 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act7_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act7_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act7_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act7_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act7_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act7_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act7_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act7_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act7_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act7_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 7:</strong>
+            {% if informe.evidencia_act7 %}
+              <a href="{{ informe.evidencia_act7 }}">Archivo - Evidencia actividad 7</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act7_1 %}
+              <a href="{{ informe.anexo_act7_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act7_2 %}
+              <a href="{{ informe.anexo_act7_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act7_3 %}
+              <a href="{{ informe.anexo_act7_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 7 -->
+
+      <!-- Actividad 8 -->
+      {% if informe.tipo_actividad8 %}
+        <div class="subtitulo">
+          <h4>Actividad 8</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad8 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act8 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act8 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act8 }}</br>
+
+          {% if informe.tipo_causas_act8 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act8 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act8 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act8_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act8_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act8_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act8_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act8_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act8 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act8_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act8_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act8_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act8_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act8_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act8_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act8_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act8_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act8_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act8_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 8:</strong>
+            {% if informe.evidencia_act8 %}
+              <a href="{{ informe.evidencia_act8 }}">Archivo - Evidencia actividad 8</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act8_1 %}
+              <a href="{{ informe.anexo_act8_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act8_2 %}
+              <a href="{{ informe.anexo_act8_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act8_3 %}
+              <a href="{{ informe.anexo_act8_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 8 -->
+
+      <!-- Actividad 9 -->
+      {% if informe.tipo_actividad9 %}
+        <div class="subtitulo">
+          <h4>Actividad 9</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad9 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act9 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act9 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act9 }}</br>
+
+          {% if informe.tipo_causas_act9 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act9 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act9 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act9_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act9_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act9_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act9_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act9_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act9 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act9_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act9_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act9_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act9_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act9_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act9_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act9_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act9_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act9_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act9_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 9:</strong>
+            {% if informe.evidencia_act9 %}
+              <a href="{{ informe.evidencia_act9 }}">Archivo - Evidencia actividad 9</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act9_1 %}
+              <a href="{{ informe.anexo_act9_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act9_2 %}
+              <a href="{{ informe.anexo_act9_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act9_3 %}
+              <a href="{{ informe.anexo_act9_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 9 -->
+
+      <!-- Actividad 10 -->
+      {% if informe.tipo_actividad10 %}
+        <div class="subtitulo">
+          <h4>Actividad 10</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad10 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act10 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act10 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act10 }}</br>
+
+          {% if informe.tipo_causas_act10 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act10 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act10 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act10_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act10_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act10_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act10_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act10_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act10 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act10_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act10_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act10_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act10_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act10_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act10_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act10_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act10_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act10_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act10_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 10:</strong>
+            {% if informe.evidencia_act10 %}
+              <a href="{{ informe.evidencia_act10 }}">Archivo - Evidencia actividad 10</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act10_1 %}
+              <a href="{{ informe.anexo_act10_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act10_2 %}
+              <a href="{{ informe.anexo_act10_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act10_3 %}
+              <a href="{{ informe.anexo_act10_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 10 -->
+
+      <!-- Actividad 11 -->
+      {% if informe.tipo_actividad11 %}
+        <div class="subtitulo">
+          <h4>Actividad 11</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad11 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act11 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act11 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act11 }}</br>
+
+          {% if informe.tipo_causas_act11 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act11 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act11 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act11_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act11_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act11_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act11_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act11_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act11 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act11_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act11_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act11_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act11_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act11_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act11_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act11_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act11_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act11_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act11_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 11:</strong>
+            {% if informe.evidencia_act11 %}
+              <a href="{{ informe.evidencia_act11 }}">Archivo - Evidencia actividad 11</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act11_1 %}
+              <a href="{{ informe.anexo_act11_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act11_2 %}
+              <a href="{{ informe.anexo_act11_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act11_3 %}
+              <a href="{{ informe.anexo_act11_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 11 -->
+
+      <!-- Actividad 12 -->
+      {% if informe.tipo_actividad12 %}
+        <div class="subtitulo">
+          <h4>Actividad 12</h4>
+          <strong>Tipo de actividad:</strong> {{ informe.tipo_actividad12 }}</br>
+          <strong>Tipo de acción:</strong> {{ informe.tipo_accion_act12 }}</br>
+          <strong>Fuente del Hallazgo:</strong> {{ informe.fuente_hallazgo_act12 }}</br>
+          <strong>Descripción del Hallazgo:</strong> {{ informe.descripcion_hallazgo_act12 }}</br>
+
+          {% if informe.tipo_causas_act12 %}
+            <strong>Tipo de Causas:</strong> {{ informe.tipo_causas_act12 }}</br>
+
+            <p style="margin-top: 10px;">
+              <strong>Causas que determinaron la no conformidad:</strong> {{ informe.no_conformidad_act12 }}
+            </p>
+
+            <p>
+              <div class="row">
+                <div class="col">
+                  <strong>Causa 1:</strong> {{ informe.causa_act12_1 }}</br>
+                  <strong>Causa 2:</strong> {{ informe.causa_act12_2 }}</br>
+                  <strong>Causa 3:</strong> {{ informe.causa_act12_3 }}</br>
+                </div>
+
+                <div class="col">
+                  <strong>Causa 4:</strong> {{ informe.causa_act12_4 }}</br>
+                  <strong>Causa 5:</strong> {{ informe.causa_act12_5 }}</br>
+                </div>
+              </div>
+            </p>
+          {% endif %}
+
+          <strong>Acciones a Ejecutar:</strong> {{ informe.acciones_ejecutar_act12 }}
+
+          <p>
+            <div class="row">
+              <div class="col">
+                <strong>Acción 1:</strong> {{ informe.accion_act12_1 }}</br>
+                <strong>Acción 2:</strong> {{ informe.accion_act12_2 }}</br>
+                <strong>Acción 3:</strong> {{ informe.accion_act12_3 }}</br>
+                <strong>Acción 4:</strong> {{ informe.accion_act12_4 }}</br>
+                <strong>Acción 5:</strong> {{ informe.accion_act12_5 }}</br>
+              </div>
+
+              <div class="col">
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act12_1 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act12_2 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act12_3 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act12_4 }}</br>
+                <strong>Fecha límite de ejecución:</strong> {{ informe.fecha_ejecucion_act12_5 }}</br>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <strong>Evidencia fotográfica de la Actividad 12:</strong>
+            {% if informe.evidencia_act12 %}
+              <a href="{{ informe.evidencia_act12 }}">Archivo - Evidencia actividad 12</a>
+            {% endif %}
+          </p>
+
+          <p>
+            <strong>Anexo 1:</strong>
+            {% if informe.anexo_act12_1 %}
+              <a href="{{ informe.anexo_act12_1 }}">Archivo - Anexo 1</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 2:</strong>
+            {% if informe.anexo_act12_2 %}
+              <a href="{{ informe.anexo_act12_2 }}">Archivo - Anexo 2</a>
+            {% endif %}
+            </br>
+
+            <strong>Anexo 3:</strong>
+            {% if informe.anexo_act12_3 %}
+              <a href="{{ informe.anexo_act12_3 }}">Archivo - Anexo 2</a>
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+      <!-- FIN Actividad 12 -->
     </div>
     <!-- FIN Actividades -->
-
 
     <!-- Gestión del Cambio -->
     <div class="detalleInforme">
@@ -685,89 +1549,145 @@
 
       <div class="row">
         <!-- Cambio 1 -->
-        <div class="col">
-          <div class="subtitulo">
-            <h4>Cambio 1</h4>
-            <p><strong>Criterio:</strong> {{ informe.criterio1 }}</p>
-            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio1 }}</p>
-            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio1 }}</p>
+        {% if informe.criterio1 %}
+          <div class="col">
+            <div class="subtitulo">
+              <h4>Cambio 1</h4>
+              <strong>Criterio:</strong> {{ informe.criterio1 }}</br>
+              <strong>Tipo de cambio:</strong> {{ informe.tipo_cambio1 }}</br>
+              <strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio1 }}</br>
 
-            <p>
               <strong>Registro del antes:</strong>
               {% if informe.registro_antes1 %}
                 <a href="{{ informe.registro_antes1 }}">Archivo - Registro del antes</a>
               {% endif %}
-              </a>
-            </p>
+              </br>
 
-            <p>
               <strong>Registro del después:</strong>
               {% if informe.registro_despues1 %}
                 <a href="{{ informe.registro_despues1 }}">Archivo - Registro del después</a>
               {% endif %}
-            </p>
+              </br>
 
-            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio1 }}</p>
+              <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio1 }}</p>
+            </div>
           </div>
-        </div>
+        {% endif %}
         <!-- FIN Cambio 1 -->
 
         <!-- Cambio 2 -->
-        <div class="col">
-          <div class="subtitulo">
-            <h4>Cambio 2</h4>
-            <p><strong>Criterio:</strong> {{ informe.criterio2 }}</p>
-            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio2 }}</p>
-            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio2 }}</p>
+        {% if informe.criterio2 %}
+          <div class="col">
+            <div class="subtitulo">
+              <h4>Cambio 2</h4>
+              <strong>Criterio:</strong> {{ informe.criterio2 }}</br>
+              <strong>Tipo de cambio:</strong> {{ informe.tipo_cambio2 }}</br>
+              <strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio2 }}</br>
 
-            <p>
               <strong>Registro del antes:</strong>
               {% if informe.registro_antes2 %}
                 <a href="{{ informe.registro_antes2 }}">Archivo - Registro del antes</a>
-              {% endif %}</a>
-            </p>
+              {% endif %}
+              </br>
 
-            <p>
               <strong>Registro del después:</strong>
               {% if informe.registro_despues2 %}
                 <a href="{{ informe.registro_despues2 }}">Archivo - Registro del después</a>
               {% endif %}
-            </p>
+              </br>
 
-            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio2 }}</p>
+              <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio2 }}</p>
+            </div>
           </div>
-        </div>
+        {% endif %}
         <!-- FIN Cambio 2 -->
       </div>
 
-      <!-- Cambio 3 -->
       <div class="row">
-        <div class="col">
-          <div class="subtitulo">
-            <h4>Cambio 3</h4>
-            <p><strong>Criterio:</strong> {{ informe.criterio3 }}</p>
-            <p><strong>Tipo de cambio:</strong> {{ informe.tipo_cambio3 }}</p>
-            <p><strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio3 }}</p>
+        <!-- Cambio 3 -->
+        {% if informe.criterio3 %}
+          <div class="col">
+            <div class="subtitulo">
+              <h4>Cambio 3</h4>
+              <strong>Criterio:</strong> {{ informe.criterio3 }}</br>
+              <strong>Tipo de cambio:</strong> {{ informe.tipo_cambio3 }}</br>
+              <strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio3 }}</br>
 
-            <p>
               <strong>Registro del antes:</strong>
               {% if informe.registro_antes2 %}
                 <a href="{{ informe.registro_antes2 }}">Archivo - Registro del antes</a>
-              {% endif %}</a>
-            </p>
+              {% endif %}
+              </br>
 
-            <p>
               <strong>Registro del después:</strong>
               {% if informe.registro_despues3 %}
                 <a href="{{ informe.registro_despues3 }}">Archivo - Registro del después</a>
               {% endif %}
-            </p>
+              </br>
 
-            <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio3 }}</p>
+              <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio3 }}</p>
+            </div>
           </div>
-        </div>
+        {% endif %}
+        <!-- FIN Cambio 3 -->
+
+        <!-- Cambio 4 -->
+        {% if informe.criterio4 %}
+          <div class="col">
+            <div class="subtitulo">
+              <h4>Cambio 4</h4>
+              <strong>Criterio:</strong> {{ informe.criterio4 }}</br>
+              <strong>Tipo de cambio:</strong> {{ informe.tipo_cambio4 }}</br>
+              <strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio4 }}</br>
+
+              <strong>Registro del antes:</strong>
+              {% if informe.registro_antes4 %}
+                <a href="{{ informe.registro_antes4 }}">Archivo - Registro del antes</a>
+              {% endif %}
+              </br>
+
+              
+              <strong>Registro del después:</strong>
+              {% if informe.registro_despues4 %}
+                <a href="{{ informe.registro_despues4 }}">Archivo - Registro del después</a>
+              {% endif %}
+              </br>
+
+              <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio4 }}</p>
+            </div>
+          </div>
+        {% endif %}
+        <!-- FIN Cambio 4 -->
       </div>
-      <!-- FIN Cambio 3 -->
+
+      <div class="row">
+        <!-- Cambio 5 -->
+        {% if informe.criterio5 %}
+          <div class="col">
+            <div class="subtitulo">
+              <h4>Cambio 5</h4>
+              <strong>Criterio:</strong> {{ informe.criterio5 }}</br>
+              <strong>Tipo de cambio:</strong> {{ informe.tipo_cambio5 }}</br>
+              <strong>Descripción del cambio:</strong> {{ informe.descripcion_cambio5 }}</br>
+
+              <strong>Registro del antes:</strong>
+              {% if informe.registro_antes5 %}
+                <a href="{{ informe.registro_antes5 }}">Archivo - Registro del antes</a>
+              {% endif %}
+              </br>
+
+              <strong>Registro del después:</strong>
+              {% if informe.registro_despues5 %}
+                <a href="{{ informe.registro_despues5 }}">Archivo - Registro del después</a>
+              {% endif %}
+              </br>
+
+              <p><strong>Responsable del cambio:</strong> {{ informe.responsable_cambio5 }}</p>
+            </div>
+          </div>
+        {% endif %}
+        <!-- FIN Cambio 5 -->
+      </div>
     </div>
     <!-- FIN Gestión del Cambio -->
 

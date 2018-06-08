@@ -12,7 +12,6 @@ from django.core.exceptions import ValidationError
 # -------- Opciones para los campos dropdown y checkbox -------- #
 
 OPCIONES_EMPRESA = (
-    ('CASA MODELO', 'Casa Modelo'),
     ('D y C CONSTRUCTORES', 'D y C Constructores'),
     ('DECOFACHADAS', 'Decofachadas'),
     ('ENCHAPES GUERRA', 'Enchapes Guerra'),
@@ -25,6 +24,11 @@ OPCIONES_EMPRESA = (
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
     ('VELAYA CONSTRUCCIONES', 'Velaya Construcciones'),
     ('VILLA CONSTRUCCIONES', 'Villa Construcciones'),
+)
+
+OPCIONES_OBRA = (
+    ('CASA MODELO - LUNA DEL VALLES', 'Casa Modelo - Luna del Vallès'),
+    ('IBIZA', 'Ibiza'),
 )
 
 OPCIONES_PREGUNTA = (
@@ -177,6 +181,11 @@ class Informe(models.Model):
     # Clave foranea, vínculo a otro modelo
     usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     empresa = models.CharField(max_length=30, choices=OPCIONES_EMPRESA)
+    obra    = models.CharField(
+        max_length=30,
+        choices=OPCIONES_OBRA,
+        blank=True,
+        null=True)
     fecha_elaboracion = models.DateTimeField(
         default=datetime.now,
         verbose_name="Fecha de Elaboración")
@@ -2724,6 +2733,10 @@ class Informe(models.Model):
     # ------------- Fin Gestión del cambio 5 ------------ #
 
     observaciones = models.TextField(
+        blank=True,
+        verbose_name="Observaciones")
+
+    observaciones2 = models.TextField(
         blank=True,
         verbose_name="Observaciones")
 

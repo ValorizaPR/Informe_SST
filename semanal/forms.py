@@ -5,10 +5,6 @@ from .models import Informe
 
 from django.forms.widgets import PasswordInput
 
-from django.db import models
-
-from multiselectfield import MultiSelectField
-
 """
 Formulario para inicio de sesión en la aplicación
 """
@@ -53,11 +49,11 @@ class FormInforme(forms.ModelForm):
             Informe._meta.get_field(field).get_internal_type() == 'BigIntegerField' or \
             Informe._meta.get_field(field).get_internal_type() == 'TextField':
                 self.fields[field].widget.attrs.update({
-                'class': 'form-control'})
+                    'class': 'form-control'})
 
             if Informe._meta.get_field(field).get_internal_type() == 'FileField':
                 self.fields[field].widget.attrs.update({
-                'class': 'form-control-file hideFileTex'})
+                    'class': 'form-control-file hideFileTex'})
 
             # Atributo temporal mientras se hacen dinámicas las investigacioens
             if self.fields['acc_laboral'] or self.fields['inc_laboral']:
@@ -67,6 +63,7 @@ class FormInforme(forms.ModelForm):
                     'max': '3'})
 
             if self.fields[field] == self.fields['empresa'] or \
+            self.fields[field] == self.fields['obra'] or \
             self.fields[field] == self.fields['pregunta_incapacidad'] or \
             self.fields[field] == self.fields['tipo_accion_epp'] or \
             self.fields[field] == self.fields['tipo_accion_OyA'] or \
@@ -182,6 +179,41 @@ class FormInforme(forms.ModelForm):
             'fecha_ejecucion_act5_3': DateInput(),
             'fecha_ejecucion_act5_4': DateInput(),
             'fecha_ejecucion_act5_5': DateInput(),
+            'fecha_ejecucion_act6_1': DateInput(),
+            'fecha_ejecucion_act6_2': DateInput(),
+            'fecha_ejecucion_act6_3': DateInput(),
+            'fecha_ejecucion_act6_4': DateInput(),
+            'fecha_ejecucion_act6_5': DateInput(),
+            'fecha_ejecucion_act7_1': DateInput(),
+            'fecha_ejecucion_act7_2': DateInput(),
+            'fecha_ejecucion_act7_3': DateInput(),
+            'fecha_ejecucion_act7_4': DateInput(),
+            'fecha_ejecucion_act7_5': DateInput(),
+            'fecha_ejecucion_act8_1': DateInput(),
+            'fecha_ejecucion_act8_2': DateInput(),
+            'fecha_ejecucion_act8_3': DateInput(),
+            'fecha_ejecucion_act8_4': DateInput(),
+            'fecha_ejecucion_act8_5': DateInput(),
+            'fecha_ejecucion_act9_1': DateInput(),
+            'fecha_ejecucion_act9_2': DateInput(),
+            'fecha_ejecucion_act9_3': DateInput(),
+            'fecha_ejecucion_act9_4': DateInput(),
+            'fecha_ejecucion_act9_5': DateInput(),
+            'fecha_ejecucion_act10_1': DateInput(),
+            'fecha_ejecucion_act10_2': DateInput(),
+            'fecha_ejecucion_act10_3': DateInput(),
+            'fecha_ejecucion_act10_4': DateInput(),
+            'fecha_ejecucion_act10_5': DateInput(),
+            'fecha_ejecucion_act11_1': DateInput(),
+            'fecha_ejecucion_act11_2': DateInput(),
+            'fecha_ejecucion_act11_3': DateInput(),
+            'fecha_ejecucion_act11_4': DateInput(),
+            'fecha_ejecucion_act11_5': DateInput(),
+            'fecha_ejecucion_act12_1': DateInput(),
+            'fecha_ejecucion_act12_2': DateInput(),
+            'fecha_ejecucion_act12_3': DateInput(),
+            'fecha_ejecucion_act12_4': DateInput(),
+            'fecha_ejecucion_act12_5': DateInput(),
             'descripcion_hallazgo_epp': forms.Textarea(attrs={
                 'rows':5,
                 'placeholder':u'Descripción breve del hallazgo'}),
