@@ -26,7 +26,7 @@ class LoginForm(forms.Form):
         self.fields['username'].widget.attrs.update({
             'title': 'Nombre de Usuario',
             'placeholder': 'Usuario'})
-        
+
         self.fields['password'].widget.attrs.update({
             'title': u'Contraseña',
             'placeholder': u'Contraseña'})
@@ -55,7 +55,7 @@ class FormInforme(forms.ModelForm):
                 self.fields[field].widget.attrs.update({
                     'class': 'form-control-file hideFileTex'})
 
-            # Atributo temporal mientras se hacen dinámicas las investigacioens
+            # Atributo temporal mientras se hacen dinámicas las investigaciones
             if self.fields['acc_laboral'] or self.fields['inc_laboral']:
                 self.fields['acc_laboral'].widget.attrs.update({
                     'max': '3'})

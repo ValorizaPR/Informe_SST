@@ -12,14 +12,21 @@ from django.core.exceptions import ValidationError
 # -------- Opciones para los campos dropdown y checkbox -------- #
 
 OPCIONES_EMPRESA = (
+    ('ALCO', 'Alco'),
+    ('CUBIERTAS JULIO BETANCUR Y CIA', 'Cubiertas Julio Betancur Y CIA'),
     ('D y C CONSTRUCTORES', 'D y C Constructores'),
+    ('D y D CAD', 'D y D Cad'),
     ('DECOFACHADAS', 'Decofachadas'),
     ('ENCHAPES GUERRA', 'Enchapes Guerra'),
+    ('ESTRUMETALICAS JS', 'Estrumetálicas JS'),
     ('FLOTANTES', 'Flotantes'),
     ('IDEA CUBICA', 'Idea Cúbica'),
+    ('INGENOX', 'Ingenox'),
     ('INVERSIONES HD GLOBAL', 'Inversiones HD Global'),
     ('MITSUBISHI', 'Mitsubishi'),
     ('MONTAJES ELECTRICOS', 'Montajes Eléctricos'),
+    ('OBRA FINAL', 'Obra final'),
+    ('PUERTAS YAKO', 'Puertas Yako'),
     ('SOLUCIONES EN ICOPOR', 'Soluciones en Icopor'),
     ('VALORIZA PROPIEDAD RAIZ', 'Valoriza Propiedad Raíz'),
     ('VELAYA CONSTRUCCIONES', 'Velaya Construcciones'),
@@ -158,7 +165,7 @@ Limita el tamaño de los archivos cargados a 2 MB
 """
 def tam_archivo(archivo):
     limite = 5 * 1024 * 1024
-    
+
     if archivo.size > limite:
         raise ValidationError('El tamaño del archivo debe ser menor a 2 MB.')
 
@@ -214,17 +221,17 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_acc_laboral1 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_acc_laboral1 = models.DateField(
         blank=True,
         null=True,
         verbose_name="Fecha para entrega de la investigación")
-    
+
     furat1 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -277,17 +284,17 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_acc_laboral2 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_acc_laboral2 = models.DateField(
         blank=True,
         null=True,
         verbose_name="Fecha para entrega de la investigación")
-    
+
     furat2 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -340,17 +347,17 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_acc_laboral3 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_acc_laboral3 = models.DateField(
         blank=True,
         null=True,
         verbose_name="Fecha para entrega de la investigación")
-    
+
     furat3 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -410,12 +417,12 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_inc_laboral1 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_inc_laboral1 = models.DateField(
         blank=True,
         null=True,
@@ -426,7 +433,7 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
-    
+
     investigacion_inc1 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -443,12 +450,12 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_inc_laboral2 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_inc_laboral2 = models.DateField(
         blank=True,
         null=True,
@@ -459,7 +466,7 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
-    
+
     investigacion_inc2 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -476,12 +483,12 @@ class Informe(models.Model):
         max_length=50,
         blank=True,
         verbose_name="Nombre")
-    
+
     cedula_inc_laboral3 = models.BigIntegerField(
         blank=True,
         null=True,
         verbose_name="Cédula")
-    
+
     fecha_inc_laboral3 = models.DateField(
         blank=True,
         null=True,
@@ -492,7 +499,7 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Incidente")
-    
+
     investigacion_inc3 = models.FileField(
         upload_to='archivos/%Y/%m/',
         validators=[tam_archivo],
@@ -559,7 +566,7 @@ class Informe(models.Model):
         validators=[tam_archivo],
         blank=True,
         verbose_name="Adjunto incapacidades")
-    
+
     # ---------- Fin Novedades del personal --------- #
 
     # ---------------- Inspección EPP --------------- #
@@ -2733,10 +2740,6 @@ class Informe(models.Model):
     # ------------- Fin Gestión del cambio 5 ------------ #
 
     observaciones = models.TextField(
-        blank=True,
-        verbose_name="Observaciones")
-
-    observaciones2 = models.TextField(
         blank=True,
         verbose_name="Observaciones")
 
