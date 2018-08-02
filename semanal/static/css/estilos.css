@@ -117,8 +117,16 @@ h1, h2, h3, h4 {
   margin-right: 5px;
 }
 
-.icono2:hover {
-  color: #c82333;
+.icono3, .icono3:visited {
+  color: #ea1f0b;
+  font-size: 17pt;
+  height: 12px;
+  margin: -9px 0px 0px -9px;
+}
+
+.btn-reset {
+  width: 10px;
+  display: none;
 }
 
 .informe {

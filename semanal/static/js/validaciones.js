@@ -3208,3 +3208,1293 @@ $('#cambios').click(function() {
       break;
   }
 });
+
+/*
+ * Funciones que limpian los file input y ocultan los botones.
+ */
+$(function() {
+  $('#id_furat1').change(function (){
+    $('#resetFurat1').show();
+  });
+});
+
+$('#resetFurat1').on('click', function(e){
+  var $el = $('#id_furat1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetFurat1').hide();
+});
+
+$(function() {
+  $('#id_investigacion_acc1').change(function (){
+    $('#resetInvestAcc1').show();
+  });
+});
+
+$('#resetInvestAcc1').on('click', function(e){
+  var $el = $('#id_investigacion_acc1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestAcc1').hide();
+});
+
+$(function() {
+  $('#id_leccion1').change(function (){
+    $('#resetLeccion1').show();
+  });
+});
+
+$('#resetLeccion1').on('click', function(e){
+  var $el = $('#id_leccion1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetLeccion1').hide();
+});
+
+$(function() {
+  $('#id_testigos1').change(function (){
+    $('#resetTestigos1').show();
+  });
+});
+
+$('#resetTestigos1').on('click', function(e){
+  var $el = $('#id_testigos1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetTestigos1').hide();
+});
+
+$(function() {
+  $('#id_incapacidad_acc_laboral1').change(function (){
+    $('#resetIncAccLbl1').show();
+  });
+});
+
+$('#resetIncAccLbl1').on('click', function(e){
+  var $el = $('#id_incapacidad_acc_laboral1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncAccLbl1').hide();
+});
+
+$(function() {
+  $('#id_carta_eps1').change(function (){
+    $('#resetCartaEps1').show();
+  });
+});
+
+$('#resetCartaEps1').on('click', function(e){
+  var $el = $('#id_carta_eps1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaEps1').hide();
+});
+
+$(function() {
+  $('#id_carta_ministerio1').change(function (){
+    $('#resetCartaMinisterio1').show();
+  });
+});
+
+$('#resetCartaMinisterio1').on('click', function(e){
+  var $el = $('#id_carta_ministerio1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaMinisterio1').hide();
+});
+
+$(function() {
+  $('#id_evidencia_accidente1').change(function (){
+    $('#resetEviAcc1').show();
+  });
+});
+
+$('#resetEviAcc1').on('click', function(e){
+  var $el = $('#id_evidencia_accidente1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAcc1').hide();
+});
+
+$(function() {
+  $('#id_furat2').change(function (){
+    $('#resetFurat2').show();
+  });
+});
+
+$('#resetFurat2').on('click', function(e){
+  var $el = $('#id_furat2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetFurat2').hide();
+});
+
+$(function() {
+  $('#id_investigacion_acc2').change(function (){
+    $('#resetInvestAcc2').show();
+  });
+});
+
+$('#resetInvestAcc2').on('click', function(e){
+  var $el = $('#id_investigacion_acc2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestAcc2').hide();
+});
+
+$(function() {
+  $('#id_leccion2').change(function (){
+    $('#resetLeccion2').show();
+  });
+});
+
+$('#resetLeccion2').on('click', function(e){
+  var $el = $('#id_leccion2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetLeccion2').hide();
+});
+
+$(function() {
+  $('#id_testigos2').change(function (){
+    $('#resetTestigos2').show();
+  });
+});
+
+$('#resetTestigos2').on('click', function(e){
+  var $el = $('#id_testigos2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetTestigos2').hide();
+});
+
+$(function() {
+  $('#id_incapacidad_acc_laboral2').change(function (){
+    $('#resetIncAccLbl2').show();
+  });
+});
+
+$('#resetIncAccLbl2').on('click', function(e){
+  var $el = $('#id_incapacidad_acc_laboral2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncAccLbl2').hide();
+});
+
+$(function() {
+  $('#id_carta_eps2').change(function (){
+    $('#resetCartaEps2').show();
+  });
+});
+
+$('#resetCartaEps2').on('click', function(e){
+  var $el = $('#id_carta_eps2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaEps2').hide();
+});
+
+$(function() {
+  $('#id_carta_ministerio2').change(function (){
+    $('#resetCartaMinisterio2').show();
+  });
+});
+
+$('#resetCartaMinisterio2').on('click', function(e){
+  var $el = $('#id_carta_ministerio2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaMinisterio2').hide();
+});
+
+$(function() {
+  $('#id_evidencia_accidente2').change(function (){
+    $('#resetEviAcc2').show();
+  });
+});
+
+$('#resetEviAcc2').on('click', function(e){
+  var $el = $('#id_evidencia_accidente2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAcc2').hide();
+});
+
+$(function() {
+  $('#id_furat3').change(function (){
+    $('#resetFurat3').show();
+  });
+});
+
+$('#resetFurat3').on('click', function(e){
+  var $el = $('#id_furat3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetFurat3').hide();
+});
+
+$(function() {
+  $('#id_investigacion_acc3').change(function (){
+    $('#resetInvestAcc3').show();
+  });
+});
+
+$('#resetInvestAcc3').on('click', function(e){
+  var $el = $('#id_investigacion_acc3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestAcc3').hide();
+});
+
+$(function() {
+  $('#id_leccion3').change(function (){
+    $('#resetLeccion3').show();
+  });
+});
+
+$('#resetLeccion3').on('click', function(e){
+  var $el = $('#id_leccion3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetLeccion3').hide();
+});
+
+$(function() {
+  $('#id_testigos3').change(function (){
+    $('#resetTestigos3').show();
+  });
+});
+
+$('#resetTestigos3').on('click', function(e){
+  var $el = $('#id_testigos3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetTestigos3').hide();
+});
+
+$(function() {
+  $('#id_incapacidad_acc_laboral3').change(function (){
+    $('#resetIncAccLbl3').show();
+  });
+});
+
+$('#resetIncAccLbl3').on('click', function(e){
+  var $el = $('#id_incapacidad_acc_laboral3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncAccLbl3').hide();
+});
+
+$(function() {
+  $('#id_carta_eps3').change(function (){
+    $('#resetCartaEps3').show();
+  });
+});
+
+$('#resetCartaEps3').on('click', function(e){
+  var $el = $('#id_carta_eps3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaEps3').hide();
+});
+
+$(function() {
+  $('#id_carta_ministerio3').change(function (){
+    $('#resetCartaMinisterio3').show();
+  });
+});
+
+$('#resetCartaMinisterio3').on('click', function(e){
+  var $el = $('#id_carta_ministerio3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetCartaMinisterio3').hide();
+});
+
+$(function() {
+  $('#id_evidencia_accidente3').change(function (){
+    $('#resetEviAcc3').show();
+  });
+});
+
+$('#resetEviAcc3').on('click', function(e){
+  var $el = $('#id_evidencia_accidente3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAcc3').hide();
+});
+
+$(function() {
+  $('#id_incidente1').change(function (){
+    $('#resetIncidente1').show();
+  });
+});
+
+$('#resetIncidente1').on('click', function(e){
+  var $el = $('#id_incidente1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncidente1').hide();
+});
+
+$(function() {
+  $('#id_investigacion_inc1').change(function (){
+    $('#resetInvestInc1').show();
+  });
+});
+
+$('#resetInvestInc1').on('click', function(e){
+  var $el = $('#id_investigacion_inc1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestInc1').hide();
+});
+
+$(function() {
+  $('#id_evidencia_incidente1').change(function (){
+    $('#resetEviInc1').show();
+  });
+});
+
+$('#resetEviInc1').on('click', function(e){
+  var $el = $('#id_evidencia_incidente1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviInc1').hide();
+});
+
+$(function() {
+  $('#id_incidente2').change(function (){
+    $('#resetIncidente2').show();
+  });
+});
+
+$('#resetIncidente2').on('click', function(e){
+  var $el = $('#id_incidente2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncidente2').hide();
+});
+
+$(function() {
+  $('#id_investigacion_inc2').change(function (){
+    $('#resetInvestInc2').show();
+  });
+});
+
+$('#resetInvestInc2').on('click', function(e){
+  var $el = $('#id_investigacion_inc2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestInc2').hide();
+});
+
+$(function() {
+  $('#id_evidencia_incidente2').change(function (){
+    $('#resetEviInc2').show();
+  });
+});
+
+$('#resetEviInc2').on('click', function(e){
+  var $el = $('#id_evidencia_incidente2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviInc2').hide();
+});
+
+$(function() {
+  $('#id_incidente3').change(function (){
+    $('#resetIncidente3').show();
+  });
+});
+
+$('#resetIncidente3').on('click', function(e){
+  var $el = $('#id_incidente3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetIncidente3').hide();
+});
+
+$(function() {
+  $('#id_investigacion_inc3').change(function (){
+    $('#resetInvestInc3').show();
+  });
+});
+
+$('#resetInvestInc3').on('click', function(e){
+  var $el = $('#id_investigacion_inc3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetInvestInc3').hide();
+});
+
+$(function() {
+  $('#id_evidencia_incidente3').change(function (){
+    $('#resetEviInc3').show();
+  });
+});
+
+$('#resetEviInc3').on('click', function(e){
+  var $el = $('#id_evidencia_incidente3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviInc3').hide();
+});
+
+$(function() {
+  $('#id_adj_licencias').change(function (){
+    $('#resetAdjLic').show();
+  });
+});
+
+$('#resetAdjLic').on('click', function(e){
+  var $el = $('#id_adj_licencias');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAdjLic').hide();
+});
+
+$(function() {
+  $('#id_adj_memorandos').change(function (){
+    $('#resetAdjMem').show();
+  });
+});
+
+$('#resetAdjMem').on('click', function(e){
+  var $el = $('#id_adj_memorandos');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAdjMem').hide();
+});
+
+$(function() {
+  $('#id_adj_suspensiones').change(function (){
+    $('#resetAdjSus').show();
+  });
+});
+
+$('#resetAdjSus').on('click', function(e){
+  var $el = $('#id_adj_suspensiones');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAdjSus').hide();
+});
+
+$(function() {
+  $('#id_adj_incapacidades').change(function (){
+    $('#resetAdjInc').show();
+  });
+});
+
+$('#resetAdjInc').on('click', function(e){
+  var $el = $('#id_adj_incapacidades');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAdjInc').hide();
+});
+
+$(function() {
+  $('#id_evidencia_epp').change(function (){
+    $('#resetEviEpp').show();
+  });
+});
+
+$('#resetEviEpp').on('click', function(e){
+  var $el = $('#id_evidencia_epp');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviEpp').hide();
+});
+
+$(function() {
+  $('#id_formato_epp').change(function (){
+    $('#resetForEpp').show();
+  });
+});
+
+$('#resetForEpp').on('click', function(e){
+  var $el = $('#id_formato_epp');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetForEpp').hide();
+});
+
+$(function() {
+  $('#id_evidencia_OyA').change(function (){
+    $('#resetEviOya').show();
+  });
+});
+
+$('#resetEviOya').on('click', function(e){
+  var $el = $('#id_evidencia_OyA');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviOya').hide();
+});
+
+$(function() {
+  $('#id_formato_OyA').change(function (){
+    $('#resetForOya').show();
+  });
+});
+
+$('#resetForOya').on('click', function(e){
+  var $el = $('#id_formato_OyA');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetForOya').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act1').change(function (){
+    $('#resetEviAct1').show();
+  });
+});
+
+$('#resetEviAct1').on('click', function(e){
+  var $el = $('#id_evidencia_act1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct1').hide();
+});
+
+$(function() {
+  $('#id_anexo_act1_1').change(function (){
+    $('#resetAne1Act1').show();
+  });
+});
+
+$('#resetAne1Act1').on('click', function(e){
+  var $el = $('#id_anexo_act1_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act1').hide();
+});
+
+$(function() {
+  $('#id_anexo_act1_2').change(function (){
+    $('#resetAne2Act1').show();
+  });
+});
+
+$('#resetAne2Act1').on('click', function(e){
+  var $el = $('#id_anexo_act1_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act1').hide();
+});
+
+$(function() {
+  $('#id_anexo_act1_3').change(function (){
+    $('#resetAne3Act1').show();
+  });
+});
+
+$('#resetAne3Act1').on('click', function(e){
+  var $el = $('#id_anexo_act1_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act1').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act2').change(function (){
+    $('#resetEviAct2').show();
+  });
+});
+
+$('#resetEviAct2').on('click', function(e){
+  var $el = $('#id_evidencia_act2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct2').hide();
+});
+
+$(function() {
+  $('#id_anexo_act2_1').change(function (){
+    $('#resetAne1Act2').show();
+  });
+});
+
+$('#resetAne1Act2').on('click', function(e){
+  var $el = $('#id_anexo_act2_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act2').hide();
+});
+
+$(function() {
+  $('#id_anexo_act2_2').change(function (){
+    $('#resetAne2Act2').show();
+  });
+});
+
+$('#resetAne2Act2').on('click', function(e){
+  var $el = $('#id_anexo_act2_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act2').hide();
+});
+
+$(function() {
+  $('#id_anexo_act2_3').change(function (){
+    $('#resetAne3Act2').show();
+  });
+});
+
+$('#resetAne3Act2').on('click', function(e){
+  var $el = $('#id_anexo_act2_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act2').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act3').change(function (){
+    $('#resetEviAct3').show();
+  });
+});
+
+$('#resetEviAct3').on('click', function(e){
+  var $el = $('#id_evidencia_act3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct3').hide();
+});
+
+$(function() {
+  $('#id_anexo_act3_1').change(function (){
+    $('#resetAne1Act3').show();
+  });
+});
+
+$('#resetAne1Act3').on('click', function(e){
+  var $el = $('#id_anexo_act3_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act3').hide();
+});
+
+$(function() {
+  $('#id_anexo_act3_2').change(function (){
+    $('#resetAne2Act3').show();
+  });
+});
+
+$('#resetAne2Act3').on('click', function(e){
+  var $el = $('#id_anexo_act3_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act3').hide();
+});
+
+$(function() {
+  $('#id_anexo_act3_3').change(function (){
+    $('#resetAne3Act3').show();
+  });
+});
+
+$('#resetAne3Act3').on('click', function(e){
+  var $el = $('#id_anexo_act3_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act3').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act4').change(function (){
+    $('#resetEviAct4').show();
+  });
+});
+
+$('#resetEviAct4').on('click', function(e){
+  var $el = $('#id_evidencia_act4');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct4').hide();
+});
+
+$(function() {
+  $('#id_anexo_act4_1').change(function (){
+    $('#resetAne1Act4').show();
+  });
+});
+
+$('#resetAne1Act4').on('click', function(e){
+  var $el = $('#id_anexo_act4_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act4').hide();
+});
+
+$(function() {
+  $('#id_anexo_act4_2').change(function (){
+    $('#resetAne2Act4').show();
+  });
+});
+
+$('#resetAne2Act4').on('click', function(e){
+  var $el = $('#id_anexo_act4_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act4').hide();
+});
+
+$(function() {
+  $('#id_anexo_act4_3').change(function (){
+    $('#resetAne3Act4').show();
+  });
+});
+
+$('#resetAne3Act4').on('click', function(e){
+  var $el = $('#id_anexo_act4_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act4').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act5').change(function (){
+    $('#resetEviAct5').show();
+  });
+});
+
+$('#resetEviAct5').on('click', function(e){
+  var $el = $('#id_evidencia_act5');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct5').hide();
+});
+
+$(function() {
+  $('#id_anexo_act5_1').change(function (){
+    $('#resetAne1Act5').show();
+  });
+});
+
+$('#resetAne1Act5').on('click', function(e){
+  var $el = $('#id_anexo_act5_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act5').hide();
+});
+
+$(function() {
+  $('#id_anexo_act5_2').change(function (){
+    $('#resetAne2Act5').show();
+  });
+});
+
+$('#resetAne2Act5').on('click', function(e){
+  var $el = $('#id_anexo_act5_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act5').hide();
+});
+
+$(function() {
+  $('#id_anexo_act5_3').change(function (){
+    $('#resetAne3Act5').show();
+  });
+});
+
+$('#resetAne3Act5').on('click', function(e){
+  var $el = $('#id_anexo_act5_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act5').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act6').change(function (){
+    $('#resetEviAct6').show();
+  });
+});
+
+$('#resetEviAct6').on('click', function(e){
+  var $el = $('#id_evidencia_act6');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct6').hide();
+});
+
+$(function() {
+  $('#id_anexo_act6_1').change(function (){
+    $('#resetAne1Act6').show();
+  });
+});
+
+$('#resetAne1Act6').on('click', function(e){
+  var $el = $('#id_anexo_act6_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act6').hide();
+});
+
+$(function() {
+  $('#id_anexo_act6_2').change(function (){
+    $('#resetAne2Act6').show();
+  });
+});
+
+$('#resetAne2Act6').on('click', function(e){
+  var $el = $('#id_anexo_act6_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act6').hide();
+});
+
+$(function() {
+  $('#id_anexo_act6_3').change(function (){
+    $('#resetAne3Act6').show();
+  });
+});
+
+$('#resetAne3Act6').on('click', function(e){
+  var $el = $('#id_anexo_act6_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act6').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act7').change(function (){
+    $('#resetEviAct7').show();
+  });
+});
+
+$('#resetEviAct7').on('click', function(e){
+  var $el = $('#id_evidencia_act7');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct7').hide();
+});
+
+$(function() {
+  $('#id_anexo_act7_1').change(function (){
+    $('#resetAne1Act7').show();
+  });
+});
+
+$('#resetAne1Act7').on('click', function(e){
+  var $el = $('#id_anexo_act7_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act7').hide();
+});
+
+$(function() {
+  $('#id_anexo_act7_2').change(function (){
+    $('#resetAne2Act7').show();
+  });
+});
+
+$('#resetAne2Act7').on('click', function(e){
+  var $el = $('#id_anexo_act7_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act7').hide();
+});
+
+$(function() {
+  $('#id_anexo_act7_3').change(function (){
+    $('#resetAne3Act7').show();
+  });
+});
+
+$('#resetAne3Act7').on('click', function(e){
+  var $el = $('#id_anexo_act7_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act7').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act8').change(function (){
+    $('#resetEviAct8').show();
+  });
+});
+
+$('#resetEviAct8').on('click', function(e){
+  var $el = $('#id_evidencia_act8');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct8').hide();
+});
+
+$(function() {
+  $('#id_anexo_act8_1').change(function (){
+    $('#resetAne1Act8').show();
+  });
+});
+
+$('#resetAne1Act8').on('click', function(e){
+  var $el = $('#id_anexo_act8_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act8').hide();
+});
+
+$(function() {
+  $('#id_anexo_act8_2').change(function (){
+    $('#resetAne2Act8').show();
+  });
+});
+
+$('#resetAne2Act8').on('click', function(e){
+  var $el = $('#id_anexo_act8_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act8').hide();
+});
+
+$(function() {
+  $('#id_anexo_act8_3').change(function (){
+    $('#resetAne3Act8').show();
+  });
+});
+
+$('#resetAne3Act8').on('click', function(e){
+  var $el = $('#id_anexo_act8_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act8').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act9').change(function (){
+    $('#resetEviAct9').show();
+  });
+});
+
+$('#resetEviAct9').on('click', function(e){
+  var $el = $('#id_evidencia_act9');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct9').hide();
+});
+
+$(function() {
+  $('#id_anexo_act9_1').change(function (){
+    $('#resetAne1Act9').show();
+  });
+});
+
+$('#resetAne1Act9').on('click', function(e){
+  var $el = $('#id_anexo_act9_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act9').hide();
+});
+
+$(function() {
+  $('#id_anexo_act9_2').change(function (){
+    $('#resetAne2Act9').show();
+  });
+});
+
+$('#resetAne2Act9').on('click', function(e){
+  var $el = $('#id_anexo_act9_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act9').hide();
+});
+
+$(function() {
+  $('#id_anexo_act9_3').change(function (){
+    $('#resetAne3Act9').show();
+  });
+});
+
+$('#resetAne3Act9').on('click', function(e){
+  var $el = $('#id_anexo_act9_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act9').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act10').change(function (){
+    $('#resetEviAct10').show();
+  });
+});
+
+$('#resetEviAct10').on('click', function(e){
+  var $el = $('#id_evidencia_act10');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct10').hide();
+});
+
+$(function() {
+  $('#id_anexo_act10_1').change(function (){
+    $('#resetAne1Act10').show();
+  });
+});
+
+$('#resetAne1Act10').on('click', function(e){
+  var $el = $('#id_anexo_act10_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act10').hide();
+});
+
+$(function() {
+  $('#id_anexo_act10_2').change(function (){
+    $('#resetAne2Act10').show();
+  });
+});
+
+$('#resetAne2Act10').on('click', function(e){
+  var $el = $('#id_anexo_act10_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act10').hide();
+});
+
+$(function() {
+  $('#id_anexo_act10_3').change(function (){
+    $('#resetAne3Act10').show();
+  });
+});
+
+$('#resetAne3Act10').on('click', function(e){
+  var $el = $('#id_anexo_act10_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act10').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act11').change(function (){
+    $('#resetEviAct11').show();
+  });
+});
+
+$('#resetEviAct11').on('click', function(e){
+  var $el = $('#id_evidencia_act11');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct11').hide();
+});
+
+$(function() {
+  $('#id_anexo_act11_1').change(function (){
+    $('#resetAne1Act11').show();
+  });
+});
+
+$('#resetAne1Act11').on('click', function(e){
+  var $el = $('#id_anexo_act11_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act11').hide();
+});
+
+$(function() {
+  $('#id_anexo_act11_2').change(function (){
+    $('#resetAne2Act11').show();
+  });
+});
+
+$('#resetAne2Act11').on('click', function(e){
+  var $el = $('#id_anexo_act11_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act11').hide();
+});
+
+$(function() {
+  $('#id_anexo_act11_3').change(function (){
+    $('#resetAne3Act11').show();
+  });
+});
+
+$('#resetAne3Act11').on('click', function(e){
+  var $el = $('#id_anexo_act11_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act11').hide();
+});
+
+$(function() {
+  $('#id_evidencia_act12').change(function (){
+    $('#resetEviAct12').show();
+  });
+});
+
+$('#resetEviAct12').on('click', function(e){
+  var $el = $('#id_evidencia_act12');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetEviAct12').hide();
+});
+
+$(function() {
+  $('#id_anexo_act12_1').change(function (){
+    $('#resetAne1Act12').show();
+  });
+});
+
+$('#resetAne1Act12').on('click', function(e){
+  var $el = $('#id_anexo_act12_1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne1Act12').hide();
+});
+
+$(function() {
+  $('#id_anexo_act12_2').change(function (){
+    $('#resetAne2Act12').show();
+  });
+});
+
+$('#resetAne2Act12').on('click', function(e){
+  var $el = $('#id_anexo_act12_2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne2Act12').hide();
+});
+
+$(function() {
+  $('#id_anexo_act12_3').change(function (){
+    $('#resetAne3Act12').show();
+  });
+});
+
+$('#resetAne3Act12').on('click', function(e){
+  var $el = $('#id_anexo_act12_3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAne3Act12').hide();
+});
+
+$(function() {
+  $('#id_registro_antes1').change(function (){
+    $('#resetAntes1').show();
+  });
+});
+
+$('#resetAntes1').on('click', function(e){
+  var $el = $('#id_registro_antes1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAntes1').hide();
+});
+
+$(function() {
+  $('#id_registro_despues1').change(function (){
+    $('#resetDespues1').show();
+  });
+});
+
+$('#resetDespues1').on('click', function(e){
+  var $el = $('#id_registro_despues1');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetDespues1').hide();
+});
+
+$(function() {
+  $('#id_registro_antes2').change(function (){
+    $('#resetAntes2').show();
+  });
+});
+
+$('#resetAntes2').on('click', function(e){
+  var $el = $('#id_registro_antes2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAntes2').hide();
+});
+
+$(function() {
+  $('#id_registro_despues2').change(function (){
+    $('#resetDespues2').show();
+  });
+});
+
+$('#resetDespues2').on('click', function(e){
+  var $el = $('#id_registro_despues2');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetDespues2').hide();
+});
+
+$(function() {
+  $('#id_registro_antes3').change(function (){
+    $('#resetAntes3').show();
+  });
+});
+
+$('#resetAntes3').on('click', function(e){
+  var $el = $('#id_registro_antes3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAntes3').hide();
+});
+
+$(function() {
+  $('#id_registro_despues3').change(function (){
+    $('#resetDespues3').show();
+  });
+});
+
+$('#resetDespues3').on('click', function(e){
+  var $el = $('#id_registro_despues3');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetDespues3').hide();
+});
+
+$(function() {
+  $('#id_registro_antes4').change(function (){
+    $('#resetAntes4').show();
+  });
+});
+
+$('#resetAntes4').on('click', function(e){
+  var $el = $('#id_registro_antes4');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAntes4').hide();
+});
+
+$(function() {
+  $('#id_registro_despues4').change(function (){
+    $('#resetDespues4').show();
+  });
+});
+
+$('#resetDespues4').on('click', function(e){
+  var $el = $('#id_registro_despues4');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetDespues4').hide();
+});
+
+$(function() {
+  $('#id_registro_antes5').change(function (){
+    $('#resetAntes5').show();
+  });
+});
+
+$('#resetAntes5').on('click', function(e){
+  var $el = $('#id_registro_antes5');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetAntes5').hide();
+});
+
+$(function() {
+  $('#id_registro_despues5').change(function (){
+    $('#resetDespues5').show();
+  });
+});
+
+$('#resetDespues5').on('click', function(e){
+  var $el = $('#id_registro_despues5');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+  $('#resetDespues5').hide();
+});

@@ -19,6 +19,7 @@ OPCIONES_EMPRESA = (
     ('DECOFACHADAS', 'Decofachadas'),
     ('ENCHAPES GUERRA', 'Enchapes Guerra'),
     ('ESTRUMETALICAS JS', 'Estrumetálicas JS'),
+    ('FIBRAS Y FIGURAS', 'Fibras y Figuras'),
     ('FLOTANTES', 'Flotantes'),
     ('IDEA CUBICA', 'Idea Cúbica'),
     ('INGENOX', 'Ingenox'),
